@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WaveCraft — Recommandation IA</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="recommandation.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="topbar">
+        <span>🏄 Livraison gratuite dès 150€ · Côte Atlantique</span>
+        <span>Nous contacter : 05 56 XX XX XX</span>
+    </div>
+
+    <nav class="navbar">
+        <a href="index.html" class="navbar-logo" style="text-decoration:none;display:flex;align-items:center;gap:8px;">
+            <span class="logo-wave">~</span>
+            <span class="logo-text">WAVECRAFT</span>
+        </a>
+        <div class="navbar-links">
+            <a href="index.html">Planches</a>
+            <a href="cours.html">Cours</a>
+            <a href="recommandation.html" class="active">IA Recommandation</a>
+            <a href="meteo.html">Météo</a>
+        </div>
+        <div class="navbar-actions" id="navbar-actions">
+            <a href="login.html" class="btn-login">Connexion</a>
+        </div>
+    </nav>
+
+    <section class="ia-hero">
+        <div class="ia-hero-content">
+            <span class="ia-hero-badge">✨ Intelligence Artificielle</span>
+            <h1>Trouvez votre planche idéale</h1>
+            <p>Notre IA analyse votre niveau, votre budget et les conditions météo de votre spot pour vous recommander la planche parfaite.</p>
+        </div>
+    </section>
+
+    <div class="reco-page">
+
+        <div class="reco-form-card">
+            <h2>Votre profil</h2>
+
+            <div class="reco-field">
+                <label>Votre niveau</label>
+                <div class="niveau-btns">
+                    <button class="niveau-btn active" data-niveau="Débutant - Intermédiaire">🏄 Débutant</button>
+                    <button class="niveau-btn" data-niveau="Intermédiaire - Confirmé">🌊 Intermédiaire</button>
+                    <button class="niveau-btn" data-niveau="Confirmé - Expert">⚡ Expert</button>
+                </div>
+            </div>
+
+            <div class="reco-field">
+                <label>Budget maximum</label>
+                <div class="budget-wrap">
+                    <input type="range" id="budget-slider" min="100" max="2000" step="50" value="600">
+                    <div class="budget-display">
+                        <span id="budget-val">600</span> <span class="budget-euro">€</span>
+                    </div>
+                </div>
+                <div class="budget-marks">
+                    <span>100€</span><span>500€</span><span>1000€</span><span>1500€</span><span>2000€</span>
+                </div>
+            </div>
+
+            <div class="reco-field">
+                <label>Type de recherche</label>
+                <div class="type-btns">
+                    <button class="type-btn active" data-type="achat">🛒 Achat</button>
+                    <button class="type-btn" data-type="location">📅 Location</button>
+                </div>
+            </div>
+
+            <div class="reco-field" id="spot-field" style="display:none;">
+                <label>Votre spot <small>(pour adapter aux conditions météo)</small></label>
+                <select id="spot-select" onchange="chargerMeteoSpot(this.value)">
+                    <option value="">Choisir un spot...</option>
+                    <option value="Lacanau">Lacanau</option>
+                    <option value="Hossegor">Hossegor</option>
+                    <option value="Capbreton">Capbreton</option>
+                    <option value="Biscarrosse">Biscarrosse</option>
+                    <option value="Mimizan">Mimizan</option>
+                    <option value="Seignosse">Seignosse</option>
+                    <option value="Anglet">Anglet</option>
+                </select>
+
+                <!-- LOADER MÉTÉO -->
+                <div class="meteo-loading" id="meteo-loading" style="display:none;">
+                    <div class="loading-spinner" style="width:20px;height:20px;border-width:2px;"></div>
+                    <span>Chargement météo...</span>
+                </div>
+
+                <!-- APERÇU MÉTÉO -->
+                <div class="meteo-apercu" id="meteo-apercu" style="display:none;">
+                    <div class="meteo-apercu-header">
+                        <span class="meteo-apercu-titre" id="meteo-spot-nom"></span>
+                        <span class="meteo-apercu-date" id="meteo-date"></span>
+                    </div>
+
+                    <!-- NAVIGATION JOURS -->
+                    <div class="meteo-nav-jours" id="meteo-nav-jours"></div>
+
+                    <!-- CRÉNEAUX / RÉSUMÉ -->
+                    <div class="meteo-apercu-body" id="meteo-apercu-body"></div>
+                </div>
+            </div>
+
+            <button class="btn-reco" id="btn-reco" onclick="lancerRecommandation()">
+                <span id="btn-reco-text">✨ Obtenir ma recommandation</span>
+                <div class="btn-reco-loader" id="btn-reco-loader" style="display:none;"></div>
+            </button>
+
+            <p class="reco-login-hint" id="reco-login-hint" style="display:none;">
+                <a href="login.html">Connectez-vous</a> pour obtenir une recommandation personnalisée.
+            </p>
+        </div>
+
+        <!-- RÉSULTATS -->
+        <div class="reco-results" id="reco-results" style="display:none;">
+            <div class="ia-response-card">
+                <div class="ia-response-header">
+                    <span class="ia-icon">🤖</span>
+                    <div>
+                        <div class="ia-response-title">Recommandation IA</div>
+                        <div class="ia-response-sub">Propulsé par Llama 3.3 · KNN</div>
+                    </div>
+                </div>
+                <p class="ia-response-text" id="ia-response-text"></p>
+            </div>
+            <div class="reco-planches-header">
+                <h3 id="reco-count"></h3>
+            </div>
+            <div class="reco-planches-grid" id="reco-planches-grid"></div>
+        </div>
+
+        <!-- ERREUR BUDGET -->
+        <div class="reco-budget-error" id="reco-budget-error" style="display:none;">
+            <div class="budget-error-icon">💸</div>
+            <h3>Budget insuffisant</h3>
+            <p id="budget-error-msg"></p>
+            <button onclick="augmenterBudget()" class="btn-reco" style="max-width:240px;margin:0 auto;">Augmenter le budget</button>
+        </div>
+
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="logo-wave">~</span>
+                <span class="logo-text">WAVECRAFT</span>
+                <p>Votre surf shop sur la côte Atlantique</p>
+            </div>
+            <div class="footer-links">
+                <h4>Navigation</h4>
+                <a href="index.html">Planches</a>
+                <a href="cours.html">Cours de surf</a>
+                <a href="recommandation.html">Recommandation IA</a>
+            </div>
+            <div class="footer-links">
+                <h4>Mon compte</h4>
+                <a href="login.html">Connexion</a>
+                <a href="profil.html">Mon profil</a>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact</h4>
+                <p>📍 Côte Atlantique, France</p>
+                <p>📞 05 56 XX XX XX</p>
+                <p>✉️ contact@wavecraft.fr</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 WaveCraft Surf Shop · Tous droits réservés</p>
+        </div>
+    </footer>
+
+    <script src="recommandation.js"></script>
+</body>
+</html>
