@@ -22,7 +22,7 @@ jobs:
       # 1. Récupérer le code
       # ------------------------------------------------
       - name: Récupération du code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       # ------------------------------------------------
       # 2. Installer Python
@@ -75,7 +75,7 @@ jobs:
           echo "✅ Packaging terminé"
 
       - name: Upload de l'artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: wavecraft-modele-ia
           path: package_modele/
