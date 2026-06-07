@@ -1,6 +1,13 @@
 <?php
 // =====================================================
 // API/COMMANDES.PHP - Gestion des commandes
+// -----------------------------------------------------
+// Routes gérées par index.php :
+//   GET    /commandes/{id}                  → détail
+//   GET    /commandes?statut=en_attente     → liste filtrée (admin)
+//   GET    /utilisateurs/{id}/commandes     → historique utilisateur
+//   POST   /commandes                       → créer
+//   PUT    /commandes/{id}                  → modifier statut
 // =====================================================
 
 header('Content-Type: application/json; charset=utf-8');
@@ -18,13 +25,9 @@ require_once __DIR__ . '/../vendor/autoload.php';
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 
-// =====================================================
-// FONCTION JWT
-// =====================================================
-
 function verifier_token(): array {
     $headers = getallheaders();
-    $auth = $headers['Authorization'] ?? $headers['authorization'] ?? '';
+    $auth    = $headers['Authorization'] ?? $headers['authorization'] ?? '';
 
     if (!$auth || !str_starts_with($auth, 'Bearer ')) {
         http_response_code(401);
@@ -32,7 +35,7 @@ function verifier_token(): array {
         exit;
     }
 
-    $token = substr($auth, 7);
+    $token  = substr($auth, 7);
     $secret = $_ENV['JWT_SECRET'] ?? 'surfshop_jwt_secret';
 
     try {
@@ -45,10 +48,6 @@ function verifier_token(): array {
     }
 }
 
-// =====================================================
-// CONNEXION PDO
-// =====================================================
-
 $pdo = require(__DIR__ . '/../config.php');
 
 if (!$pdo instanceof PDO) {
@@ -57,9 +56,10 @@ if (!$pdo instanceof PDO) {
     exit;
 }
 
-$method = $_SERVER['REQUEST_METHOD'];
-$id     = $_GET['id'] ?? null;
-$action = $_GET['action'] ?? null;
+$method         = $_SERVER['REQUEST_METHOD'];
+$id             = $_GET['id']             ?? null; // /commandes/{id}
+$id_utilisateur = $_GET['id_utilisateur'] ?? null; // /utilisateurs/{id}/commandes
+$statut         = $_GET['statut']         ?? null; // ?statut=en_attente
 
 try {
 
@@ -70,18 +70,9 @@ try {
 
         $payload = verifier_token();
 
-        // --- Historique commandes d'un utilisateur (R10) ---
-        if ($action === 'historique') {
+        // GET /utilisateurs/{id}/commandes → historique utilisateur
+        if ($id_utilisateur !== null) {
 
-            $id_utilisateur = $_GET['id_utilisateur'] ?? null;
-
-            if (!$id_utilisateur) {
-                http_response_code(400);
-                echo json_encode(['success' => false, 'erreur' => 'Paramètre id_utilisateur requis']);
-                exit;
-            }
-
-            // Un client ne voit que ses propres commandes
             if ($payload['role'] === 'client' && (int)$id_utilisateur !== (int)$payload['id_utilisateur']) {
                 http_response_code(403);
                 echo json_encode(['success' => false, 'erreur' => 'Accès refusé']);
@@ -101,23 +92,13 @@ try {
             $stmt->execute([(int)$id_utilisateur]);
 
             http_response_code(200);
-            echo json_encode([
-                'success' => true,
-                'data'    => $stmt->fetchAll()
-            ]);
+            echo json_encode(['success' => true, 'data' => $stmt->fetchAll()]);
             exit;
         }
 
-        // --- Détails complets d'une commande (R13) ---
-        if ($action === 'details') {
+        // GET /commandes/{id} → détail d'une commande
+        if ($id !== null) {
 
-            if (!$id) {
-                http_response_code(400);
-                echo json_encode(['success' => false, 'erreur' => 'Paramètre id requis']);
-                exit;
-            }
-
-            // Vérifier que la commande appartient à l'utilisateur (sauf admin)
             $stmt = $pdo->prepare("SELECT id_utilisateur FROM commande WHERE id_commande = ?");
             $stmt->execute([(int)$id]);
             $commande = $stmt->fetch();
@@ -148,15 +129,12 @@ try {
             $stmt->execute([(int)$id]);
 
             http_response_code(200);
-            echo json_encode([
-                'success' => true,
-                'data'    => $stmt->fetchAll()
-            ]);
+            echo json_encode(['success' => true, 'data' => $stmt->fetchAll()]);
             exit;
         }
 
-        // --- Commandes en attente (admin) (R11) ---
-        if ($action === 'en_attente') {
+        // GET /commandes?statut=en_attente → liste filtrée (admin)
+        if ($statut !== null) {
 
             if ($payload['role'] !== 'admin') {
                 http_response_code(403);
@@ -167,33 +145,29 @@ try {
             $sql = "SELECT c.id_commande, c.date_commande, c.montant_total, u.email
                     FROM commande c
                     JOIN utilisateur u ON c.id_utilisateur = u.id_utilisateur
-                    WHERE c.statut = 'en attente'
+                    WHERE c.statut = ?
                     ORDER BY c.date_commande ASC";
 
             $stmt = $pdo->prepare($sql);
-            $stmt->execute();
+            $stmt->execute([$statut]);
 
             http_response_code(200);
-            echo json_encode([
-                'success' => true,
-                'data'    => $stmt->fetchAll()
-            ]);
+            echo json_encode(['success' => true, 'data' => $stmt->fetchAll()]);
             exit;
         }
 
         http_response_code(400);
-        echo json_encode(['success' => false, 'erreur' => 'Action inconnue']);
+        echo json_encode(['success' => false, 'erreur' => 'Paramètre manquant']);
         exit;
     }
 
     // =====================================================
-    // POST - Créer une commande (client connecté) (R8, R9)
+    // POST /commandes → créer une commande
     // =====================================================
     if ($method === 'POST') {
 
         $payload = verifier_token();
-
-        $data = json_decode(file_get_contents('php://input'), true);
+        $data    = json_decode(file_get_contents('php://input'), true);
 
         if (!$data) {
             http_response_code(400);
@@ -209,7 +183,6 @@ try {
 
         $montant_total = 0;
 
-        // Vérifier chaque planche et calculer le montant
         foreach ($data['planches'] as $item) {
             if (empty($item['id_planche']) || empty($item['quantite'])) {
                 http_response_code(400);
@@ -233,55 +206,39 @@ try {
                 exit;
             }
 
-            // Calculer supplément personnalisations
             $supplement = 0;
             if (!empty($item['personnalisations']) && is_array($item['personnalisations'])) {
                 foreach ($item['personnalisations'] as $id_perso) {
                     $stmt2 = $pdo->prepare("SELECT prix_supplement FROM personnalisation WHERE id_personnalisation = ? AND id_planche = ?");
                     $stmt2->execute([(int)$id_perso, (int)$item['id_planche']]);
                     $perso = $stmt2->fetch();
-                    if ($perso) {
-                        $supplement += $perso['prix_supplement'];
-                    }
+                    if ($perso) $supplement += $perso['prix_supplement'];
                 }
             }
 
             $montant_total += ($planche['prix_achat'] + $supplement) * $item['quantite'];
         }
 
-        // Créer la commande (R8)
-        $stmt = $pdo->prepare("INSERT INTO commande (id_utilisateur, montant_total, statut)
-                               VALUES (?, ?, 'en attente')");
+        $stmt = $pdo->prepare("INSERT INTO commande (id_utilisateur, montant_total, statut) VALUES (?, ?, 'en attente')");
         $stmt->execute([(int)$payload['id_utilisateur'], round($montant_total, 2)]);
         $id_commande = (int)$pdo->lastInsertId();
 
-        // Ajouter les planches à la commande (R9)
         foreach ($data['planches'] as $item) {
             $stmt = $pdo->prepare("SELECT prix_achat FROM planche WHERE id_planche = ?");
             $stmt->execute([(int)$item['id_planche']]);
             $planche = $stmt->fetch();
 
-            $stmt = $pdo->prepare("INSERT INTO commande_planche (id_commande, id_planche, quantite, prix_unitaire)
-                                   VALUES (?, ?, ?, ?)");
-            $stmt->execute([
-                $id_commande,
-                (int)$item['id_planche'],
-                (int)$item['quantite'],
-                $planche['prix_achat']
-            ]);
-
+            $stmt = $pdo->prepare("INSERT INTO commande_planche (id_commande, id_planche, quantite, prix_unitaire) VALUES (?, ?, ?, ?)");
+            $stmt->execute([$id_commande, (int)$item['id_planche'], (int)$item['quantite'], $planche['prix_achat']]);
             $id_commande_planche = (int)$pdo->lastInsertId();
 
-            // Ajouter personnalisations si présentes
             if (!empty($item['personnalisations']) && is_array($item['personnalisations'])) {
                 foreach ($item['personnalisations'] as $id_perso) {
-                    $stmt2 = $pdo->prepare("INSERT INTO commande_planche_perso (id_commande_planche, id_personnalisation)
-                                           VALUES (?, ?)");
+                    $stmt2 = $pdo->prepare("INSERT INTO commande_planche_perso (id_commande_planche, id_personnalisation) VALUES (?, ?)");
                     $stmt2->execute([$id_commande_planche, (int)$id_perso]);
                 }
             }
 
-            // Décrémenter le stock (R6)
             $stmt = $pdo->prepare("UPDATE planche SET stock = stock - ? WHERE id_planche = ?");
             $stmt->execute([(int)$item['quantite'], (int)$item['id_planche']]);
         }
@@ -297,7 +254,7 @@ try {
     }
 
     // =====================================================
-    // PUT - Modifier statut commande (admin) (R12)
+    // PUT /commandes/{id} → modifier statut (admin)
     // =====================================================
     if ($method === 'PUT') {
 
@@ -311,7 +268,7 @@ try {
 
         if (!$id) {
             http_response_code(400);
-            echo json_encode(['success' => false, 'erreur' => 'Paramètre id requis']);
+            echo json_encode(['success' => false, 'erreur' => 'ID commande requis dans l\'URL']);
             exit;
         }
 
@@ -359,4 +316,3 @@ try {
     echo json_encode(['success' => false, 'erreur' => 'Erreur serveur']);
     exit;
 }
-?>

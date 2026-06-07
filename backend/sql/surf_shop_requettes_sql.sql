@@ -615,3 +615,23 @@ WHERE u.role = 'client'
 GROUP BY u.id_utilisateur
 ORDER BY total_depense DESC
 LIMIT 20;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SELECT m.date_heure, s.nom 
+FROM meteo m 
+JOIN spot s ON m.id_spot = s.id_spot 
+WHERE s.nom = 'Lacanau' 
+AND DATE(m.date_heure) = CURDATE()
+LIMIT 5;

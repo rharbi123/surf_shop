@@ -75,7 +75,7 @@ def verifier_token(f):
     return decorated
 
 # =====================================================
-# FONCTION RECOMMANDATION (KNN)
+# FONCTION RECOMMANDATION ACHAT (KNN)
 # =====================================================
 def recommander(niveau_user, budget, taille_vagues_meteo, vent_vitesse, n=5):
     vecteur = [[
@@ -115,38 +115,88 @@ def recommander(niveau_user, budget, taille_vagues_meteo, vent_vitesse, n=5):
     }
 
 # =====================================================
+# FONCTION RECOMMANDATION LOCATION (KNN, sans budget)
+# =====================================================
+def recommander_location(niveau_user, taille_vagues_meteo, n=5):
+    vecteur = [[
+        niveau_map.get(niveau_user, 1),
+        4,
+        taille_vagues_map.get(taille_vagues_meteo, 1),
+        500,
+        50,
+        3
+    ]]
+
+    vecteur_scaled = scaler.transform(vecteur)
+    # On cherche parmi toutes les planches pour ne pas rater les experts
+    distances, indices = nn.kneighbors(vecteur_scaled, n_neighbors=len(df))
+
+    candidats = df.iloc[indices[0]].copy()
+    candidats['distance'] = distances[0]
+
+    # Filtre par niveau uniquement d'abord
+    candidats = candidats[candidats['niveau_label'] == niveau_user]
+
+    if candidats.empty:
+        return {
+            'succes': False,
+            'message': f"Aucune planche disponible pour le niveau {niveau_user}.",
+            'planches': []
+        }
+
+    # Prioriser les planches qui correspondent à la taille de vagues météo
+    match_vagues = candidats[candidats['taille_vagues_label'] == taille_vagues_meteo]
+    if not match_vagues.empty:
+        candidats = match_vagues
+
+    candidats = candidats.drop_duplicates(subset=['shape_label', 'volume_moyen'])
+    resultats = candidats.head(n)
+
+    return {
+        'succes': True,
+        'nb_resultats': len(resultats),
+        'planches': resultats[['nom', 'marque', 'niveau_label', 'shape_label',
+                                'taille_vagues_label', 'volume_moyen', 'distance']].to_dict('records')
+    }
+
+# =====================================================
 # FONCTION RAG + GROQ
 # =====================================================
-def generer_recommandation_ia(planches, niveau, budget, taille_vagues, vent_vitesse,
+def generer_recommandation_ia(planches, niveau, taille_vagues, vent_vitesse,
                                type_recommandation='achat', spot=None,
-                               date_label=None, conditions=None):
+                               date_label=None, conditions=None, budget=None):
     client = Groq(api_key=os.getenv('GROQ_API_KEY'))
 
-    planches_texte = ""
-    for i, p in enumerate(planches, 1):
-        planches_texte += f"{i}. {p['nom']} ({p['marque']}) - {p['prix']}€ - {p['shape_label']} - volume moyen {round(p['volume_moyen'])}L\n"
+    if type_recommandation == 'location':
+        planches_texte = ""
+        for i, p in enumerate(planches, 1):
+            planches_texte += f"{i}. {p['nom']} ({p['marque']}) - {p['shape_label']} - volume moyen {round(p['volume_moyen'])}L\n"
 
-    if type_recommandation == 'location' and date_label:
-        spot_info = f"sur le spot de {spot}" if spot else ""
+        spot_info    = f"sur le spot de {spot}" if spot and spot != 'Non précisé' else ""
         meteo_detail = f"{conditions}, vent {vent_vitesse} m/s, {taille_vagues}" if conditions else f"{taille_vagues}, vent {vent_vitesse} m/s"
-        contexte = (
-            f"Le client souhaite louer une planche {spot_info} {date_label}.\n"
-            f"Conditions météo prévues {date_label} : {meteo_detail}."
+        contexte     = (
+            f"Le client souhaite louer une planche pour surfer {spot_info} {date_label}.\n"
+            f"Conditions météo prévues : {meteo_detail}."
         )
         instruction = (
-            f"Commence ta réponse en mentionnant explicitement la date ({date_label}) et les conditions météo prévues. "
-            f"Ensuite recommande la planche la plus adaptée en tenant compte du niveau ET de ces conditions."
+            f"Commence ta réponse en mentionnant explicitement le spot ({spot}), la date ({date_label}) et les conditions météo prévues. "
+            f"Ensuite recommande la planche la plus adaptée à ces conditions et au niveau du client. "
+            f"Ne parle jamais de prix d'achat ni de budget."
         )
+        profil = f"- Niveau : {niveau}\n- {contexte}"
     else:
-        contexte = "Le client cherche une planche pour un achat durable, toutes conditions confondues."
+        planches_texte = ""
+        for i, p in enumerate(planches, 1):
+            planches_texte += f"{i}. {p['nom']} ({p['marque']}) - {p['prix']}€ - {p['shape_label']} - volume moyen {round(p['volume_moyen'])}L\n"
+
+        contexte    = "Le client cherche une planche pour un achat durable, toutes conditions confondues."
         instruction = "Recommande la planche la plus adaptée en tenant compte du niveau et du budget uniquement."
+        profil      = f"- Niveau : {niveau}\n- Budget maximum : {budget}€\n- {contexte}"
 
     prompt = f"""Tu es un expert en surf dans un surf shop sur la côte Atlantique française.
 
 Un client cherche une planche avec ce profil :
-- Niveau : {niveau}
-- Budget maximum : {budget}€
-- {contexte}
+{profil}
 
 Voici les planches disponibles correspondant à son profil :
 {planches_texte}
@@ -182,25 +232,31 @@ def recommander_route():
     if not data:
         return jsonify({'succes': False, 'erreur': 'JSON invalide'}), 400
 
-    niveau             = data.get('niveau')
-    budget             = data.get('budget')
-    taille_vagues      = data.get('taille_vagues', 'Vagues moyennes')
-    vent_vitesse       = data.get('vent_vitesse', 0)
+    niveau              = data.get('niveau')
+    budget              = data.get('budget')
+    taille_vagues       = data.get('taille_vagues', 'Vagues moyennes')
+    vent_vitesse        = data.get('vent_vitesse', 0)
     type_recommandation = data.get('type', 'achat')
-    spot               = data.get('spot', 'Non précisé')
-    date_label         = data.get('date_label', '')
-    conditions         = data.get('conditions', '')
+    spot                = data.get('spot', 'Non précisé')
+    date_label          = data.get('date_label', '')
+    conditions          = data.get('conditions', '')
 
-    if not niveau or not budget:
-        return jsonify({'succes': False, 'erreur': 'niveau et budget requis'}), 400
+    if not niveau:
+        return jsonify({'succes': False, 'erreur': 'niveau requis'}), 400
 
-    resultat = recommander(niveau, float(budget), taille_vagues, vent_vitesse)
+    if type_recommandation == 'location':
+        resultat = recommander_location(niveau, taille_vagues)
+    else:
+        if not budget:
+            return jsonify({'succes': False, 'erreur': 'budget requis pour un achat'}), 400
+        resultat = recommander(niveau, float(budget), taille_vagues, vent_vitesse)
 
     if resultat['succes']:
         recommandation_ia = generer_recommandation_ia(
-            resultat['planches'], niveau, budget,
+            resultat['planches'], niveau,
             taille_vagues, vent_vitesse, type_recommandation,
-            spot=spot, date_label=date_label, conditions=conditions
+            spot=spot, date_label=date_label, conditions=conditions,
+            budget=budget
         )
         resultat['recommandation_ia'] = recommandation_ia
 

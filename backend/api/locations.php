@@ -1,6 +1,13 @@
 <?php
 // =====================================================
 // API/LOCATIONS.PHP - Gestion des locations
+// -----------------------------------------------------
+// Routes gérées par index.php :
+//   GET    /locations?disponible=1&date_debut=&date_fin=  → planches dispo
+//   GET    /locations?statut=en_cours|a_venir             → liste filtrée (admin)
+//   GET    /utilisateurs/{id}/locations                   → historique utilisateur
+//   POST   /locations                                     → créer
+//   PUT    /locations/{id}                                → modifier statut
 // =====================================================
 
 header('Content-Type: application/json; charset=utf-8');
@@ -18,13 +25,9 @@ require_once __DIR__ . '/../vendor/autoload.php';
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 
-// =====================================================
-// FONCTION JWT
-// =====================================================
-
 function verifier_token(): array {
     $headers = getallheaders();
-    $auth = $headers['Authorization'] ?? $headers['authorization'] ?? '';
+    $auth    = $headers['Authorization'] ?? $headers['authorization'] ?? '';
 
     if (!$auth || !str_starts_with($auth, 'Bearer ')) {
         http_response_code(401);
@@ -32,7 +35,7 @@ function verifier_token(): array {
         exit;
     }
 
-    $token = substr($auth, 7);
+    $token  = substr($auth, 7);
     $secret = $_ENV['JWT_SECRET'] ?? 'surfshop_jwt_secret';
 
     try {
@@ -45,10 +48,6 @@ function verifier_token(): array {
     }
 }
 
-// =====================================================
-// CONNEXION PDO
-// =====================================================
-
 $pdo = require(__DIR__ . '/../config.php');
 
 if (!$pdo instanceof PDO) {
@@ -57,9 +56,13 @@ if (!$pdo instanceof PDO) {
     exit;
 }
 
-$method = $_SERVER['REQUEST_METHOD'];
-$id     = $_GET['id'] ?? null;
-$action = $_GET['action'] ?? null;
+$method         = $_SERVER['REQUEST_METHOD'];
+$id             = $_GET['id']             ?? null; // /locations/{id}
+$id_utilisateur = $_GET['id_utilisateur'] ?? null; // /utilisateurs/{id}/locations
+$disponible     = $_GET['disponible']     ?? null; // ?disponible=1
+$statut         = $_GET['statut']         ?? null; // ?statut=en_cours|a_venir
+$date_debut     = $_GET['date_debut']     ?? null;
+$date_fin       = $_GET['date_fin']       ?? null;
 
 try {
 
@@ -70,10 +73,34 @@ try {
 
         $payload = verifier_token();
 
-        // --- Planches disponibles pour une période (R14) - public avec token ---
-        if ($action === 'disponibles') {
-            $date_debut = $_GET['date_debut'] ?? null;
-            $date_fin   = $_GET['date_fin'] ?? null;
+        // GET /utilisateurs/{id}/locations → historique utilisateur
+        if ($id_utilisateur !== null) {
+
+            if ($payload['role'] !== 'admin' && (int)$id_utilisateur !== (int)$payload['id_utilisateur']) {
+                http_response_code(403);
+                echo json_encode(['success' => false, 'erreur' => 'Accès refusé']);
+                exit;
+            }
+
+            $sql = "SELECT l.id_location, l.date_debut, l.date_fin, l.montant_total, l.statut,
+                           p.nom AS planche_nom, s.nom AS spot_nom,
+                           DATEDIFF(l.date_fin, l.date_debut) AS nb_jours
+                    FROM location l
+                    JOIN planche p ON l.id_planche = p.id_planche
+                    LEFT JOIN spot s ON l.id_spot = s.id_spot
+                    WHERE l.id_utilisateur = ?
+                    ORDER BY l.date_debut DESC";
+
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([(int)$id_utilisateur]);
+
+            http_response_code(200);
+            echo json_encode(['success' => true, 'data' => $stmt->fetchAll()]);
+            exit;
+        }
+
+        // GET /locations?disponible=1&date_debut=&date_fin= → planches disponibles
+        if ($disponible !== null) {
 
             if (!$date_debut || !$date_fin) {
                 http_response_code(400);
@@ -103,53 +130,13 @@ try {
             }
 
             http_response_code(200);
-            echo json_encode([
-                'success' => true,
-                'count'   => count($planches),
-                'data'    => $planches
-            ]);
+            echo json_encode(['success' => true, 'count' => count($planches), 'data' => $planches]);
             exit;
         }
 
-        // --- Historique locations d'un utilisateur (R17) ---
-        if ($action === 'historique') {
-            $id_utilisateur = $_GET['id_utilisateur'] ?? null;
+        // GET /locations?statut=en_cours → locations en cours (admin)
+        if ($statut === 'en_cours') {
 
-            if (!$id_utilisateur) {
-                http_response_code(400);
-                echo json_encode(['success' => false, 'erreur' => 'Paramètre id_utilisateur requis']);
-                exit;
-            }
-
-            // Un utilisateur ne peut voir que son propre historique, sauf admin
-            if ($payload['role'] !== 'admin' && (int)$id_utilisateur !== (int)$payload['id_utilisateur']) {
-                http_response_code(403);
-                echo json_encode(['success' => false, 'erreur' => 'Accès refusé']);
-                exit;
-            }
-
-            $sql = "SELECT l.id_location, l.date_debut, l.date_fin, l.montant_total, l.statut,
-                           p.nom AS planche_nom, s.nom AS spot_nom,
-                           DATEDIFF(l.date_fin, l.date_debut) AS nb_jours
-                    FROM location l
-                    JOIN planche p ON l.id_planche = p.id_planche
-                    LEFT JOIN spot s ON l.id_spot = s.id_spot
-                    WHERE l.id_utilisateur = ?
-                    ORDER BY l.date_debut DESC";
-
-            $stmt = $pdo->prepare($sql);
-            $stmt->execute([(int)$id_utilisateur]);
-
-            http_response_code(200);
-            echo json_encode([
-                'success' => true,
-                'data'    => $stmt->fetchAll()
-            ]);
-            exit;
-        }
-
-        // --- Locations en cours (admin) (R18) ---
-        if ($action === 'en_cours') {
             if ($payload['role'] !== 'admin') {
                 http_response_code(403);
                 echo json_encode(['success' => false, 'erreur' => 'Accès réservé à l\'admin']);
@@ -169,15 +156,13 @@ try {
             $stmt->execute();
 
             http_response_code(200);
-            echo json_encode([
-                'success' => true,
-                'data'    => $stmt->fetchAll()
-            ]);
+            echo json_encode(['success' => true, 'data' => $stmt->fetchAll()]);
             exit;
         }
 
-        // --- Locations à venir (admin) (R19) ---
-        if ($action === 'a_venir') {
+        // GET /locations?statut=a_venir → locations à venir (admin)
+        if ($statut === 'a_venir') {
+
             if ($payload['role'] !== 'admin') {
                 http_response_code(403);
                 echo json_encode(['success' => false, 'erreur' => 'Accès réservé à l\'admin']);
@@ -198,26 +183,22 @@ try {
             $stmt->execute();
 
             http_response_code(200);
-            echo json_encode([
-                'success' => true,
-                'data'    => $stmt->fetchAll()
-            ]);
+            echo json_encode(['success' => true, 'data' => $stmt->fetchAll()]);
             exit;
         }
 
         http_response_code(400);
-        echo json_encode(['success' => false, 'erreur' => 'Action inconnue']);
+        echo json_encode(['success' => false, 'erreur' => 'Paramètre manquant. Utilisez ?disponible=1&date_debut=&date_fin= ou ?statut=en_cours|a_venir']);
         exit;
     }
 
     // =====================================================
-    // POST - Créer une location (client connecté)
+    // POST /locations → créer une location
     // =====================================================
     if ($method === 'POST') {
 
         $payload = verifier_token();
-
-        $data = json_decode(file_get_contents('php://input'), true);
+        $data    = json_decode(file_get_contents('php://input'), true);
 
         if (!$data) {
             http_response_code(400);
@@ -234,14 +215,12 @@ try {
             }
         }
 
-        // Vérifier que date_fin > date_debut
         if ($data['date_fin'] <= $data['date_debut']) {
             http_response_code(400);
             echo json_encode(['success' => false, 'erreur' => 'date_fin doit être après date_debut']);
             exit;
         }
 
-        // Vérifier que la planche existe
         $stmt = $pdo->prepare("SELECT id_planche, prix_location_jour, stock FROM planche WHERE id_planche = ?");
         $stmt->execute([(int)$data['id_planche']]);
         $planche = $stmt->fetch();
@@ -258,13 +237,10 @@ try {
             exit;
         }
 
-        // Vérifier conflit de dates (R16)
-        $sql_conflit = "SELECT COUNT(*) AS conflits FROM location
-                        WHERE id_planche = ?
-                        AND statut IN ('confirmée', 'actuelle')
-                        AND NOT (date_fin < ? OR date_debut > ?)";
-
-        $stmt = $pdo->prepare($sql_conflit);
+        $stmt = $pdo->prepare("SELECT COUNT(*) AS conflits FROM location
+                               WHERE id_planche = ?
+                               AND statut IN ('confirmée', 'actuelle')
+                               AND NOT (date_fin < ? OR date_debut > ?)");
         $stmt->execute([(int)$data['id_planche'], $data['date_debut'], $data['date_fin']]);
         $conflit = $stmt->fetch();
 
@@ -274,15 +250,11 @@ try {
             exit;
         }
 
-        // Calculer le montant total
-        $nb_jours = (strtotime($data['date_fin']) - strtotime($data['date_debut'])) / 86400;
+        $nb_jours      = (strtotime($data['date_fin']) - strtotime($data['date_debut'])) / 86400;
         $montant_total = $nb_jours * $planche['prix_location_jour'];
 
-        // Créer la location (R15)
-        $sql = "INSERT INTO location (id_utilisateur, id_planche, id_spot, date_debut, date_fin, montant_total, statut)
-                VALUES (?, ?, ?, ?, ?, ?, 'en attente')";
-
-        $stmt = $pdo->prepare($sql);
+        $stmt = $pdo->prepare("INSERT INTO location (id_utilisateur, id_planche, id_spot, date_debut, date_fin, montant_total, statut)
+                               VALUES (?, ?, ?, ?, ?, ?, 'en attente')");
         $stmt->execute([
             (int)$payload['id_utilisateur'],
             (int)$data['id_planche'],
@@ -292,21 +264,19 @@ try {
             round($montant_total, 2)
         ]);
 
-        $id_location = (int) $pdo->lastInsertId();
-
         http_response_code(201);
         echo json_encode([
-            'success'      => true,
-            'message'      => 'Location créée, en attente de paiement',
-            'id_location'  => $id_location,
-            'montant_total'=> round($montant_total, 2),
-            'nb_jours'     => $nb_jours
+            'success'       => true,
+            'message'       => 'Location créée, en attente de paiement',
+            'id_location'   => (int)$pdo->lastInsertId(),
+            'montant_total' => round($montant_total, 2),
+            'nb_jours'      => $nb_jours
         ]);
         exit;
     }
 
     // =====================================================
-    // PUT - Modifier le statut d'une location (admin)
+    // PUT /locations/{id} → modifier statut (admin)
     // =====================================================
     if ($method === 'PUT') {
 
@@ -320,7 +290,7 @@ try {
 
         if (!$id) {
             http_response_code(400);
-            echo json_encode(['success' => false, 'erreur' => 'Paramètre id requis']);
+            echo json_encode(['success' => false, 'erreur' => 'ID location requis dans l\'URL']);
             exit;
         }
 
@@ -347,7 +317,6 @@ try {
             exit;
         }
 
-        // R20 : Mettre à jour le statut
         $stmt = $pdo->prepare("UPDATE location SET statut = ? WHERE id_location = ?");
         $stmt->execute([$data['statut'], (int)$id]);
 
@@ -369,4 +338,3 @@ try {
     echo json_encode(['success' => false, 'erreur' => 'Erreur serveur']);
     exit;
 }
-?>

@@ -65,15 +65,22 @@ if (!$data) {
     exit;
 }
 
-if (empty($data['niveau']) || empty($data['budget'])) {
+if (empty($data['niveau'])) {
     http_response_code(400);
-    echo json_encode(['success' => false, 'erreur' => 'niveau et budget requis']);
+    echo json_encode(['success' => false, 'erreur' => 'niveau requis']);
+    exit;
+}
+
+$type = $data['type'] ?? 'achat';
+
+if ($type !== 'location' && empty($data['budget'])) {
+    http_response_code(400);
+    echo json_encode(['success' => false, 'erreur' => 'budget requis pour un achat']);
     exit;
 }
 
 $niveau        = $data['niveau'];
-$budget        = (float) $data['budget'];
-$type          = $data['type'] ?? 'achat';
+$budget        = isset($data['budget']) ? (float) $data['budget'] : 0;
 $taille_vagues = 'Vagues moyennes';
 $vent_vitesse  = 0;
 $date_meteo    = !empty($data['date_selectionnee']) ? $data['date_selectionnee'] : date('Y-m-d');

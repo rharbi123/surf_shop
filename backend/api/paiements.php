@@ -1,7 +1,12 @@
 <?php
 // =====================================================
 // API/PAIEMENTS.PHP - Gestion des paiements
-// Types : commande, location, cours
+// -----------------------------------------------------
+// Routes gérées par index.php :
+//   GET    /paiements?statut=en_attente      → liste filtrée (admin)
+//   GET    /utilisateurs/{id}/paiements      → historique utilisateur
+//   POST   /paiements                        → créer un paiement
+//   PUT    /paiements/{id}                   → confirmer/refuser
 // =====================================================
 
 header('Content-Type: application/json; charset=utf-8');
@@ -19,13 +24,9 @@ require_once __DIR__ . '/../vendor/autoload.php';
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 
-// =====================================================
-// FONCTION JWT
-// =====================================================
-
 function verifier_token(): array {
     $headers = getallheaders();
-    $auth = $headers['Authorization'] ?? $headers['authorization'] ?? '';
+    $auth    = $headers['Authorization'] ?? $headers['authorization'] ?? '';
 
     if (!$auth || !str_starts_with($auth, 'Bearer ')) {
         http_response_code(401);
@@ -33,7 +34,7 @@ function verifier_token(): array {
         exit;
     }
 
-    $token = substr($auth, 7);
+    $token  = substr($auth, 7);
     $secret = $_ENV['JWT_SECRET'] ?? 'surfshop_jwt_secret';
 
     try {
@@ -46,10 +47,6 @@ function verifier_token(): array {
     }
 }
 
-// =====================================================
-// CONNEXION PDO
-// =====================================================
-
 $pdo = require(__DIR__ . '/../config.php');
 
 if (!$pdo instanceof PDO) {
@@ -58,9 +55,10 @@ if (!$pdo instanceof PDO) {
     exit;
 }
 
-$method = $_SERVER['REQUEST_METHOD'];
-$id     = $_GET['id'] ?? null;
-$action = $_GET['action'] ?? null;
+$method         = $_SERVER['REQUEST_METHOD'];
+$id             = $_GET['id']             ?? null; // /paiements/{id}
+$id_utilisateur = $_GET['id_utilisateur'] ?? null; // /utilisateurs/{id}/paiements
+$statut         = $_GET['statut']         ?? null; // ?statut=en_attente
 
 try {
 
@@ -71,18 +69,9 @@ try {
 
         $payload = verifier_token();
 
-        // --- Historique paiements d'un utilisateur (R44) ---
-        if ($action === 'historique') {
+        // GET /utilisateurs/{id}/paiements → historique utilisateur
+        if ($id_utilisateur !== null) {
 
-            $id_utilisateur = $_GET['id_utilisateur'] ?? null;
-
-            if (!$id_utilisateur) {
-                http_response_code(400);
-                echo json_encode(['success' => false, 'erreur' => 'Paramètre id_utilisateur requis']);
-                exit;
-            }
-
-            // Un client ne voit que ses propres paiements
             if ($payload['role'] === 'client' && (int)$id_utilisateur !== (int)$payload['id_utilisateur']) {
                 http_response_code(403);
                 echo json_encode(['success' => false, 'erreur' => 'Accès refusé']);
@@ -102,15 +91,12 @@ try {
             $stmt->execute([(int)$id_utilisateur]);
 
             http_response_code(200);
-            echo json_encode([
-                'success' => true,
-                'data'    => $stmt->fetchAll()
-            ]);
+            echo json_encode(['success' => true, 'data' => $stmt->fetchAll()]);
             exit;
         }
 
-        // --- Paiements en attente (admin) (R45) ---
-        if ($action === 'en_attente') {
+        // GET /paiements?statut=en_attente → liste filtrée (admin)
+        if ($statut !== null) {
 
             if ($payload['role'] !== 'admin') {
                 http_response_code(403);
@@ -125,33 +111,29 @@ try {
                     LEFT JOIN location l ON p.id_location = l.id_location
                     LEFT JOIN reservation_cours rc ON p.id_reservation = rc.id_reservation
                     LEFT JOIN utilisateur u ON p.id_utilisateur = u.id_utilisateur
-                    WHERE p.statut = 'en attente'
+                    WHERE p.statut = ?
                     ORDER BY date_reference ASC";
 
             $stmt = $pdo->prepare($sql);
-            $stmt->execute();
+            $stmt->execute([$statut]);
 
             http_response_code(200);
-            echo json_encode([
-                'success' => true,
-                'data'    => $stmt->fetchAll()
-            ]);
+            echo json_encode(['success' => true, 'data' => $stmt->fetchAll()]);
             exit;
         }
 
         http_response_code(400);
-        echo json_encode(['success' => false, 'erreur' => 'Action inconnue. Actions disponibles: historique, en_attente']);
+        echo json_encode(['success' => false, 'erreur' => 'Paramètre manquant. Utilisez ?statut= ou /utilisateurs/{id}/paiements']);
         exit;
     }
 
     // =====================================================
-    // POST - Créer un paiement (R41, R42, R43)
+    // POST /paiements → créer un paiement
     // =====================================================
     if ($method === 'POST') {
 
         $payload = verifier_token();
-
-        $data = json_decode(file_get_contents('php://input'), true);
+        $data    = json_decode(file_get_contents('php://input'), true);
 
         if (!$data) {
             http_response_code(400);
@@ -159,7 +141,6 @@ try {
             exit;
         }
 
-        // Valider les champs obligatoires
         $champs_obliges = ['type', 'stripe_payment_id'];
         foreach ($champs_obliges as $champ) {
             if (empty($data[$champ])) {
@@ -176,17 +157,16 @@ try {
             exit;
         }
 
-        $id_commande   = null;
-        $id_location   = null;
+        $id_commande    = null;
+        $id_location    = null;
         $id_reservation = null;
-        $montant       = 0;
+        $montant        = 0;
 
-        // Vérifier la référence selon le type et récupérer le montant
         if ($data['type'] === 'commande') {
 
             if (empty($data['id_commande'])) {
                 http_response_code(400);
-                echo json_encode(['success' => false, 'erreur' => 'Champ id_commande requis pour type commande']);
+                echo json_encode(['success' => false, 'erreur' => 'Champ id_commande requis']);
                 exit;
             }
 
@@ -194,24 +174,9 @@ try {
             $stmt->execute([(int)$data['id_commande']]);
             $commande = $stmt->fetch();
 
-            if (!$commande) {
-                http_response_code(404);
-                echo json_encode(['success' => false, 'erreur' => 'Commande non trouvée']);
-                exit;
-            }
-
-            // Vérifier que la commande appartient à l'utilisateur
-            if ((int)$commande['id_utilisateur'] !== (int)$payload['id_utilisateur']) {
-                http_response_code(403);
-                echo json_encode(['success' => false, 'erreur' => 'Accès refusé']);
-                exit;
-            }
-
-            if ($commande['statut'] !== 'en attente') {
-                http_response_code(409);
-                echo json_encode(['success' => false, 'erreur' => 'Commande déjà payée ou annulée']);
-                exit;
-            }
+            if (!$commande) { http_response_code(404); echo json_encode(['success' => false, 'erreur' => 'Commande non trouvée']); exit; }
+            if ((int)$commande['id_utilisateur'] !== (int)$payload['id_utilisateur']) { http_response_code(403); echo json_encode(['success' => false, 'erreur' => 'Accès refusé']); exit; }
+            if ($commande['statut'] !== 'en attente') { http_response_code(409); echo json_encode(['success' => false, 'erreur' => 'Commande déjà payée ou annulée']); exit; }
 
             $id_commande = (int)$data['id_commande'];
             $montant     = $commande['montant_total'];
@@ -220,7 +185,7 @@ try {
 
             if (empty($data['id_location'])) {
                 http_response_code(400);
-                echo json_encode(['success' => false, 'erreur' => 'Champ id_location requis pour type location']);
+                echo json_encode(['success' => false, 'erreur' => 'Champ id_location requis']);
                 exit;
             }
 
@@ -228,23 +193,9 @@ try {
             $stmt->execute([(int)$data['id_location']]);
             $location = $stmt->fetch();
 
-            if (!$location) {
-                http_response_code(404);
-                echo json_encode(['success' => false, 'erreur' => 'Location non trouvée']);
-                exit;
-            }
-
-            if ((int)$location['id_utilisateur'] !== (int)$payload['id_utilisateur']) {
-                http_response_code(403);
-                echo json_encode(['success' => false, 'erreur' => 'Accès refusé']);
-                exit;
-            }
-
-            if ($location['statut'] !== 'en attente') {
-                http_response_code(409);
-                echo json_encode(['success' => false, 'erreur' => 'Location déjà payée ou annulée']);
-                exit;
-            }
+            if (!$location) { http_response_code(404); echo json_encode(['success' => false, 'erreur' => 'Location non trouvée']); exit; }
+            if ((int)$location['id_utilisateur'] !== (int)$payload['id_utilisateur']) { http_response_code(403); echo json_encode(['success' => false, 'erreur' => 'Accès refusé']); exit; }
+            if ($location['statut'] !== 'en attente') { http_response_code(409); echo json_encode(['success' => false, 'erreur' => 'Location déjà payée ou annulée']); exit; }
 
             $id_location = (int)$data['id_location'];
             $montant     = $location['montant_total'];
@@ -253,64 +204,37 @@ try {
 
             if (empty($data['id_reservation'])) {
                 http_response_code(400);
-                echo json_encode(['success' => false, 'erreur' => 'Champ id_reservation requis pour type cours']);
+                echo json_encode(['success' => false, 'erreur' => 'Champ id_reservation requis']);
                 exit;
             }
 
-            $stmt = $pdo->prepare("SELECT rc.id_reservation, rc.id_utilisateur, rc.statut_presence,
-                                          c.id_cours
-                                   FROM reservation_cours rc
-                                   JOIN cours c ON rc.id_cours = c.id_cours
-                                   WHERE rc.id_reservation = ?");
+            $stmt = $pdo->prepare("SELECT rc.id_reservation, rc.id_utilisateur FROM reservation_cours rc WHERE rc.id_reservation = ?");
             $stmt->execute([(int)$data['id_reservation']]);
             $reservation = $stmt->fetch();
 
-            if (!$reservation) {
-                http_response_code(404);
-                echo json_encode(['success' => false, 'erreur' => 'Réservation non trouvée']);
-                exit;
-            }
-
-            if ((int)$reservation['id_utilisateur'] !== (int)$payload['id_utilisateur']) {
-                http_response_code(403);
-                echo json_encode(['success' => false, 'erreur' => 'Accès refusé']);
-                exit;
-            }
+            if (!$reservation) { http_response_code(404); echo json_encode(['success' => false, 'erreur' => 'Réservation non trouvée']); exit; }
+            if ((int)$reservation['id_utilisateur'] !== (int)$payload['id_utilisateur']) { http_response_code(403); echo json_encode(['success' => false, 'erreur' => 'Accès refusé']); exit; }
 
             $id_reservation = (int)$data['id_reservation'];
             $montant        = isset($data['montant']) ? (float)$data['montant'] : 0;
         }
 
-        // Insérer le paiement
-        $stmt = $pdo->prepare("INSERT INTO paiement 
-            (montant, statut, stripe_payment_id, type, id_utilisateur, id_commande, id_location, id_reservation)
-            VALUES (?, 'en attente', ?, ?, ?, ?, ?, ?)");
-
-        $stmt->execute([
-            $montant,
-            $data['stripe_payment_id'],
-            $data['type'],
-            (int)$payload['id_utilisateur'],
-            $id_commande,
-            $id_location,
-            $id_reservation
-        ]);
-
-        $id_paiement = (int)$pdo->lastInsertId();
+        $stmt = $pdo->prepare("INSERT INTO paiement (montant, statut, stripe_payment_id, type, id_utilisateur, id_commande, id_location, id_reservation)
+                               VALUES (?, 'en attente', ?, ?, ?, ?, ?, ?)");
+        $stmt->execute([$montant, $data['stripe_payment_id'], $data['type'], (int)$payload['id_utilisateur'], $id_commande, $id_location, $id_reservation]);
 
         http_response_code(201);
         echo json_encode([
             'success'     => true,
             'message'     => 'Paiement enregistré en attente de confirmation',
-            'id_paiement' => $id_paiement,
+            'id_paiement' => (int)$pdo->lastInsertId(),
             'montant'     => $montant
         ]);
         exit;
     }
 
     // =====================================================
-    // PUT - Confirmer ou refuser un paiement (R43)
-    // Simule le webhook Stripe
+    // PUT /paiements/{id} → confirmer ou refuser
     // =====================================================
     if ($method === 'PUT') {
 
@@ -318,7 +242,7 @@ try {
 
         if (!$id) {
             http_response_code(400);
-            echo json_encode(['success' => false, 'erreur' => 'Paramètre id requis']);
+            echo json_encode(['success' => false, 'erreur' => 'ID paiement requis dans l\'URL']);
             exit;
         }
 
@@ -333,11 +257,10 @@ try {
         $statuts_valides = ['approuvé', 'refusé', 'remboursé'];
         if (!in_array($data['statut'], $statuts_valides)) {
             http_response_code(400);
-            echo json_encode(['success' => false, 'erreur' => 'Statut invalide. Valeurs: approuvé, refusé, remboursé']);
+            echo json_encode(['success' => false, 'erreur' => 'Statut invalide']);
             exit;
         }
 
-        // Récupérer le paiement
         $stmt = $pdo->prepare("SELECT * FROM paiement WHERE id_paiement = ?");
         $stmt->execute([(int)$id]);
         $paiement = $stmt->fetch();
@@ -348,45 +271,32 @@ try {
             exit;
         }
 
-        // Seul l'admin ou le propriétaire peut mettre à jour
         if ($payload['role'] !== 'admin' && (int)$paiement['id_utilisateur'] !== (int)$payload['id_utilisateur']) {
             http_response_code(403);
             echo json_encode(['success' => false, 'erreur' => 'Accès refusé']);
             exit;
         }
 
-        // Mettre à jour le statut du paiement
         $stmt = $pdo->prepare("UPDATE paiement SET statut = ? WHERE id_paiement = ?");
         $stmt->execute([$data['statut'], (int)$id]);
 
-        // Si paiement approuvé, confirmer la commande/location/réservation
         if ($data['statut'] === 'approuvé') {
-
             if ($paiement['id_commande']) {
-                $stmt = $pdo->prepare("UPDATE commande SET statut = 'confirmée' WHERE id_commande = ?");
-                $stmt->execute([$paiement['id_commande']]);
+                $pdo->prepare("UPDATE commande SET statut = 'confirmée' WHERE id_commande = ?")->execute([$paiement['id_commande']]);
             }
-
             if ($paiement['id_location']) {
-                $stmt = $pdo->prepare("UPDATE location SET statut = 'confirmée' WHERE id_location = ?");
-                $stmt->execute([$paiement['id_location']]);
+                $pdo->prepare("UPDATE location SET statut = 'confirmée' WHERE id_location = ?")->execute([$paiement['id_location']]);
             }
-
             if ($paiement['id_reservation']) {
-                $stmt = $pdo->prepare("UPDATE reservation_cours SET statut_presence = 'confirmé' WHERE id_reservation = ?");
-                $stmt->execute([$paiement['id_reservation']]);
+                $pdo->prepare("UPDATE reservation_cours SET statut_presence = 'confirmé' WHERE id_reservation = ?")->execute([$paiement['id_reservation']]);
             }
         }
 
-        // Si paiement refusé, remettre le stock pour une commande
         if ($data['statut'] === 'refusé' && $paiement['id_commande']) {
             $stmt = $pdo->prepare("SELECT id_planche, quantite FROM commande_planche WHERE id_commande = ?");
             $stmt->execute([$paiement['id_commande']]);
-            $lignes = $stmt->fetchAll();
-
-            foreach ($lignes as $ligne) {
-                $stmt = $pdo->prepare("UPDATE planche SET stock = stock + ? WHERE id_planche = ?");
-                $stmt->execute([$ligne['quantite'], $ligne['id_planche']]);
+            foreach ($stmt->fetchAll() as $ligne) {
+                $pdo->prepare("UPDATE planche SET stock = stock + ? WHERE id_planche = ?")->execute([$ligne['quantite'], $ligne['id_planche']]);
             }
         }
 
@@ -408,4 +318,3 @@ try {
     echo json_encode(['success' => false, 'erreur' => 'Erreur serveur']);
     exit;
 }
-?>

@@ -15,7 +15,7 @@ let shapeActif = '';
 // =====================================================
 async function chargerPlanches() {
     try {
-        const response = await fetch(`${API_URL}/planches.php`);
+        const response = await fetch(`${API_URL}/planches`);
         const data = await response.json();
 
         if (data.success) {

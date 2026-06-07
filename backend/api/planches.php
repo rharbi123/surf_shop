@@ -88,7 +88,7 @@ try {
         }
 
         // Toutes les planches avec filtres (R1, R3, R4)
-        $sql = "SELECT id_planche, nom, marque, prix_achat, shape, volume, niveau, 
+        $sql = "SELECT id_planche, nom, marque, prix_achat, prix_location_jour, shape, volume, niveau, 
                        taille_vagues, photo, stock
                 FROM planche
                 WHERE stock > 0";

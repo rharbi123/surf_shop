@@ -1,6 +1,16 @@
 <?php
 // =====================================================
 // API/COURS.PHP - Gestion des cours de surf
+// -----------------------------------------------------
+// Routes gérées par index.php :
+//   GET    /cours                              → cours disponibles (public)
+//   GET    /cours/{id}/inscrits               → participants (moniteur/admin)
+//   GET    /utilisateurs/{id}/cours           → historique utilisateur
+//   GET    /moniteurs/{id}/cours              → planning moniteur
+//   POST   /cours                             → créer (admin)
+//   POST   /cours/{id}/reservations           → réserver
+//   PUT    /cours/{id}                        → modifier statut cours (admin)
+//   PUT    /cours/{id}/reservations/{uid}     → marquer présence (moniteur/admin)
 // =====================================================
 
 header('Content-Type: application/json; charset=utf-8');
@@ -18,13 +28,9 @@ require_once __DIR__ . '/../vendor/autoload.php';
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 
-// =====================================================
-// FONCTION JWT
-// =====================================================
-
 function verifier_token(): array {
     $headers = getallheaders();
-    $auth = $headers['Authorization'] ?? $headers['authorization'] ?? '';
+    $auth    = $headers['Authorization'] ?? $headers['authorization'] ?? '';
 
     if (!$auth || !str_starts_with($auth, 'Bearer ')) {
         http_response_code(401);
@@ -32,7 +38,7 @@ function verifier_token(): array {
         exit;
     }
 
-    $token = substr($auth, 7);
+    $token  = substr($auth, 7);
     $secret = $_ENV['JWT_SECRET'] ?? 'surfshop_jwt_secret';
 
     try {
@@ -45,10 +51,6 @@ function verifier_token(): array {
     }
 }
 
-// =====================================================
-// CONNEXION PDO
-// =====================================================
-
 $pdo = require(__DIR__ . '/../config.php');
 
 if (!$pdo instanceof PDO) {
@@ -57,9 +59,11 @@ if (!$pdo instanceof PDO) {
     exit;
 }
 
-$method = $_SERVER['REQUEST_METHOD'];
-$id     = $_GET['id'] ?? null;
-$action = $_GET['action'] ?? null;
+$method         = $_SERVER['REQUEST_METHOD'];
+$id             = $_GET['id']             ?? null; // /cours/{id}
+$ressource      = $_GET['ressource']      ?? null; // 'inscrits', 'reserver', 'presence', 'planning'
+$id_utilisateur = $_GET['id_utilisateur'] ?? null; // /utilisateurs/{id}/cours ou présence
+$id_moniteur    = $_GET['id_moniteur']    ?? null; // /moniteurs/{id}/cours
 
 try {
 
@@ -68,15 +72,15 @@ try {
     // =====================================================
     if ($method === 'GET') {
 
-        // --- Cours disponibles (public) (R21) ---
-        if ($action === 'disponibles' || !$action) {
+        // GET /cours → cours disponibles (public, pas de token requis)
+        if ($id === null && $ressource === null && $id_utilisateur === null && $id_moniteur === null) {
 
             $sql = "SELECT c.id_cours, c.date_, c.heure_debut, c.duree, c.capacite_max,
                            COUNT(rc.id_reservation) AS places_occupees,
                            (c.capacite_max - COUNT(rc.id_reservation)) AS places_restantes,
                            u.nom AS moniteur_nom
                     FROM cours c
-                    LEFT JOIN reservation_cours rc ON c.id_cours = rc.id_cours 
+                    LEFT JOIN reservation_cours rc ON c.id_cours = rc.id_cours
                         AND rc.statut_presence IN ('confirmé', 'présent')
                     JOIN moniteur m ON c.id_moniteur = m.id_moniteur
                     JOIN utilisateur u ON m.id_utilisateur = u.id_utilisateur
@@ -90,24 +94,14 @@ try {
             $stmt->execute();
 
             http_response_code(200);
-            echo json_encode([
-                'success' => true,
-                'count'   => $stmt->rowCount(),
-                'data'    => $stmt->fetchAll()
-            ]);
+            echo json_encode(['success' => true, 'count' => $stmt->rowCount(), 'data' => $stmt->fetchAll()]);
             exit;
         }
 
         $payload = verifier_token();
 
-        // --- Inscrits à un cours (moniteur ou admin) (R25) ---
-        if ($action === 'inscrits') {
-
-            if (!$id) {
-                http_response_code(400);
-                echo json_encode(['success' => false, 'erreur' => 'Paramètre id requis']);
-                exit;
-            }
+        // GET /cours/{id}/inscrits → participants d'un cours (moniteur/admin)
+        if ($id !== null && $ressource === 'inscrits') {
 
             if (!in_array($payload['role'], ['admin', 'moniteur'])) {
                 http_response_code(403);
@@ -126,73 +120,13 @@ try {
             $stmt->execute([(int)$id]);
 
             http_response_code(200);
-            echo json_encode([
-                'success' => true,
-                'data'    => $stmt->fetchAll()
-            ]);
+            echo json_encode(['success' => true, 'data' => $stmt->fetchAll()]);
             exit;
         }
 
-        // --- Planning d'un moniteur (moniteur ou admin) (R24) ---
-        if ($action === 'planning') {
+        // GET /utilisateurs/{id}/cours → historique cours d'un utilisateur
+        if ($id_utilisateur !== null) {
 
-            $id_moniteur = $_GET['id_moniteur'] ?? null;
-
-            if (!$id_moniteur) {
-                http_response_code(400);
-                echo json_encode(['success' => false, 'erreur' => 'Paramètre id_moniteur requis']);
-                exit;
-            }
-
-            // Un moniteur ne peut voir que son propre planning
-            if ($payload['role'] === 'moniteur') {
-                $stmt = $pdo->prepare("SELECT id_moniteur FROM moniteur WHERE id_utilisateur = ?");
-                $stmt->execute([(int)$payload['id_utilisateur']]);
-                $moniteur = $stmt->fetch();
-                if (!$moniteur || (int)$moniteur['id_moniteur'] !== (int)$id_moniteur) {
-                    http_response_code(403);
-                    echo json_encode(['success' => false, 'erreur' => 'Accès refusé']);
-                    exit;
-                }
-            } elseif ($payload['role'] !== 'admin') {
-                http_response_code(403);
-                echo json_encode(['success' => false, 'erreur' => 'Accès réservé au moniteur ou admin']);
-                exit;
-            }
-
-            $sql = "SELECT c.id_cours, c.date_, c.heure_debut, c.duree, c.capacite_max,
-                           COUNT(rc.id_reservation) AS inscrits, c.statut
-                    FROM cours c
-                    LEFT JOIN reservation_cours rc ON c.id_cours = rc.id_cours 
-                        AND rc.statut_presence != 'annulé'
-                    WHERE c.id_moniteur = ?
-                    AND c.date_ BETWEEN CURDATE() AND DATE_ADD(CURDATE(), INTERVAL 7 DAY)
-                    GROUP BY c.id_cours
-                    ORDER BY c.date_ ASC, c.heure_debut ASC";
-
-            $stmt = $pdo->prepare($sql);
-            $stmt->execute([(int)$id_moniteur]);
-
-            http_response_code(200);
-            echo json_encode([
-                'success' => true,
-                'data'    => $stmt->fetchAll()
-            ]);
-            exit;
-        }
-
-        // --- Historique des cours d'un utilisateur (R27) ---
-        if ($action === 'historique') {
-
-            $id_utilisateur = $_GET['id_utilisateur'] ?? null;
-
-            if (!$id_utilisateur) {
-                http_response_code(400);
-                echo json_encode(['success' => false, 'erreur' => 'Paramètre id_utilisateur requis']);
-                exit;
-            }
-
-            // Un client ne voit que son propre historique
             if ($payload['role'] === 'client' && (int)$id_utilisateur !== (int)$payload['id_utilisateur']) {
                 http_response_code(403);
                 echo json_encode(['success' => false, 'erreur' => 'Accès refusé']);
@@ -212,15 +146,48 @@ try {
             $stmt->execute([(int)$id_utilisateur]);
 
             http_response_code(200);
-            echo json_encode([
-                'success' => true,
-                'data'    => $stmt->fetchAll()
-            ]);
+            echo json_encode(['success' => true, 'data' => $stmt->fetchAll()]);
+            exit;
+        }
+
+        // GET /moniteurs/{id}/cours → planning d'un moniteur
+        if ($id_moniteur !== null && $ressource === 'planning') {
+
+            if ($payload['role'] === 'moniteur') {
+                $stmt = $pdo->prepare("SELECT id_moniteur FROM moniteur WHERE id_utilisateur = ?");
+                $stmt->execute([(int)$payload['id_utilisateur']]);
+                $mon = $stmt->fetch();
+                if (!$mon || (int)$mon['id_moniteur'] !== (int)$id_moniteur) {
+                    http_response_code(403);
+                    echo json_encode(['success' => false, 'erreur' => 'Accès refusé']);
+                    exit;
+                }
+            } elseif ($payload['role'] !== 'admin') {
+                http_response_code(403);
+                echo json_encode(['success' => false, 'erreur' => 'Accès réservé au moniteur ou admin']);
+                exit;
+            }
+
+            $sql = "SELECT c.id_cours, c.date_, c.heure_debut, c.duree, c.capacite_max,
+                           COUNT(rc.id_reservation) AS inscrits, c.statut
+                    FROM cours c
+                    LEFT JOIN reservation_cours rc ON c.id_cours = rc.id_cours
+                        AND rc.statut_presence != 'annulé'
+                    WHERE c.id_moniteur = ?
+                    AND c.date_ BETWEEN CURDATE() AND DATE_ADD(CURDATE(), INTERVAL 7 DAY)
+                    GROUP BY c.id_cours
+                    ORDER BY c.date_ ASC, c.heure_debut ASC";
+
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([(int)$id_moniteur]);
+
+            http_response_code(200);
+            echo json_encode(['success' => true, 'data' => $stmt->fetchAll()]);
             exit;
         }
 
         http_response_code(400);
-        echo json_encode(['success' => false, 'erreur' => 'Action inconnue']);
+        echo json_encode(['success' => false, 'erreur' => 'Paramètre manquant']);
         exit;
     }
 
@@ -230,8 +197,7 @@ try {
     if ($method === 'POST') {
 
         $payload = verifier_token();
-
-        $data = json_decode(file_get_contents('php://input'), true);
+        $data    = json_decode(file_get_contents('php://input'), true);
 
         if (!$data) {
             http_response_code(400);
@@ -239,8 +205,8 @@ try {
             exit;
         }
 
-        // --- Créer un cours (admin uniquement) ---
-        if ($action === 'creer') {
+        // POST /cours → créer un cours (admin)
+        if ($id === null) {
 
             if ($payload['role'] !== 'admin') {
                 http_response_code(403);
@@ -257,18 +223,10 @@ try {
                 }
             }
 
-            // Vérifier que le moniteur n'a pas déjà un cours à ce créneau
-            $sql_conflit = "SELECT COUNT(*) AS conflits FROM cours
-                            WHERE id_moniteur = ?
-                            AND date_ = ?
-                            AND heure_debut = ?
-                            AND statut != 'annulé'";
-
-            $stmt = $pdo->prepare($sql_conflit);
+            $stmt = $pdo->prepare("SELECT COUNT(*) AS conflits FROM cours
+                                   WHERE id_moniteur = ? AND date_ = ? AND heure_debut = ? AND statut != 'annulé'");
             $stmt->execute([(int)$data['id_moniteur'], $data['date_'], $data['heure_debut']]);
-            $conflit = $stmt->fetch();
-
-            if ($conflit['conflits'] > 0) {
+            if ($stmt->fetch()['conflits'] > 0) {
                 http_response_code(409);
                 echo json_encode(['success' => false, 'erreur' => 'Le moniteur a déjà un cours sur ce créneau']);
                 exit;
@@ -276,43 +234,23 @@ try {
 
             $stmt = $pdo->prepare("INSERT INTO cours (id_moniteur, date_, heure_debut, duree, capacite_max, statut)
                                    VALUES (?, ?, ?, ?, ?, 'programmé')");
-
-            $stmt->execute([
-                (int)$data['id_moniteur'],
-                $data['date_'],
-                $data['heure_debut'],
-                (int)$data['duree'],
-                (int)$data['capacite_max']
-            ]);
+            $stmt->execute([(int)$data['id_moniteur'], $data['date_'], $data['heure_debut'], (int)$data['duree'], (int)$data['capacite_max']]);
 
             http_response_code(201);
-            echo json_encode([
-                'success'  => true,
-                'message'  => 'Cours créé',
-                'id_cours' => (int)$pdo->lastInsertId()
-            ]);
+            echo json_encode(['success' => true, 'message' => 'Cours créé', 'id_cours' => (int)$pdo->lastInsertId()]);
             exit;
         }
 
-        // --- Réserver un cours (client connecté) (R22) ---
-        if ($action === 'reserver') {
+        // POST /cours/{id}/reservations → réserver un cours
+        if ($id !== null && $ressource === 'reserver') {
 
-            if (empty($data['id_cours'])) {
-                http_response_code(400);
-                echo json_encode(['success' => false, 'erreur' => 'Champ id_cours requis']);
-                exit;
-            }
-
-            // Vérifier que le cours existe et est programmé
-            $stmt = $pdo->prepare("SELECT c.id_cours, c.capacite_max,
-                                          COUNT(rc.id_reservation) AS places_occupees
+            $stmt = $pdo->prepare("SELECT c.id_cours, c.capacite_max, COUNT(rc.id_reservation) AS places_occupees
                                    FROM cours c
                                    LEFT JOIN reservation_cours rc ON c.id_cours = rc.id_cours
                                        AND rc.statut_presence IN ('confirmé', 'présent')
-                                   WHERE c.id_cours = ?
-                                   AND c.statut = 'programmé'
+                                   WHERE c.id_cours = ? AND c.statut = 'programmé'
                                    GROUP BY c.id_cours");
-            $stmt->execute([(int)$data['id_cours']]);
+            $stmt->execute([(int)$id]);
             $cours = $stmt->fetch();
 
             if (!$cours) {
@@ -321,46 +259,37 @@ try {
                 exit;
             }
 
-            // Vérifier qu'il reste des places
             if ($cours['places_occupees'] >= $cours['capacite_max']) {
                 http_response_code(409);
                 echo json_encode(['success' => false, 'erreur' => 'Cours complet']);
                 exit;
             }
 
-            // Vérifier que l'utilisateur n'est pas déjà inscrit (R23)
             $stmt = $pdo->prepare("SELECT COUNT(*) AS inscriptions FROM reservation_cours
                                    WHERE id_utilisateur = ? AND id_cours = ? AND statut_presence != 'annulé'");
-            $stmt->execute([(int)$payload['id_utilisateur'], (int)$data['id_cours']]);
-            $deja = $stmt->fetch();
-
-            if ($deja['inscriptions'] > 0) {
+            $stmt->execute([(int)$payload['id_utilisateur'], (int)$id]);
+            if ($stmt->fetch()['inscriptions'] > 0) {
                 http_response_code(409);
                 echo json_encode(['success' => false, 'erreur' => 'Déjà inscrit à ce cours']);
                 exit;
             }
 
-            // Créer la réservation (R22)
             $stmt = $pdo->prepare("INSERT INTO reservation_cours (id_cours, id_utilisateur, date_reservation, statut_presence)
                                    VALUES (?, ?, NOW(), 'confirmé')");
-            $stmt->execute([(int)$data['id_cours'], (int)$payload['id_utilisateur']]);
+            $stmt->execute([(int)$id, (int)$payload['id_utilisateur']]);
 
             http_response_code(201);
-            echo json_encode([
-                'success'        => true,
-                'message'        => 'Inscription au cours confirmée, en attente de paiement',
-                'id_reservation' => (int)$pdo->lastInsertId()
-            ]);
+            echo json_encode(['success' => true, 'message' => 'Inscription confirmée', 'id_reservation' => (int)$pdo->lastInsertId()]);
             exit;
         }
 
         http_response_code(400);
-        echo json_encode(['success' => false, 'erreur' => 'Action inconnue']);
+        echo json_encode(['success' => false, 'erreur' => 'Paramètre manquant']);
         exit;
     }
 
     // =====================================================
-    // PUT - Marquer présence ou modifier statut (moniteur/admin)
+    // PUT
     // =====================================================
     if ($method === 'PUT') {
 
@@ -368,7 +297,7 @@ try {
 
         if (!$id) {
             http_response_code(400);
-            echo json_encode(['success' => false, 'erreur' => 'Paramètre id requis']);
+            echo json_encode(['success' => false, 'erreur' => 'ID cours requis dans l\'URL']);
             exit;
         }
 
@@ -380,8 +309,8 @@ try {
             exit;
         }
 
-        // --- Marquer présence d'un participant (moniteur/admin) (R26) ---
-        if ($action === 'presence') {
+        // PUT /cours/{id}/reservations/{uid} → marquer présence
+        if ($ressource === 'presence' && $id_utilisateur !== null) {
 
             if (!in_array($payload['role'], ['admin', 'moniteur'])) {
                 http_response_code(403);
@@ -389,9 +318,9 @@ try {
                 exit;
             }
 
-            if (empty($data['id_utilisateur']) || empty($data['statut_presence'])) {
+            if (empty($data['statut_presence'])) {
                 http_response_code(400);
-                echo json_encode(['success' => false, 'erreur' => 'Champs id_utilisateur et statut_presence requis']);
+                echo json_encode(['success' => false, 'erreur' => 'Champ statut_presence requis']);
                 exit;
             }
 
@@ -402,41 +331,33 @@ try {
                 exit;
             }
 
-            $stmt = $pdo->prepare("UPDATE reservation_cours SET statut_presence = ?
-                                   WHERE id_utilisateur = ? AND id_cours = ?");
-            $stmt->execute([$data['statut_presence'], (int)$data['id_utilisateur'], (int)$id]);
+            $stmt = $pdo->prepare("UPDATE reservation_cours SET statut_presence = ? WHERE id_utilisateur = ? AND id_cours = ?");
+            $stmt->execute([$data['statut_presence'], (int)$id_utilisateur, (int)$id]);
 
             http_response_code(200);
             echo json_encode(['success' => true, 'message' => 'Présence mise à jour']);
             exit;
         }
 
-        // --- Modifier statut du cours (admin) ---
-        if ($action === 'statut') {
-
-            if ($payload['role'] !== 'admin') {
-                http_response_code(403);
-                echo json_encode(['success' => false, 'erreur' => 'Accès réservé à l\'admin']);
-                exit;
-            }
-
-            $statuts_valides = ['programmé', 'en cours', 'terminé', 'annulé'];
-            if (empty($data['statut']) || !in_array($data['statut'], $statuts_valides)) {
-                http_response_code(400);
-                echo json_encode(['success' => false, 'erreur' => 'Statut invalide']);
-                exit;
-            }
-
-            $stmt = $pdo->prepare("UPDATE cours SET statut = ? WHERE id_cours = ?");
-            $stmt->execute([$data['statut'], (int)$id]);
-
-            http_response_code(200);
-            echo json_encode(['success' => true, 'message' => 'Statut du cours mis à jour']);
+        // PUT /cours/{id} → modifier statut du cours (admin)
+        if ($payload['role'] !== 'admin') {
+            http_response_code(403);
+            echo json_encode(['success' => false, 'erreur' => 'Accès réservé à l\'admin']);
             exit;
         }
 
-        http_response_code(400);
-        echo json_encode(['success' => false, 'erreur' => 'Action inconnue']);
+        $statuts_valides = ['programmé', 'en cours', 'terminé', 'annulé'];
+        if (empty($data['statut']) || !in_array($data['statut'], $statuts_valides)) {
+            http_response_code(400);
+            echo json_encode(['success' => false, 'erreur' => 'Statut invalide']);
+            exit;
+        }
+
+        $stmt = $pdo->prepare("UPDATE cours SET statut = ? WHERE id_cours = ?");
+        $stmt->execute([$data['statut'], (int)$id]);
+
+        http_response_code(200);
+        echo json_encode(['success' => true, 'message' => 'Statut du cours mis à jour']);
         exit;
     }
 
@@ -453,4 +374,3 @@ try {
     echo json_encode(['success' => false, 'erreur' => 'Erreur serveur']);
     exit;
 }
-?>

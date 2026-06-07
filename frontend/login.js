@@ -66,7 +66,7 @@ async function handleConnexion(event) {
     loader.style.display = 'block';
 
     try {
-        const response = await fetch(`${API_URL}/utilisateurs.php?action=connexion`, {
+        const response = await fetch(`${API_URL}/auth/login`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -118,7 +118,7 @@ async function handleInscription(event) {
     const email = document.getElementById('in-email').value.trim();
 
     try {
-        const response = await fetch(`${API_URL}/utilisateurs.php?action=inscription`, {
+        const response = await fetch(`${API_URL}/utilisateurs`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

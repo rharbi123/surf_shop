@@ -217,3 +217,236 @@
 2026-06-02 15:57:11,530 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-02 15:57:11,653 | INFO | niveau=Débutant - Intermédiaire | budget=550 | type=achat | spot=None | date= | taille_vagues=Vagues moyennes | nb_resultats=5 | temps_ms=6740 | succes=True
 2026-06-02 15:57:11,665 | INFO | 127.0.0.1 - - [02/Jun/2026 15:57:11] "POST /recommander HTTP/1.1" 200 -
+2026-06-03 01:21:44,829 | INFO | Modèle KNN chargé avec succès
+2026-06-03 01:21:44,978 | INFO | [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-06-03 01:21:44,980 | INFO | [33mPress CTRL+C to quit[0m
+2026-06-03 01:21:45,013 | INFO |  * Restarting with watchdog (windowsapi)
+2026-06-03 01:21:56,999 | INFO | Modèle KNN chargé avec succès
+2026-06-03 01:21:57,024 | WARNING |  * Debugger is active!
+2026-06-03 01:21:57,040 | INFO |  * Debugger PIN: 636-628-684
+2026-06-03 01:22:16,331 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 01:22:16,374 | INFO | niveau=Débutant - Intermédiaire | budget=600 | type=achat | spot=None | date= | taille_vagues=Vagues moyennes | nb_resultats=5 | temps_ms=2272 | succes=True
+2026-06-03 01:22:16,377 | INFO | 127.0.0.1 - - [03/Jun/2026 01:22:16] "POST /recommander HTTP/1.1" 200 -
+2026-06-03 01:28:03,796 | INFO | Modèle KNN chargé avec succès
+2026-06-03 01:28:04,029 | INFO | [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-06-03 01:28:04,030 | INFO | [33mPress CTRL+C to quit[0m
+2026-06-03 01:28:04,130 | INFO |  * Restarting with watchdog (windowsapi)
+2026-06-03 01:28:10,301 | INFO | Modèle KNN chargé avec succès
+2026-06-03 01:28:10,326 | WARNING |  * Debugger is active!
+2026-06-03 01:28:10,336 | INFO |  * Debugger PIN: 636-628-684
+2026-06-03 01:28:16,171 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 01:28:16,212 | INFO | niveau=Débutant - Intermédiaire | budget=600 | type=achat | spot=None | date= | taille_vagues=Vagues moyennes | nb_resultats=5 | temps_ms=1840 | succes=True
+2026-06-03 01:28:16,213 | INFO | 127.0.0.1 - - [03/Jun/2026 01:28:16] "POST /recommander HTTP/1.1" 200 -
+2026-06-03 01:28:28,704 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 01:28:28,708 | INFO | niveau=Intermédiaire - Confirmé | budget=0 | type=location | spot=Hossegor | date=demain | taille_vagues=Petites vagues | nb_resultats=3 | temps_ms=1276 | succes=True
+2026-06-03 01:28:28,710 | INFO | 127.0.0.1 - - [03/Jun/2026 01:28:28] "POST /recommander HTTP/1.1" 200 -
+2026-06-03 17:53:33,692 | INFO | Modèle KNN chargé avec succès
+2026-06-03 17:53:34,186 | INFO | [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-06-03 17:53:34,203 | INFO | [33mPress CTRL+C to quit[0m
+2026-06-03 17:53:34,379 | INFO |  * Restarting with watchdog (windowsapi)
+2026-06-03 17:53:42,931 | INFO | Modèle KNN chargé avec succès
+2026-06-03 17:53:42,950 | WARNING |  * Debugger is active!
+2026-06-03 17:53:42,958 | INFO |  * Debugger PIN: 136-698-358
+2026-06-03 17:54:18,320 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:54:18,385 | INFO | niveau=Débutant - Intermédiaire | budget=600 | type=achat | spot=None | date= | taille_vagues=Vagues moyennes | nb_resultats=5 | temps_ms=3078 | succes=True
+2026-06-03 17:54:18,399 | INFO | 127.0.0.1 - - [03/Jun/2026 17:54:18] "POST /recommander HTTP/1.1" 200 -
+2026-06-03 17:54:29,554 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:54:29,556 | INFO | niveau=Débutant - Intermédiaire | budget=0 | type=location | spot=Hossegor | date=aujourd'hui | taille_vagues=Vagues moyennes | nb_resultats=1 | temps_ms=1271 | succes=True
+2026-06-03 17:54:29,558 | INFO | 127.0.0.1 - - [03/Jun/2026 17:54:29] "POST /recommander HTTP/1.1" 200 -
+2026-06-03 17:56:41,662 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 17:56:41,682 | INFO | niveau=Intermédiaire - Confirmé | budget=0 | type=location | spot=Biscarrosse | date=aujourd'hui | taille_vagues=Petites vagues | nb_resultats=3 | temps_ms=1535 | succes=True
+2026-06-03 17:56:41,689 | INFO | 127.0.0.1 - - [03/Jun/2026 17:56:41] "POST /recommander HTTP/1.1" 200 -
+2026-06-03 18:01:01,219 | INFO | Modèle KNN chargé avec succès
+2026-06-03 18:01:01,296 | INFO | [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-06-03 18:01:01,296 | INFO | [33mPress CTRL+C to quit[0m
+2026-06-03 18:01:01,331 | INFO |  * Restarting with watchdog (windowsapi)
+2026-06-03 18:01:05,374 | INFO | Modèle KNN chargé avec succès
+2026-06-03 18:01:05,385 | WARNING |  * Debugger is active!
+2026-06-03 18:01:05,393 | INFO |  * Debugger PIN: 136-698-358
+2026-06-03 18:10:40,651 | INFO |  * Detected change in 'C:\\Users\\rharb\\Desktop\\SurfShop\\backend\\machine_learning\\app.py', reloading
+2026-06-03 18:10:45,607 | INFO |  * Restarting with watchdog (windowsapi)
+2026-06-03 18:12:01,116 | INFO | Modèle KNN chargé avec succès
+2026-06-03 18:12:01,198 | INFO | [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-06-03 18:12:01,198 | INFO | [33mPress CTRL+C to quit[0m
+2026-06-03 18:12:01,229 | INFO |  * Restarting with watchdog (windowsapi)
+2026-06-03 18:12:06,556 | INFO | Modèle KNN chargé avec succès
+2026-06-03 18:12:06,580 | WARNING |  * Debugger is active!
+2026-06-03 18:12:06,594 | INFO |  * Debugger PIN: 136-698-358
+2026-06-03 18:12:11,579 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 18:12:11,608 | INFO | niveau=Débutant - Intermédiaire | budget=600 | type=achat | spot=None | date= | taille_vagues=Vagues moyennes | nb_resultats=5 | temps_ms=1745 | succes=True
+2026-06-03 18:12:11,610 | INFO | 127.0.0.1 - - [03/Jun/2026 18:12:11] "POST /recommander HTTP/1.1" 200 -
+2026-06-03 18:12:23,138 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 18:12:23,139 | INFO | niveau=Débutant - Intermédiaire | budget=400 | type=achat | spot=None | date= | taille_vagues=Vagues moyennes | nb_resultats=5 | temps_ms=1026 | succes=True
+2026-06-03 18:12:23,140 | INFO | 127.0.0.1 - - [03/Jun/2026 18:12:23] "POST /recommander HTTP/1.1" 200 -
+2026-06-03 18:12:39,741 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 18:12:39,742 | INFO | niveau=Débutant - Intermédiaire | budget=400 | type=location | spot=Lacanau | date=aujourd'hui | taille_vagues=Vagues moyennes | nb_resultats=5 | temps_ms=1173 | succes=True
+2026-06-03 18:12:39,743 | INFO | 127.0.0.1 - - [03/Jun/2026 18:12:39] "POST /recommander HTTP/1.1" 200 -
+2026-06-03 18:31:48,061 | INFO | Modèle KNN chargé avec succès
+2026-06-03 18:31:48,131 | INFO | [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-06-03 18:31:48,133 | INFO | [33mPress CTRL+C to quit[0m
+2026-06-03 18:31:48,173 | INFO |  * Restarting with watchdog (windowsapi)
+2026-06-03 18:31:52,507 | INFO | Modèle KNN chargé avec succès
+2026-06-03 18:31:52,523 | WARNING |  * Debugger is active!
+2026-06-03 18:31:52,531 | INFO |  * Debugger PIN: 136-698-358
+2026-06-03 18:31:55,366 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 18:31:55,391 | INFO | niveau=Débutant - Intermédiaire | budget=600 | type=achat | spot=None | date= | taille_vagues=Vagues moyennes | nb_resultats=5 | temps_ms=2020 | succes=True
+2026-06-03 18:31:55,392 | INFO | 127.0.0.1 - - [03/Jun/2026 18:31:55] "POST /recommander HTTP/1.1" 200 -
+2026-06-03 18:32:07,967 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 18:32:07,969 | INFO | niveau=Débutant - Intermédiaire | budget=0 | type=location | spot=Hossegor | date=le vendredi 5 juin | taille_vagues=Petites vagues | nb_resultats=5 | temps_ms=1147 | succes=True
+2026-06-03 18:32:07,969 | INFO | 127.0.0.1 - - [03/Jun/2026 18:32:07] "POST /recommander HTTP/1.1" 200 -
+2026-06-03 18:33:17,337 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 18:33:17,339 | INFO | niveau=Débutant - Intermédiaire | budget=0 | type=location | spot=Hossegor | date=le samedi 6 juin | taille_vagues=Vagues moyennes | nb_resultats=2 | temps_ms=1149 | succes=True
+2026-06-03 18:33:17,339 | INFO | 127.0.0.1 - - [03/Jun/2026 18:33:17] "POST /recommander HTTP/1.1" 200 -
+2026-06-03 18:33:44,056 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 18:33:44,057 | INFO | niveau=Débutant - Intermédiaire | budget=0 | type=location | spot=Hossegor | date=aujourd'hui | taille_vagues=Vagues moyennes | nb_resultats=2 | temps_ms=1227 | succes=True
+2026-06-03 18:33:44,058 | INFO | 127.0.0.1 - - [03/Jun/2026 18:33:44] "POST /recommander HTTP/1.1" 200 -
+2026-06-03 18:34:29,082 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 18:34:29,083 | INFO | niveau=Débutant - Intermédiaire | budget=0 | type=location | spot=Capbreton | date=aujourd'hui | taille_vagues=Petites vagues | nb_resultats=5 | temps_ms=1161 | succes=True
+2026-06-03 18:34:29,084 | INFO | 127.0.0.1 - - [03/Jun/2026 18:34:29] "POST /recommander HTTP/1.1" 200 -
+2026-06-03 18:37:45,283 | INFO |  * Detected change in 'C:\\Users\\rharb\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\mysql\\__init__.py', reloading
+2026-06-03 18:37:45,663 | INFO |  * Detected change in 'C:\\Users\\rharb\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\mysql\\connector\\__init__.py', reloading
+2026-06-03 18:37:45,731 | INFO |  * Detected change in 'C:\\Users\\rharb\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\mysql\\connector\\pooling.py', reloading
+2026-06-03 18:38:39,834 | INFO | Modèle KNN chargé avec succès
+2026-06-03 18:38:39,895 | INFO | [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-06-03 18:38:39,896 | INFO | [33mPress CTRL+C to quit[0m
+2026-06-03 18:38:39,931 | INFO |  * Restarting with watchdog (windowsapi)
+2026-06-03 18:38:43,571 | INFO | Modèle KNN chargé avec succès
+2026-06-03 18:38:43,588 | WARNING |  * Debugger is active!
+2026-06-03 18:38:43,598 | INFO |  * Debugger PIN: 136-698-358
+2026-06-03 18:38:53,958 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 18:38:53,984 | INFO | niveau=Débutant - Intermédiaire | budget=0 | type=location | spot=Biscarrosse | date=le samedi 6 juin | taille_vagues=Petites vagues | nb_resultats=5 | temps_ms=1720 | succes=True
+2026-06-03 18:38:53,987 | INFO | 127.0.0.1 - - [03/Jun/2026 18:38:53] "POST /recommander HTTP/1.1" 200 -
+2026-06-03 18:39:38,874 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 18:39:38,876 | INFO | niveau=Intermédiaire - Confirmé | budget=0 | type=location | spot=Lacanau | date=aujourd'hui | taille_vagues=Vagues moyennes | nb_resultats=5 | temps_ms=1284 | succes=True
+2026-06-03 18:39:38,877 | INFO | 127.0.0.1 - - [03/Jun/2026 18:39:38] "POST /recommander HTTP/1.1" 200 -
+2026-06-04 00:56:10,855 | INFO |  * Detected change in 'C:\\Users\\rharb\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\dotenv\\__init__.py', reloading
+2026-06-04 00:56:10,941 | INFO |  * Detected change in 'C:\\Users\\rharb\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\flask\\__init__.py', reloading
+2026-06-04 00:56:10,944 | INFO |  * Detected change in 'C:\\Users\\rharb\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\joblib\\__init__.py', reloading
+2026-06-04 00:56:11,607 | INFO |  * Detected change in 'C:\\Users\\rharb\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\jwt\\__init__.py', reloading
+2026-06-04 00:56:11,615 | INFO |  * Detected change in 'C:\\Users\\rharb\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\groq\\__init__.py', reloading
+2026-06-04 00:57:16,410 | INFO | Modèle KNN chargé avec succès
+2026-06-04 00:57:16,555 | INFO | [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-06-04 00:57:16,555 | INFO | [33mPress CTRL+C to quit[0m
+2026-06-04 00:57:16,593 | INFO |  * Restarting with watchdog (windowsapi)
+2026-06-04 00:57:22,783 | INFO | Modèle KNN chargé avec succès
+2026-06-04 00:57:22,811 | WARNING |  * Debugger is active!
+2026-06-04 00:57:22,831 | INFO |  * Debugger PIN: 136-698-358
+2026-06-04 00:57:25,792 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-04 00:57:25,847 | INFO | niveau=Débutant - Intermédiaire | budget=600 | type=achat | spot=None | date= | taille_vagues=Vagues moyennes | nb_resultats=5 | temps_ms=2951 | succes=True
+2026-06-04 00:57:25,849 | INFO | 127.0.0.1 - - [04/Jun/2026 00:57:25] "POST /recommander HTTP/1.1" 200 -
+2026-06-04 00:57:33,700 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-04 00:57:33,702 | INFO | niveau=Débutant - Intermédiaire | budget=700 | type=achat | spot=None | date= | taille_vagues=Vagues moyennes | nb_resultats=5 | temps_ms=1412 | succes=True
+2026-06-04 00:57:33,703 | INFO | 127.0.0.1 - - [04/Jun/2026 00:57:33] "POST /recommander HTTP/1.1" 200 -
+2026-06-04 00:57:58,909 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-04 00:57:58,927 | INFO | niveau=Débutant - Intermédiaire | budget=0 | type=location | spot=Lacanau | date=aujourd'hui | taille_vagues=Vagues moyennes | nb_resultats=2 | temps_ms=1679 | succes=True
+2026-06-04 00:57:58,936 | INFO | 127.0.0.1 - - [04/Jun/2026 00:57:58] "POST /recommander HTTP/1.1" 200 -
+2026-06-04 00:58:23,346 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-04 00:58:23,385 | INFO | niveau=Intermédiaire - Confirmé | budget=0 | type=location | spot=Capbreton | date=demain | taille_vagues=Petites vagues | nb_resultats=5 | temps_ms=1978 | succes=True
+2026-06-04 00:58:23,401 | INFO | 127.0.0.1 - - [04/Jun/2026 00:58:23] "POST /recommander HTTP/1.1" 200 -
+2026-06-04 00:59:09,716 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-04 00:59:09,759 | INFO | niveau=Débutant - Intermédiaire | budget=0 | type=location | spot=Capbreton | date=aujourd'hui | taille_vagues=Petites vagues | nb_resultats=5 | temps_ms=1828 | succes=True
+2026-06-04 00:59:09,779 | INFO | 127.0.0.1 - - [04/Jun/2026 00:59:09] "POST /recommander HTTP/1.1" 200 -
+2026-06-04 00:59:32,660 | WARNING | niveau=Confirmé - Expert | budget=0 | type=location | spot=Capbreton | nb_resultats=0 | temps_ms=13 | succes=False | message=Aucune planche disponible pour le niveau Confirmé - Expert.
+2026-06-04 00:59:32,662 | INFO | 127.0.0.1 - - [04/Jun/2026 00:59:32] "POST /recommander HTTP/1.1" 200 -
+2026-06-04 00:59:39,363 | WARNING | niveau=Confirmé - Expert | budget=0 | type=location | spot=Capbreton | nb_resultats=0 | temps_ms=11 | succes=False | message=Aucune planche disponible pour le niveau Confirmé - Expert.
+2026-06-04 00:59:39,365 | INFO | 127.0.0.1 - - [04/Jun/2026 00:59:39] "POST /recommander HTTP/1.1" 200 -
+2026-06-04 00:59:44,440 | WARNING | niveau=Confirmé - Expert | budget=0 | type=location | spot=Hossegor | nb_resultats=0 | temps_ms=5 | succes=False | message=Aucune planche disponible pour le niveau Confirmé - Expert.
+2026-06-04 00:59:44,441 | INFO | 127.0.0.1 - - [04/Jun/2026 00:59:44] "POST /recommander HTTP/1.1" 200 -
+2026-06-04 00:59:52,933 | WARNING | niveau=Confirmé - Expert | budget=0 | type=location | spot=Seignosse | nb_resultats=0 | temps_ms=10 | succes=False | message=Aucune planche disponible pour le niveau Confirmé - Expert.
+2026-06-04 00:59:52,936 | INFO | 127.0.0.1 - - [04/Jun/2026 00:59:52] "POST /recommander HTTP/1.1" 200 -
+2026-06-04 01:00:00,253 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-04 01:00:00,263 | INFO | niveau=Intermédiaire - Confirmé | budget=0 | type=location | spot=Seignosse | date=aujourd'hui | taille_vagues=Petites vagues | nb_resultats=5 | temps_ms=1665 | succes=True
+2026-06-04 01:00:00,266 | INFO | 127.0.0.1 - - [04/Jun/2026 01:00:00] "POST /recommander HTTP/1.1" 200 -
+2026-06-04 01:00:51,306 | WARNING | niveau=Confirmé - Expert | budget=600 | type=achat | spot=None | nb_resultats=0 | temps_ms=228 | succes=False | message=Budget insuffisant. Nos planches Confirmé - Expert débutent à 749.9€
+2026-06-04 01:00:51,323 | INFO | 127.0.0.1 - - [04/Jun/2026 01:00:51] "POST /recommander HTTP/1.1" 200 -
+2026-06-04 01:00:58,506 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-04 01:00:58,525 | INFO | niveau=Confirmé - Expert | budget=1250 | type=achat | spot=None | date= | taille_vagues=Vagues moyennes | nb_resultats=5 | temps_ms=1754 | succes=True
+2026-06-04 01:00:58,528 | INFO | 127.0.0.1 - - [04/Jun/2026 01:00:58] "POST /recommander HTTP/1.1" 200 -
+2026-06-04 01:01:11,498 | WARNING | niveau=Confirmé - Expert | budget=0 | type=location | spot=Seignosse | nb_resultats=0 | temps_ms=4 | succes=False | message=Aucune planche disponible pour le niveau Confirmé - Expert.
+2026-06-04 01:01:11,499 | INFO | 127.0.0.1 - - [04/Jun/2026 01:01:11] "POST /recommander HTTP/1.1" 200 -
+2026-06-04 01:01:15,711 | WARNING | niveau=Confirmé - Expert | budget=0 | type=location | spot=Seignosse | nb_resultats=0 | temps_ms=5 | succes=False | message=Aucune planche disponible pour le niveau Confirmé - Expert.
+2026-06-04 01:01:15,712 | INFO | 127.0.0.1 - - [04/Jun/2026 01:01:15] "POST /recommander HTTP/1.1" 200 -
+2026-06-04 01:01:20,855 | WARNING | niveau=Confirmé - Expert | budget=0 | type=location | spot=Seignosse | nb_resultats=0 | temps_ms=4 | succes=False | message=Aucune planche disponible pour le niveau Confirmé - Expert.
+2026-06-04 01:01:20,857 | INFO | 127.0.0.1 - - [04/Jun/2026 01:01:20] "POST /recommander HTTP/1.1" 200 -
+2026-06-04 01:01:32,798 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-04 01:01:32,803 | INFO | niveau=Intermédiaire - Confirmé | budget=0 | type=location | spot=Seignosse | date=le dimanche 7 juin | taille_vagues=Petites vagues | nb_resultats=5 | temps_ms=2221 | succes=True
+2026-06-04 01:01:32,805 | INFO | 127.0.0.1 - - [04/Jun/2026 01:01:32] "POST /recommander HTTP/1.1" 200 -
+2026-06-04 01:01:48,312 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-04 01:01:48,317 | INFO | niveau=Intermédiaire - Confirmé | budget=0 | type=location | spot=Seignosse | date=le samedi 6 juin | taille_vagues=Petites vagues | nb_resultats=5 | temps_ms=1620 | succes=True
+2026-06-04 01:01:48,325 | INFO | 127.0.0.1 - - [04/Jun/2026 01:01:48] "POST /recommander HTTP/1.1" 200 -
+2026-06-04 01:03:28,782 | WARNING | niveau=Confirmé - Expert | budget=0 | type=location | spot=Lacanau | nb_resultats=0 | temps_ms=270 | succes=False | message=Aucune planche disponible pour le niveau Confirmé - Expert.
+2026-06-04 01:03:28,812 | INFO | 127.0.0.1 - - [04/Jun/2026 01:03:28] "POST /recommander HTTP/1.1" 200 -
+2026-06-04 01:07:58,432 | INFO | Modèle KNN chargé avec succès
+2026-06-04 01:07:58,548 | INFO | [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-06-04 01:07:58,549 | INFO | [33mPress CTRL+C to quit[0m
+2026-06-04 01:07:58,577 | INFO |  * Restarting with watchdog (windowsapi)
+2026-06-04 01:08:03,298 | INFO | Modèle KNN chargé avec succès
+2026-06-04 01:08:03,314 | WARNING |  * Debugger is active!
+2026-06-04 01:08:03,323 | INFO |  * Debugger PIN: 136-698-358
+2026-06-04 01:08:09,079 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-04 01:08:09,131 | INFO | niveau=Confirmé - Expert | budget=0 | type=location | spot=Hossegor | date=aujourd'hui | taille_vagues=Petites vagues | nb_resultats=5 | temps_ms=2882 | succes=True
+2026-06-04 01:08:09,134 | INFO | 127.0.0.1 - - [04/Jun/2026 01:08:09] "POST /recommander HTTP/1.1" 200 -
+2026-06-04 01:08:56,648 | WARNING | niveau=Confirmé - Expert | budget=600 | type=achat | spot=None | nb_resultats=0 | temps_ms=17 | succes=False | message=Budget insuffisant. Nos planches Confirmé - Expert débutent à 749.9€
+2026-06-04 01:08:56,651 | INFO | 127.0.0.1 - - [04/Jun/2026 01:08:56] "POST /recommander HTTP/1.1" 200 -
+2026-06-04 01:09:03,302 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-04 01:09:03,305 | INFO | niveau=Confirmé - Expert | budget=1350 | type=achat | spot=None | date= | taille_vagues=Vagues moyennes | nb_resultats=4 | temps_ms=3209 | succes=True
+2026-06-04 01:09:03,307 | INFO | 127.0.0.1 - - [04/Jun/2026 01:09:03] "POST /recommander HTTP/1.1" 200 -
+2026-06-04 10:43:20,532 | INFO | Modèle KNN chargé avec succès
+2026-06-04 10:43:20,877 | INFO | [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-06-04 10:43:20,878 | INFO | [33mPress CTRL+C to quit[0m
+2026-06-04 10:43:20,933 | INFO |  * Restarting with watchdog (windowsapi)
+2026-06-04 10:43:30,031 | INFO | Modèle KNN chargé avec succès
+2026-06-04 10:43:30,096 | WARNING |  * Debugger is active!
+2026-06-04 10:43:30,127 | INFO |  * Debugger PIN: 136-698-358
+2026-06-04 10:43:56,858 | INFO |  * Detected change in 'C:\\Users\\rharb\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\mysql\\__init__.py', reloading
+2026-06-04 10:43:56,862 | INFO |  * Detected change in 'C:\\Users\\rharb\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\mysql\\connector\\__init__.py', reloading
+2026-06-04 10:43:56,878 | INFO |  * Detected change in 'C:\\Users\\rharb\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\mysql\\connector\\pooling.py', reloading
+2026-06-04 10:43:56,968 | INFO |  * Detected change in 'C:\\Users\\rharb\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\mysql\\connector\\abstracts.py', reloading
+2026-06-04 10:44:00,096 | INFO |  * Restarting with watchdog (windowsapi)
+2026-06-04 10:44:41,889 | INFO | Modèle KNN chargé avec succès
+2026-06-04 10:44:41,941 | WARNING |  * Debugger is active!
+2026-06-04 10:44:41,969 | INFO |  * Debugger PIN: 136-698-358
+2026-06-04 10:45:29,980 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-04 10:45:30,109 | INFO | niveau=Confirmé - Expert | budget=800 | type=achat | spot=None | date= | taille_vagues=Vagues moyennes | nb_resultats=1 | temps_ms=5117 | succes=True
+2026-06-04 10:45:30,118 | INFO | 127.0.0.1 - - [04/Jun/2026 10:45:30] "POST /recommander HTTP/1.1" 200 -
+2026-06-04 10:47:23,425 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-04 10:47:23,443 | INFO | niveau=Confirmé - Expert | budget=0 | type=location | spot=Hossegor | date=aujourd'hui | taille_vagues=Petites vagues | nb_resultats=5 | temps_ms=2035 | succes=True
+2026-06-04 10:47:23,447 | INFO | 127.0.0.1 - - [04/Jun/2026 10:47:23] "POST /recommander HTTP/1.1" 200 -
+2026-06-04 10:49:10,605 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-04 10:49:10,646 | INFO | niveau=Intermédiaire - Confirmé | budget=0 | type=location | spot=Capbreton | date=le samedi 6 juin | taille_vagues=Petites vagues | nb_resultats=5 | temps_ms=2314 | succes=True
+2026-06-04 10:49:10,661 | INFO | 127.0.0.1 - - [04/Jun/2026 10:49:10] "POST /recommander HTTP/1.1" 200 -
+2026-06-04 17:13:20,727 | INFO | Modèle KNN chargé avec succès
+2026-06-04 17:13:20,864 | INFO | [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-06-04 17:13:20,868 | INFO | [33mPress CTRL+C to quit[0m
+2026-06-04 17:13:20,908 | INFO |  * Restarting with watchdog (windowsapi)
+2026-06-04 17:13:29,465 | INFO | Modèle KNN chargé avec succès
+2026-06-04 17:13:29,538 | WARNING |  * Debugger is active!
+2026-06-04 17:13:29,558 | INFO |  * Debugger PIN: 136-698-358
+2026-06-04 17:13:52,685 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-04 17:13:52,731 | INFO | niveau=Intermédiaire - Confirmé | budget=600 | type=achat | spot=None | date= | taille_vagues=Vagues moyennes | nb_resultats=5 | temps_ms=3964 | succes=True
+2026-06-04 17:13:52,734 | INFO | 127.0.0.1 - - [04/Jun/2026 17:13:52] "POST /recommander HTTP/1.1" 200 -
+2026-06-04 17:14:07,434 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-04 17:14:07,437 | INFO | niveau=Intermédiaire - Confirmé | budget=0 | type=location | spot=Hossegor | date=le dimanche 7 juin | taille_vagues=Petites vagues | nb_resultats=5 | temps_ms=4948 | succes=True
+2026-06-04 17:14:07,438 | INFO | 127.0.0.1 - - [04/Jun/2026 17:14:07] "POST /recommander HTTP/1.1" 200 -
+2026-06-05 16:05:55,614 | INFO | Modèle KNN chargé avec succès
+2026-06-05 16:05:55,932 | INFO | [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-06-05 16:05:55,933 | INFO | [33mPress CTRL+C to quit[0m
+2026-06-05 16:05:55,989 | INFO |  * Restarting with watchdog (windowsapi)
+2026-06-05 16:06:04,772 | INFO | Modèle KNN chargé avec succès
+2026-06-05 16:06:04,798 | WARNING |  * Debugger is active!
+2026-06-05 16:06:04,814 | INFO |  * Debugger PIN: 136-698-358
+2026-06-05 16:13:14,155 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-05 16:13:14,284 | INFO | niveau=Intermédiaire - Confirmé | budget=1200 | type=achat | spot=None | date= | taille_vagues=Vagues moyennes | nb_resultats=5 | temps_ms=5770 | succes=True
+2026-06-05 16:13:14,311 | INFO | 127.0.0.1 - - [05/Jun/2026 16:13:14] "POST /recommander HTTP/1.1" 200 -

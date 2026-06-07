@@ -43,15 +43,25 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelectorAll('.type-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
             typeSelectionne = btn.dataset.type;
-            const spotField = document.getElementById('spot-field');
-            spotField.style.display = typeSelectionne === 'location' ? 'block' : 'none';
-            if (typeSelectionne === 'achat') {
+
+            const spotField  = document.getElementById('spot-field');
+            const budgetField = document.getElementById('budget-field');
+
+            if (typeSelectionne === 'location') {
+                spotField.style.display = 'block';
+                if (budgetField) budgetField.style.display = 'none';
+            } else {
+                spotField.style.display = 'none';
+                if (budgetField) budgetField.style.display = 'block';
                 document.getElementById('meteo-apercu').style.display = 'none';
                 document.getElementById('spot-select').value = '';
                 previsions = [];
                 spotActuel = '';
                 dateSelectionnee = new Date().toISOString().split('T')[0];
             }
+
+            document.getElementById('reco-results').style.display = 'none';
+            document.getElementById('reco-budget-error').style.display = 'none';
         });
     });
 
@@ -91,8 +101,8 @@ async function chargerMeteoSpot(spot) {
 
     try {
         const [resAujourd, resPrev] = await Promise.all([
-            fetch(`${API_URL}/meteo.php?action=actuelle&spot=${encodeURIComponent(spot)}`),
-            fetch(`${API_URL}/meteo.php?action=previsions&spot=${encodeURIComponent(spot)}`)
+            fetch(`${API_URL}/spots/${encodeURIComponent(spot)}/meteo`),
+            fetch(`${API_URL}/spots/${encodeURIComponent(spot)}/previsions`)
         ]);
 
         const dataAujourd = await resAujourd.json();
@@ -225,6 +235,19 @@ async function lancerRecommandation() {
         return;
     }
 
+    // Validation location : spot + météo obligatoires
+    if (typeSelectionne === 'location') {
+        const spotChoisi = document.getElementById('spot-select').value;
+        if (!spotChoisi) {
+            alert('Veuillez choisir un spot pour la location.');
+            return;
+        }
+        if (previsions.length === 0) {
+            alert('Veuillez attendre le chargement de la météo.');
+            return;
+        }
+    }
+
     document.getElementById('reco-results').style.display = 'none';
     document.getElementById('reco-budget-error').style.display = 'none';
 
@@ -237,20 +260,23 @@ async function lancerRecommandation() {
 
     const spot = document.getElementById('spot-select')?.value || null;
 
+    // Body selon le type
+    const body = { niveau: niveauSelectionne, type: typeSelectionne };
+    if (typeSelectionne === 'achat') {
+        body.budget = budget;
+    } else {
+        body.spot              = spot;
+        body.date_selectionnee = dateSelectionnee;
+    }
+
     try {
-        const recoResponse = await fetch(`${API_URL}/recommandation.php`, {
+        const recoResponse = await fetch(`${API_URL}/recommandation`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`
             },
-            body: JSON.stringify({
-                niveau:            niveauSelectionne,
-                budget:            budget,
-                type:              typeSelectionne,
-                spot:              spot,
-                date_selectionnee: typeSelectionne === 'location' ? dateSelectionnee : null
-            })
+            body: JSON.stringify(body)
         });
 
         if (recoResponse.status === 401) {
@@ -263,7 +289,11 @@ async function lancerRecommandation() {
         const recoData = await recoResponse.json();
 
         if (recoData.succes === false && (!recoData.planches || recoData.planches.length === 0)) {
-            afficherErreurBudget(recoData.message, recoData.prix_min);
+            if (typeSelectionne === 'achat') {
+                afficherErreurBudget(recoData.message, recoData.prix_min);
+            } else {
+                alert(recoData.message || 'Aucune planche trouvée pour ces conditions.');
+            }
             return;
         }
 
@@ -272,8 +302,8 @@ async function lancerRecommandation() {
             return;
         }
 
-        // Enrichir avec photo + id
-        const planchesResponse = await fetch(`${API_URL}/planches.php`);
+        // Enrichir avec photo + id + prix_location_jour depuis planches.php
+        const planchesResponse = await fetch(`${API_URL}/planches`);
         const planchesData     = await planchesResponse.json();
         const toutesLesPlanches = planchesData.success ? planchesData.data : [];
 
@@ -313,6 +343,16 @@ function afficherResultats(recoData, planches) {
             : '';
         const placeholderHtml = `<div class="planche-img-placeholder" style="${p.photo ? 'display:none' : ''}"><div class="planche-board-icon"></div></div>`;
 
+        // Prix : location → prix/jour, achat → prix d'achat
+        let prixHtml = '';
+        if (typeSelectionne === 'location') {
+            prixHtml = p.prix_location_jour
+                ? `<div class="planche-prix">${parseFloat(p.prix_location_jour).toFixed(2)} <span>€/jour</span></div>`
+                : '';
+        } else {
+            prixHtml = `<div class="planche-prix">${parseFloat(p.prix_achat || p.prix).toFixed(2)} <span>€</span></div>`;
+        }
+
         return `
             <div class="planche-card" onclick="${id ? `window.location.href='planche.html?id=${id}'` : ''}">
                 ${imgHtml}
@@ -323,8 +363,9 @@ function afficherResultats(recoData, planches) {
                     <div class="planche-tags">
                         <span class="tag tag-shape">${p.shape || p.shape_label || ''}</span>
                         <span class="tag tag-niveau">${niveauCourt(p.niveau || p.niveau_label || '')}</span>
+                        ${(p.taille_vagues || p.taille_vagues_label) ? `<span class="tag tag-vagues">${p.taille_vagues || p.taille_vagues_label}</span>` : ''}
                     </div>
-                    <div class="planche-prix">${parseFloat(p.prix_achat || p.prix).toFixed(2)} <span>€</span></div>
+                    ${prixHtml}
                     <div class="planche-btns">
                         <button class="btn-acheter" onclick="event.stopPropagation(); ${id ? `window.location.href='planche.html?id=${id}'` : ''}">Voir</button>
                     </div>
@@ -338,7 +379,7 @@ function afficherResultats(recoData, planches) {
 }
 
 // =====================================================
-// ERREUR BUDGET
+// ERREUR BUDGET (achat uniquement)
 // =====================================================
 function afficherErreurBudget(message, prixMin) {
     document.getElementById('budget-error-msg').textContent =

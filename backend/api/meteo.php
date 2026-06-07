@@ -1,7 +1,12 @@
 <?php
 // =====================================================
 // API/METEO.PHP - Météo en temps réel
-// Données stockées en base, mises à jour toutes les 30min
+// -----------------------------------------------------
+// Routes gérées par index.php :
+//   GET    /spots                      → liste des spots
+//   GET    /spots/{nom}/meteo          → météo actuelle
+//   GET    /spots/{nom}/previsions     → prévisions 7 jours
+//   GET    /spots/{nom}/creneaux       → meilleurs créneaux
 // =====================================================
 
 header('Content-Type: application/json; charset=utf-8');
@@ -22,9 +27,9 @@ if (!$pdo instanceof PDO) {
     exit;
 }
 
-$method = $_SERVER['REQUEST_METHOD'];
-$action = $_GET['action'] ?? null;
-$spot   = $_GET['spot'] ?? null;
+$method    = $_SERVER['REQUEST_METHOD'];
+$ressource = $_GET['ressource'] ?? null; // 'spots', 'meteo', 'previsions', 'creneaux'
+$spot      = $_GET['spot']      ?? null; // nom du spot
 
 try {
 
@@ -34,10 +39,8 @@ try {
         exit;
     }
 
-    // =====================================================
-    // GET - Liste de tous les spots
-    // =====================================================
-    if ($action === 'spots') {
+    // GET /spots → liste des spots
+    if ($ressource === 'spots') {
         $stmt = $pdo->prepare("SELECT id_spot, nom, ville FROM spot ORDER BY nom ASC");
         $stmt->execute();
         http_response_code(200);
@@ -45,9 +48,10 @@ try {
         exit;
     }
 
+    // Toutes les autres routes nécessitent un spot
     if (!$spot) {
         http_response_code(400);
-        echo json_encode(['success' => false, 'erreur' => 'Paramètre spot requis (ex: ?spot=Lacanau)']);
+        echo json_encode(['success' => false, 'erreur' => 'Spot requis dans l\'URL (/spots/{nom}/meteo)']);
         exit;
     }
 
@@ -61,10 +65,8 @@ try {
         exit;
     }
 
-    // =====================================================
-    // GET - Météo actuelle d'un spot — sans doublons
-    // =====================================================
-    if ($action === 'actuelle' || !$action) {
+    // GET /spots/{nom}/meteo → météo actuelle
+    if ($ressource === 'meteo') {
 
         $sql = "SELECT MIN(m.id_meteo) AS id_meteo, m.date_heure, m.temperature, m.ressenti,
                        m.humidite, m.vent_vitesse, m.vent_direction, m.conditions, m.icone,
@@ -91,10 +93,8 @@ try {
         exit;
     }
 
-    // =====================================================
-    // GET - Prévisions 7 jours d'un spot
-    // =====================================================
-    if ($action === 'previsions') {
+    // GET /spots/{nom}/previsions → prévisions 7 jours
+    if ($ressource === 'previsions') {
 
         $sql = "SELECT DATE(m.date_heure) AS jour,
                        MIN(m.temperature) AS temp_min,
@@ -120,10 +120,8 @@ try {
         exit;
     }
 
-    // =====================================================
-    // GET - Meilleurs créneaux pour surfer
-    // =====================================================
-    if ($action === 'meilleurs_creneaux') {
+    // GET /spots/{nom}/creneaux → meilleurs créneaux
+    if ($ressource === 'creneaux') {
 
         $sql = "SELECT m.date_heure, m.temperature, m.vent_vitesse, m.conditions,
                        s.nom AS spot_nom
@@ -148,7 +146,7 @@ try {
     }
 
     http_response_code(400);
-    echo json_encode(['success' => false, 'erreur' => 'Action inconnue. Actions disponibles: spots, actuelle, previsions, meilleurs_creneaux']);
+    echo json_encode(['success' => false, 'erreur' => 'Route inconnue. Utilisez /spots, /spots/{nom}/meteo, /spots/{nom}/previsions, /spots/{nom}/creneaux']);
     exit;
 
 } catch (PDOException $e) {
@@ -160,4 +158,3 @@ try {
     echo json_encode(['success' => false, 'erreur' => 'Erreur serveur']);
     exit;
 }
-?>

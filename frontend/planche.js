@@ -45,7 +45,7 @@ function deconnecter() {
 // =====================================================
 async function chargerPlanche(id) {
     try {
-        const response = await fetch(`${API_URL}/planches.php?id=${id}`);
+        const response = await fetch(`${API_URL}/planches/${id}`)
         const data = await response.json();
 
         if (data.success) {
@@ -252,7 +252,7 @@ function louer() {
 // =====================================================
 async function chargerSimilaires(shape, id_actuel) {
     try {
-        const response = await fetch(`${API_URL}/planches.php`);
+        const response = await fetch(`${API_URL}/planches`);
         const data = await response.json();
 
         if (!data.success) return;
