@@ -143,14 +143,13 @@ jobs:
 
       - name: Démarrage du serveur de test
         working-directory: package/backend
-        env:
-          DB_HOST: 127.0.0.1
-          DB_PORT: 3306
-          DB_NAME: surfshop_db
-          DB_USER: root
-          DB_PASSWORD: root
-          JWT_SECRET: ${{ secrets.JWT_SECRET }}
         run: |
+          export DB_HOST=127.0.0.1
+          export DB_PORT=3306
+          export DB_NAME=surfshop_db
+          export DB_USER=root
+          export DB_PASSWORD=root
+          export JWT_SECRET=${{ secrets.JWT_SECRET }}
           php -S localhost:8000 index.php &
           sleep 2
           curl -f http://localhost:8000/api/planches || exit 1
