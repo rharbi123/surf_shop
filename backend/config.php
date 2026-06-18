@@ -3,10 +3,15 @@
 // CONFIG.PHP - Connexion à la base de données
 // =====================================================
 
-// Charger les variables du .env
 require_once __DIR__ . '/vendor/autoload.php';
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-$dotenv->load();
+
+// Le fichier .env n'existe qu'en local (il est volontairement
+// absent sur GitHub pour des raisons de sécurité). En CI, les
+// variables sont déjà injectées par GitHub Actions via les secrets.
+if (file_exists(__DIR__ . '/.env')) {
+    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+    $dotenv->load();
+}
 
 // Récupérer les paramètres
 $db_host = $_ENV['DB_HOST'];
