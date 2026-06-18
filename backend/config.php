@@ -14,11 +14,11 @@ if (file_exists(__DIR__ . '/.env')) {
 }
 
 // Récupérer les paramètres
-$db_host = $_ENV['DB_HOST'];
-$db_port = $_ENV['DB_PORT'];
-$db_name = $_ENV['DB_NAME'];
-$db_user = $_ENV['DB_USER'];
-$db_password = $_ENV['DB_PASSWORD'];
+$db_host     = getenv('DB_HOST');
+$db_port     = getenv('DB_PORT');
+$db_name     = getenv('DB_NAME');
+$db_user     = getenv('DB_USER');
+$db_password = getenv('DB_PASSWORD');
 
 // Créer la connexion PDO
 try {
