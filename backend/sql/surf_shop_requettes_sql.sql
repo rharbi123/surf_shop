@@ -621,17 +621,13 @@ LIMIT 20;
 
 
 
+INSERT INTO utilisateur (nom, prenom, email, mot_de_passe, role, consentement_rgpd, date_consentement)
+VALUES ('Test', 'Moniteur', 'moniteur.test@wavecraft.fr', 'hash_temporaire', 'moniteur', 1, NOW());
 
 
 
+SELECT id_utilisateur FROM utilisateur WHERE email = 'moniteur.test@wavecraft.fr';
 
 
-
-
-
-SELECT m.date_heure, s.nom 
-FROM meteo m 
-JOIN spot s ON m.id_spot = s.id_spot 
-WHERE s.nom = 'Lacanau' 
-AND DATE(m.date_heure) = CURDATE()
-LIMIT 5;
+INSERT INTO moniteur (id_utilisateur, diplome)
+VALUES (7, 'BPJEPS Surf');
