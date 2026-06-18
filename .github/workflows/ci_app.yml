@@ -8,9 +8,6 @@ jobs:
 
   # =====================================================
   # ETAPE 1 : VALIDATION (C18)
-  # -----------------------------------------------------
-  # Vérifie que les fichiers essentiels de l'application
-  # sont bien présents dans le dépôt avant toute exécution.
   # =====================================================
   validation:
     runs-on: ubuntu-latest
@@ -26,9 +23,6 @@ jobs:
 
   # =====================================================
   # ETAPE 2 : TESTS AUTOMATISES (C18)
-  # -----------------------------------------------------
-  # Installe PHP et les dépendances, puis exécute
-  # les tests PHPUnit de la logique métier.
   # =====================================================
   tests:
     needs: validation
@@ -78,9 +72,6 @@ jobs:
 
   # =====================================================
   # ETAPE 3 : PACKAGING (C19)
-  # -----------------------------------------------------
-  # Une fois les tests validés, on package le code de
-  # l'application backend dans une archive prête à livrer.
   # =====================================================
   packaging:
     needs: tests
@@ -106,15 +97,29 @@ jobs:
 
   # =====================================================
   # ETAPE 4 : DEPLOIEMENT (C19)
-  # -----------------------------------------------------
-  # Simule le déploiement de l'application en rechargeant
-  # le package dans un environnement propre et en vérifiant
-  # que le serveur PHP démarre correctement.
   # =====================================================
   deploiement:
     needs: packaging
     runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: surfshop_db
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
     steps:
+      - name: Récupération du code source
+        uses: actions/checkout@v4
+
       - name: Récupération de l'archive
         uses: actions/download-artifact@v4
         with:
@@ -133,8 +138,18 @@ jobs:
         working-directory: package/backend
         run: composer install --no-interaction --prefer-dist
 
+      - name: Import de la structure de la base de données
+        run: mysql -h 127.0.0.1 -P 3306 -u root -proot surfshop_db < "backend/sql/surf shop.sql"
+
       - name: Démarrage du serveur de test
         working-directory: package/backend
+        env:
+          DB_HOST: 127.0.0.1
+          DB_PORT: 3306
+          DB_NAME: surfshop_db
+          DB_USER: root
+          DB_PASSWORD: root
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}
         run: |
           php -S localhost:8000 index.php &
           sleep 2
