@@ -1,0 +1,2851 @@
+[
+  {
+    "spot": "Lacanau",
+    "ville": "Lacanau",
+    "previsions": [
+      {
+        "date": "2026-05-11 14:00",
+        "temperature": 18.44,
+        "ressenti": 17.88,
+        "humidite": 59,
+        "vent_vitesse": 7.27,
+        "vent_direction": 258,
+        "conditions": "ciel dégagé",
+        "icone": "01d"
+      },
+      {
+        "date": "2026-05-11 17:00",
+        "temperature": 18.52,
+        "ressenti": 18.05,
+        "humidite": 62,
+        "vent_vitesse": 5.54,
+        "vent_direction": 292,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-11 20:00",
+        "temperature": 17.97,
+        "ressenti": 17.62,
+        "humidite": 69,
+        "vent_vitesse": 4.77,
+        "vent_direction": 325,
+        "conditions": "partiellement nuageux",
+        "icone": "03d"
+      },
+      {
+        "date": "2026-05-11 23:00",
+        "temperature": 16.14,
+        "ressenti": 15.77,
+        "humidite": 75,
+        "vent_vitesse": 3.04,
+        "vent_direction": 349,
+        "conditions": "couvert",
+        "icone": "04n"
+      },
+      {
+        "date": "2026-05-12 02:00",
+        "temperature": 13.36,
+        "ressenti": 12.84,
+        "humidite": 80,
+        "vent_vitesse": 3.05,
+        "vent_direction": 25,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-12 05:00",
+        "temperature": 9.47,
+        "ressenti": 8.74,
+        "humidite": 79,
+        "vent_vitesse": 1.81,
+        "vent_direction": 45,
+        "conditions": "peu nuageux",
+        "icone": "02n"
+      },
+      {
+        "date": "2026-05-12 08:00",
+        "temperature": 10.35,
+        "ressenti": 9.4,
+        "humidite": 75,
+        "vent_vitesse": 1.66,
+        "vent_direction": 72,
+        "conditions": "ciel dégagé",
+        "icone": "01d"
+      },
+      {
+        "date": "2026-05-12 11:00",
+        "temperature": 15.77,
+        "ressenti": 14.71,
+        "humidite": 50,
+        "vent_vitesse": 2.03,
+        "vent_direction": 15,
+        "conditions": "ciel dégagé",
+        "icone": "01d"
+      },
+      {
+        "date": "2026-05-12 14:00",
+        "temperature": 17.59,
+        "ressenti": 16.61,
+        "humidite": 46,
+        "vent_vitesse": 4.17,
+        "vent_direction": 342,
+        "conditions": "peu nuageux",
+        "icone": "02d"
+      },
+      {
+        "date": "2026-05-12 17:00",
+        "temperature": 17.18,
+        "ressenti": 16.26,
+        "humidite": 50,
+        "vent_vitesse": 4.99,
+        "vent_direction": 339,
+        "conditions": "couvert",
+        "icone": "04d"
+      },
+      {
+        "date": "2026-05-12 20:00",
+        "temperature": 14.84,
+        "ressenti": 13.97,
+        "humidite": 61,
+        "vent_vitesse": 4.5,
+        "vent_direction": 346,
+        "conditions": "couvert",
+        "icone": "04d"
+      },
+      {
+        "date": "2026-05-12 23:00",
+        "temperature": 12.79,
+        "ressenti": 12.08,
+        "humidite": 75,
+        "vent_vitesse": 2.68,
+        "vent_direction": 340,
+        "conditions": "couvert",
+        "icone": "04n"
+      },
+      {
+        "date": "2026-05-13 02:00",
+        "temperature": 13.16,
+        "ressenti": 12.49,
+        "humidite": 75,
+        "vent_vitesse": 2.53,
+        "vent_direction": 312,
+        "conditions": "couvert",
+        "icone": "04n"
+      },
+      {
+        "date": "2026-05-13 05:00",
+        "temperature": 13.01,
+        "ressenti": 12.46,
+        "humidite": 80,
+        "vent_vitesse": 2.98,
+        "vent_direction": 284,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-13 08:00",
+        "temperature": 13.32,
+        "ressenti": 12.9,
+        "humidite": 84,
+        "vent_vitesse": 3.44,
+        "vent_direction": 283,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-13 11:00",
+        "temperature": 15.07,
+        "ressenti": 14.62,
+        "humidite": 76,
+        "vent_vitesse": 4.48,
+        "vent_direction": 341,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-13 14:00",
+        "temperature": 15.65,
+        "ressenti": 15.02,
+        "humidite": 67,
+        "vent_vitesse": 5.57,
+        "vent_direction": 306,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-13 17:00",
+        "temperature": 16.52,
+        "ressenti": 15.61,
+        "humidite": 53,
+        "vent_vitesse": 6.3,
+        "vent_direction": 296,
+        "conditions": "nuageux",
+        "icone": "04d"
+      },
+      {
+        "date": "2026-05-13 20:00",
+        "temperature": 14.61,
+        "ressenti": 13.72,
+        "humidite": 61,
+        "vent_vitesse": 5.15,
+        "vent_direction": 286,
+        "conditions": "nuageux",
+        "icone": "04d"
+      },
+      {
+        "date": "2026-05-13 23:00",
+        "temperature": 13.17,
+        "ressenti": 12.24,
+        "humidite": 65,
+        "vent_vitesse": 5.01,
+        "vent_direction": 287,
+        "conditions": "couvert",
+        "icone": "04n"
+      },
+      {
+        "date": "2026-05-14 02:00",
+        "temperature": 13.57,
+        "ressenti": 12.52,
+        "humidite": 59,
+        "vent_vitesse": 5.77,
+        "vent_direction": 285,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-14 05:00",
+        "temperature": 11.81,
+        "ressenti": 11.21,
+        "humidite": 83,
+        "vent_vitesse": 5.84,
+        "vent_direction": 288,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-14 08:00",
+        "temperature": 12.36,
+        "ressenti": 11.45,
+        "humidite": 69,
+        "vent_vitesse": 5.47,
+        "vent_direction": 305,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-14 11:00",
+        "temperature": 13.94,
+        "ressenti": 13.17,
+        "humidite": 68,
+        "vent_vitesse": 6.39,
+        "vent_direction": 299,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-14 14:00",
+        "temperature": 14.47,
+        "ressenti": 13.67,
+        "humidite": 65,
+        "vent_vitesse": 6.61,
+        "vent_direction": 315,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-14 17:00",
+        "temperature": 15.2,
+        "ressenti": 14.21,
+        "humidite": 55,
+        "vent_vitesse": 7.28,
+        "vent_direction": 311,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-14 20:00",
+        "temperature": 13.64,
+        "ressenti": 12.52,
+        "humidite": 56,
+        "vent_vitesse": 6.29,
+        "vent_direction": 313,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-14 23:00",
+        "temperature": 13.89,
+        "ressenti": 12.67,
+        "humidite": 51,
+        "vent_vitesse": 5.42,
+        "vent_direction": 314,
+        "conditions": "couvert",
+        "icone": "04n"
+      },
+      {
+        "date": "2026-05-15 02:00",
+        "temperature": 12.33,
+        "ressenti": 11.45,
+        "humidite": 70,
+        "vent_vitesse": 5.27,
+        "vent_direction": 304,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-15 05:00",
+        "temperature": 12.46,
+        "ressenti": 11.48,
+        "humidite": 66,
+        "vent_vitesse": 5.23,
+        "vent_direction": 300,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-15 08:00",
+        "temperature": 12.86,
+        "ressenti": 11.95,
+        "humidite": 67,
+        "vent_vitesse": 4.75,
+        "vent_direction": 299,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-15 11:00",
+        "temperature": 14.13,
+        "ressenti": 13.61,
+        "humidite": 77,
+        "vent_vitesse": 6.53,
+        "vent_direction": 291,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-15 14:00",
+        "temperature": 16.93,
+        "ressenti": 16.35,
+        "humidite": 64,
+        "vent_vitesse": 8.24,
+        "vent_direction": 280,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-15 17:00",
+        "temperature": 16.54,
+        "ressenti": 15.87,
+        "humidite": 62,
+        "vent_vitesse": 8.23,
+        "vent_direction": 283,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-15 20:00",
+        "temperature": 14.82,
+        "ressenti": 14.39,
+        "humidite": 78,
+        "vent_vitesse": 7.4,
+        "vent_direction": 287,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-15 23:00",
+        "temperature": 14.25,
+        "ressenti": 13.82,
+        "humidite": 80,
+        "vent_vitesse": 6.26,
+        "vent_direction": 306,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-16 02:00",
+        "temperature": 13.89,
+        "ressenti": 13.29,
+        "humidite": 75,
+        "vent_vitesse": 5.05,
+        "vent_direction": 308,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-16 05:00",
+        "temperature": 12.52,
+        "ressenti": 11.97,
+        "humidite": 82,
+        "vent_vitesse": 2.43,
+        "vent_direction": 18,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-16 08:00",
+        "temperature": 11.01,
+        "ressenti": 10.41,
+        "humidite": 86,
+        "vent_vitesse": 2.78,
+        "vent_direction": 51,
+        "conditions": "couvert",
+        "icone": "04d"
+      },
+      {
+        "date": "2026-05-16 11:00",
+        "temperature": 15.18,
+        "ressenti": 14.14,
+        "humidite": 53,
+        "vent_vitesse": 2.03,
+        "vent_direction": 36,
+        "conditions": "nuageux",
+        "icone": "04d"
+      }
+    ],
+    "source": "openweathermap.org"
+  },
+  {
+    "spot": "Hossegor",
+    "ville": "Soorts-Hossegor",
+    "previsions": [
+      {
+        "date": "2026-05-11 14:00",
+        "temperature": 19.82,
+        "ressenti": 19.97,
+        "humidite": 81,
+        "vent_vitesse": 4.11,
+        "vent_direction": 322,
+        "conditions": "ciel dégagé",
+        "icone": "01d"
+      },
+      {
+        "date": "2026-05-11 17:00",
+        "temperature": 19.21,
+        "ressenti": 19.14,
+        "humidite": 75,
+        "vent_vitesse": 3.92,
+        "vent_direction": 305,
+        "conditions": "peu nuageux",
+        "icone": "02d"
+      },
+      {
+        "date": "2026-05-11 20:00",
+        "temperature": 20.24,
+        "ressenti": 20.28,
+        "humidite": 75,
+        "vent_vitesse": 3.56,
+        "vent_direction": 288,
+        "conditions": "peu nuageux",
+        "icone": "02d"
+      },
+      {
+        "date": "2026-05-11 23:00",
+        "temperature": 16.29,
+        "ressenti": 16.25,
+        "humidite": 87,
+        "vent_vitesse": 2.61,
+        "vent_direction": 298,
+        "conditions": "ciel dégagé",
+        "icone": "01n"
+      },
+      {
+        "date": "2026-05-12 02:00",
+        "temperature": 13.39,
+        "ressenti": 13.06,
+        "humidite": 87,
+        "vent_vitesse": 1.76,
+        "vent_direction": 344,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-12 05:00",
+        "temperature": 13.8,
+        "ressenti": 13.43,
+        "humidite": 84,
+        "vent_vitesse": 1.41,
+        "vent_direction": 44,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-12 08:00",
+        "temperature": 13.64,
+        "ressenti": 13.23,
+        "humidite": 83,
+        "vent_vitesse": 0.98,
+        "vent_direction": 87,
+        "conditions": "nuageux",
+        "icone": "04d"
+      },
+      {
+        "date": "2026-05-12 11:00",
+        "temperature": 15.17,
+        "ressenti": 14.67,
+        "humidite": 74,
+        "vent_vitesse": 2.02,
+        "vent_direction": 5,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-12 14:00",
+        "temperature": 16.59,
+        "ressenti": 15.95,
+        "humidite": 63,
+        "vent_vitesse": 2.6,
+        "vent_direction": 356,
+        "conditions": "couvert",
+        "icone": "04d"
+      },
+      {
+        "date": "2026-05-12 17:00",
+        "temperature": 16.34,
+        "ressenti": 15.65,
+        "humidite": 62,
+        "vent_vitesse": 4.79,
+        "vent_direction": 334,
+        "conditions": "nuageux",
+        "icone": "04d"
+      },
+      {
+        "date": "2026-05-12 20:00",
+        "temperature": 15.25,
+        "ressenti": 14.5,
+        "humidite": 64,
+        "vent_vitesse": 4.86,
+        "vent_direction": 327,
+        "conditions": "partiellement nuageux",
+        "icone": "03d"
+      },
+      {
+        "date": "2026-05-12 23:00",
+        "temperature": 13.53,
+        "ressenti": 12.74,
+        "humidite": 69,
+        "vent_vitesse": 3.84,
+        "vent_direction": 329,
+        "conditions": "ciel dégagé",
+        "icone": "01n"
+      },
+      {
+        "date": "2026-05-13 02:00",
+        "temperature": 12.64,
+        "ressenti": 11.92,
+        "humidite": 75,
+        "vent_vitesse": 2.79,
+        "vent_direction": 310,
+        "conditions": "peu nuageux",
+        "icone": "02n"
+      },
+      {
+        "date": "2026-05-13 05:00",
+        "temperature": 12.49,
+        "ressenti": 11.91,
+        "humidite": 81,
+        "vent_vitesse": 2.45,
+        "vent_direction": 293,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-13 08:00",
+        "temperature": 13.22,
+        "ressenti": 12.74,
+        "humidite": 82,
+        "vent_vitesse": 2.94,
+        "vent_direction": 292,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-13 11:00",
+        "temperature": 14.35,
+        "ressenti": 13.8,
+        "humidite": 75,
+        "vent_vitesse": 4.87,
+        "vent_direction": 289,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-13 14:00",
+        "temperature": 16.15,
+        "ressenti": 15.57,
+        "humidite": 67,
+        "vent_vitesse": 5.71,
+        "vent_direction": 284,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-13 17:00",
+        "temperature": 15.09,
+        "ressenti": 14.72,
+        "humidite": 79,
+        "vent_vitesse": 5.25,
+        "vent_direction": 295,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-13 20:00",
+        "temperature": 14.36,
+        "ressenti": 13.86,
+        "humidite": 77,
+        "vent_vitesse": 4.96,
+        "vent_direction": 309,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-13 23:00",
+        "temperature": 13.35,
+        "ressenti": 12.73,
+        "humidite": 76,
+        "vent_vitesse": 4.44,
+        "vent_direction": 278,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-14 02:00",
+        "temperature": 13.87,
+        "ressenti": 13.11,
+        "humidite": 69,
+        "vent_vitesse": 6.25,
+        "vent_direction": 291,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-14 05:00",
+        "temperature": 13.06,
+        "ressenti": 12.17,
+        "humidite": 67,
+        "vent_vitesse": 6.01,
+        "vent_direction": 280,
+        "conditions": "couvert",
+        "icone": "04n"
+      },
+      {
+        "date": "2026-05-14 08:00",
+        "temperature": 13.79,
+        "ressenti": 12.87,
+        "humidite": 63,
+        "vent_vitesse": 7.75,
+        "vent_direction": 274,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-14 11:00",
+        "temperature": 12.84,
+        "ressenti": 12.14,
+        "humidite": 75,
+        "vent_vitesse": 7.36,
+        "vent_direction": 307,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-14 14:00",
+        "temperature": 15.42,
+        "ressenti": 14.48,
+        "humidite": 56,
+        "vent_vitesse": 8.17,
+        "vent_direction": 300,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-14 17:00",
+        "temperature": 13.81,
+        "ressenti": 13.1,
+        "humidite": 71,
+        "vent_vitesse": 7.99,
+        "vent_direction": 299,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-14 20:00",
+        "temperature": 13.54,
+        "ressenti": 12.75,
+        "humidite": 69,
+        "vent_vitesse": 6.86,
+        "vent_direction": 306,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-14 23:00",
+        "temperature": 12.97,
+        "ressenti": 12.1,
+        "humidite": 68,
+        "vent_vitesse": 6.05,
+        "vent_direction": 301,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-15 02:00",
+        "temperature": 12.36,
+        "ressenti": 11.61,
+        "humidite": 75,
+        "vent_vitesse": 5.28,
+        "vent_direction": 303,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-15 05:00",
+        "temperature": 12.36,
+        "ressenti": 11.51,
+        "humidite": 71,
+        "vent_vitesse": 5.84,
+        "vent_direction": 301,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-15 08:00",
+        "temperature": 13.15,
+        "ressenti": 12.24,
+        "humidite": 66,
+        "vent_vitesse": 6.53,
+        "vent_direction": 291,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-15 11:00",
+        "temperature": 14.78,
+        "ressenti": 13.98,
+        "humidite": 64,
+        "vent_vitesse": 6.4,
+        "vent_direction": 291,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-15 14:00",
+        "temperature": 14.51,
+        "ressenti": 13.97,
+        "humidite": 75,
+        "vent_vitesse": 7.27,
+        "vent_direction": 290,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-15 17:00",
+        "temperature": 15.54,
+        "ressenti": 14.98,
+        "humidite": 70,
+        "vent_vitesse": 7.57,
+        "vent_direction": 282,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-15 20:00",
+        "temperature": 14.99,
+        "ressenti": 14.53,
+        "humidite": 76,
+        "vent_vitesse": 7.47,
+        "vent_direction": 277,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-15 23:00",
+        "temperature": 14.78,
+        "ressenti": 14.22,
+        "humidite": 73,
+        "vent_vitesse": 6.45,
+        "vent_direction": 288,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-16 02:00",
+        "temperature": 14.28,
+        "ressenti": 13.9,
+        "humidite": 82,
+        "vent_vitesse": 4.96,
+        "vent_direction": 290,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-16 05:00",
+        "temperature": 13.87,
+        "ressenti": 13.51,
+        "humidite": 84,
+        "vent_vitesse": 3.27,
+        "vent_direction": 291,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-16 08:00",
+        "temperature": 13.71,
+        "ressenti": 13.3,
+        "humidite": 83,
+        "vent_vitesse": 2.48,
+        "vent_direction": 323,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-16 11:00",
+        "temperature": 15.57,
+        "ressenti": 14.91,
+        "humidite": 66,
+        "vent_vitesse": 2.7,
+        "vent_direction": 345,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      }
+    ],
+    "source": "openweathermap.org"
+  },
+  {
+    "spot": "Capbreton",
+    "ville": "Capbreton",
+    "previsions": [
+      {
+        "date": "2026-05-11 14:00",
+        "temperature": 19.77,
+        "ressenti": 19.92,
+        "humidite": 81,
+        "vent_vitesse": 4.19,
+        "vent_direction": 324,
+        "conditions": "ciel dégagé",
+        "icone": "01d"
+      },
+      {
+        "date": "2026-05-11 17:00",
+        "temperature": 18.59,
+        "ressenti": 18.49,
+        "humidite": 76,
+        "vent_vitesse": 3.87,
+        "vent_direction": 303,
+        "conditions": "peu nuageux",
+        "icone": "02d"
+      },
+      {
+        "date": "2026-05-11 20:00",
+        "temperature": 18.2,
+        "ressenti": 18.03,
+        "humidite": 75,
+        "vent_vitesse": 3.54,
+        "vent_direction": 288,
+        "conditions": "peu nuageux",
+        "icone": "02d"
+      },
+      {
+        "date": "2026-05-11 23:00",
+        "temperature": 14.54,
+        "ressenti": 14.27,
+        "humidite": 85,
+        "vent_vitesse": 2.66,
+        "vent_direction": 296,
+        "conditions": "ciel dégagé",
+        "icone": "01n"
+      },
+      {
+        "date": "2026-05-12 02:00",
+        "temperature": 13.06,
+        "ressenti": 12.67,
+        "humidite": 86,
+        "vent_vitesse": 1.71,
+        "vent_direction": 338,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-12 05:00",
+        "temperature": 14.05,
+        "ressenti": 13.7,
+        "humidite": 84,
+        "vent_vitesse": 1.51,
+        "vent_direction": 44,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-12 08:00",
+        "temperature": 13.7,
+        "ressenti": 13.32,
+        "humidite": 84,
+        "vent_vitesse": 1.02,
+        "vent_direction": 92,
+        "conditions": "nuageux",
+        "icone": "04d"
+      },
+      {
+        "date": "2026-05-12 11:00",
+        "temperature": 15.17,
+        "ressenti": 14.7,
+        "humidite": 75,
+        "vent_vitesse": 2.07,
+        "vent_direction": 5,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-12 14:00",
+        "temperature": 16.54,
+        "ressenti": 15.92,
+        "humidite": 64,
+        "vent_vitesse": 2.77,
+        "vent_direction": 355,
+        "conditions": "nuageux",
+        "icone": "04d"
+      },
+      {
+        "date": "2026-05-12 17:00",
+        "temperature": 16.18,
+        "ressenti": 15.5,
+        "humidite": 63,
+        "vent_vitesse": 4.92,
+        "vent_direction": 334,
+        "conditions": "nuageux",
+        "icone": "04d"
+      },
+      {
+        "date": "2026-05-12 20:00",
+        "temperature": 15.36,
+        "ressenti": 14.65,
+        "humidite": 65,
+        "vent_vitesse": 4.94,
+        "vent_direction": 326,
+        "conditions": "partiellement nuageux",
+        "icone": "03d"
+      },
+      {
+        "date": "2026-05-12 23:00",
+        "temperature": 13.76,
+        "ressenti": 12.99,
+        "humidite": 69,
+        "vent_vitesse": 4.03,
+        "vent_direction": 330,
+        "conditions": "ciel dégagé",
+        "icone": "01n"
+      },
+      {
+        "date": "2026-05-13 02:00",
+        "temperature": 12.97,
+        "ressenti": 12.28,
+        "humidite": 75,
+        "vent_vitesse": 2.89,
+        "vent_direction": 313,
+        "conditions": "ciel dégagé",
+        "icone": "01n"
+      },
+      {
+        "date": "2026-05-13 05:00",
+        "temperature": 12.81,
+        "ressenti": 12.24,
+        "humidite": 80,
+        "vent_vitesse": 2.76,
+        "vent_direction": 294,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-13 08:00",
+        "temperature": 13.36,
+        "ressenti": 12.87,
+        "humidite": 81,
+        "vent_vitesse": 3.21,
+        "vent_direction": 291,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-13 11:00",
+        "temperature": 14.31,
+        "ressenti": 13.75,
+        "humidite": 75,
+        "vent_vitesse": 5.04,
+        "vent_direction": 289,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-13 14:00",
+        "temperature": 15.97,
+        "ressenti": 15.42,
+        "humidite": 69,
+        "vent_vitesse": 5.88,
+        "vent_direction": 283,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-13 17:00",
+        "temperature": 15.33,
+        "ressenti": 14.96,
+        "humidite": 78,
+        "vent_vitesse": 5.6,
+        "vent_direction": 294,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-13 20:00",
+        "temperature": 14.4,
+        "ressenti": 13.93,
+        "humidite": 78,
+        "vent_vitesse": 5.08,
+        "vent_direction": 310,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-13 23:00",
+        "temperature": 13.45,
+        "ressenti": 12.86,
+        "humidite": 77,
+        "vent_vitesse": 4.56,
+        "vent_direction": 279,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-14 02:00",
+        "temperature": 13.91,
+        "ressenti": 13.18,
+        "humidite": 70,
+        "vent_vitesse": 6.48,
+        "vent_direction": 292,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-14 05:00",
+        "temperature": 13.38,
+        "ressenti": 12.5,
+        "humidite": 66,
+        "vent_vitesse": 6.31,
+        "vent_direction": 282,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-14 08:00",
+        "temperature": 13.91,
+        "ressenti": 13.03,
+        "humidite": 64,
+        "vent_vitesse": 8.08,
+        "vent_direction": 275,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-14 11:00",
+        "temperature": 13.04,
+        "ressenti": 12.33,
+        "humidite": 74,
+        "vent_vitesse": 7.58,
+        "vent_direction": 307,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-14 14:00",
+        "temperature": 15.42,
+        "ressenti": 14.48,
+        "humidite": 56,
+        "vent_vitesse": 8.38,
+        "vent_direction": 299,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-14 17:00",
+        "temperature": 13.96,
+        "ressenti": 13.27,
+        "humidite": 71,
+        "vent_vitesse": 8.33,
+        "vent_direction": 298,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-14 20:00",
+        "temperature": 13.69,
+        "ressenti": 12.92,
+        "humidite": 69,
+        "vent_vitesse": 7.14,
+        "vent_direction": 307,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-14 23:00",
+        "temperature": 13.18,
+        "ressenti": 12.33,
+        "humidite": 68,
+        "vent_vitesse": 6.35,
+        "vent_direction": 303,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-15 02:00",
+        "temperature": 12.58,
+        "ressenti": 11.83,
+        "humidite": 74,
+        "vent_vitesse": 5.61,
+        "vent_direction": 305,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-15 05:00",
+        "temperature": 12.64,
+        "ressenti": 11.79,
+        "humidite": 70,
+        "vent_vitesse": 6.21,
+        "vent_direction": 303,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-15 08:00",
+        "temperature": 13.36,
+        "ressenti": 12.47,
+        "humidite": 66,
+        "vent_vitesse": 6.84,
+        "vent_direction": 292,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-15 11:00",
+        "temperature": 14.83,
+        "ressenti": 14.04,
+        "humidite": 64,
+        "vent_vitesse": 6.55,
+        "vent_direction": 292,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-15 14:00",
+        "temperature": 14.68,
+        "ressenti": 14.16,
+        "humidite": 75,
+        "vent_vitesse": 7.46,
+        "vent_direction": 290,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-15 17:00",
+        "temperature": 15.67,
+        "ressenti": 15.12,
+        "humidite": 70,
+        "vent_vitesse": 7.8,
+        "vent_direction": 283,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-15 20:00",
+        "temperature": 15.11,
+        "ressenti": 14.66,
+        "humidite": 76,
+        "vent_vitesse": 7.66,
+        "vent_direction": 277,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-15 23:00",
+        "temperature": 14.95,
+        "ressenti": 14.41,
+        "humidite": 73,
+        "vent_vitesse": 6.74,
+        "vent_direction": 288,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-16 02:00",
+        "temperature": 14.47,
+        "ressenti": 14.09,
+        "humidite": 81,
+        "vent_vitesse": 5.16,
+        "vent_direction": 289,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-16 05:00",
+        "temperature": 14.07,
+        "ressenti": 13.7,
+        "humidite": 83,
+        "vent_vitesse": 3.46,
+        "vent_direction": 292,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-16 08:00",
+        "temperature": 13.9,
+        "ressenti": 13.49,
+        "humidite": 82,
+        "vent_vitesse": 2.63,
+        "vent_direction": 324,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-16 11:00",
+        "temperature": 15.52,
+        "ressenti": 14.9,
+        "humidite": 68,
+        "vent_vitesse": 2.67,
+        "vent_direction": 344,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      }
+    ],
+    "source": "openweathermap.org"
+  },
+  {
+    "spot": "Biscarrosse",
+    "ville": "Biscarrosse",
+    "previsions": [
+      {
+        "date": "2026-05-11 14:00",
+        "temperature": 18.97,
+        "ressenti": 18.46,
+        "humidite": 59,
+        "vent_vitesse": 5.71,
+        "vent_direction": 273,
+        "conditions": "nuageux",
+        "icone": "04d"
+      },
+      {
+        "date": "2026-05-11 17:00",
+        "temperature": 18.96,
+        "ressenti": 18.5,
+        "humidite": 61,
+        "vent_vitesse": 5.85,
+        "vent_direction": 285,
+        "conditions": "nuageux",
+        "icone": "04d"
+      },
+      {
+        "date": "2026-05-11 20:00",
+        "temperature": 20.2,
+        "ressenti": 20.05,
+        "humidite": 68,
+        "vent_vitesse": 4.53,
+        "vent_direction": 311,
+        "conditions": "partiellement nuageux",
+        "icone": "03d"
+      },
+      {
+        "date": "2026-05-11 23:00",
+        "temperature": 17.32,
+        "ressenti": 17.01,
+        "humidite": 73,
+        "vent_vitesse": 3.74,
+        "vent_direction": 326,
+        "conditions": "nuageux",
+        "icone": "04n"
+      },
+      {
+        "date": "2026-05-12 02:00",
+        "temperature": 14.55,
+        "ressenti": 14.05,
+        "humidite": 76,
+        "vent_vitesse": 2.94,
+        "vent_direction": 344,
+        "conditions": "couvert",
+        "icone": "04n"
+      },
+      {
+        "date": "2026-05-12 05:00",
+        "temperature": 13.43,
+        "ressenti": 12.79,
+        "humidite": 75,
+        "vent_vitesse": 1.83,
+        "vent_direction": 39,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-12 08:00",
+        "temperature": 11.91,
+        "ressenti": 11.17,
+        "humidite": 77,
+        "vent_vitesse": 3.2,
+        "vent_direction": 45,
+        "conditions": "nuageux",
+        "icone": "04d"
+      },
+      {
+        "date": "2026-05-12 11:00",
+        "temperature": 16.6,
+        "ressenti": 15.6,
+        "humidite": 49,
+        "vent_vitesse": 2.07,
+        "vent_direction": 23,
+        "conditions": "ciel dégagé",
+        "icone": "01d"
+      },
+      {
+        "date": "2026-05-12 14:00",
+        "temperature": 17.41,
+        "ressenti": 16.51,
+        "humidite": 50,
+        "vent_vitesse": 5.57,
+        "vent_direction": 332,
+        "conditions": "ciel dégagé",
+        "icone": "01d"
+      },
+      {
+        "date": "2026-05-12 17:00",
+        "temperature": 16.97,
+        "ressenti": 16.11,
+        "humidite": 53,
+        "vent_vitesse": 6.4,
+        "vent_direction": 340,
+        "conditions": "peu nuageux",
+        "icone": "02d"
+      },
+      {
+        "date": "2026-05-12 20:00",
+        "temperature": 15.34,
+        "ressenti": 14.55,
+        "humidite": 62,
+        "vent_vitesse": 6.65,
+        "vent_direction": 344,
+        "conditions": "peu nuageux",
+        "icone": "02d"
+      },
+      {
+        "date": "2026-05-12 23:00",
+        "temperature": 13.64,
+        "ressenti": 12.81,
+        "humidite": 67,
+        "vent_vitesse": 4.39,
+        "vent_direction": 346,
+        "conditions": "nuageux",
+        "icone": "04n"
+      },
+      {
+        "date": "2026-05-13 02:00",
+        "temperature": 13.24,
+        "ressenti": 12.5,
+        "humidite": 72,
+        "vent_vitesse": 2.75,
+        "vent_direction": 310,
+        "conditions": "couvert",
+        "icone": "04n"
+      },
+      {
+        "date": "2026-05-13 05:00",
+        "temperature": 13.44,
+        "ressenti": 12.75,
+        "humidite": 73,
+        "vent_vitesse": 3.51,
+        "vent_direction": 307,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-13 08:00",
+        "temperature": 14.24,
+        "ressenti": 13.55,
+        "humidite": 70,
+        "vent_vitesse": 3.84,
+        "vent_direction": 288,
+        "conditions": "couvert",
+        "icone": "04d"
+      },
+      {
+        "date": "2026-05-13 11:00",
+        "temperature": 15.56,
+        "ressenti": 15,
+        "humidite": 70,
+        "vent_vitesse": 5.63,
+        "vent_direction": 285,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-13 14:00",
+        "temperature": 15.56,
+        "ressenti": 15.05,
+        "humidite": 72,
+        "vent_vitesse": 4.91,
+        "vent_direction": 297,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-13 17:00",
+        "temperature": 16.42,
+        "ressenti": 15.58,
+        "humidite": 56,
+        "vent_vitesse": 6.22,
+        "vent_direction": 300,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-13 20:00",
+        "temperature": 15.06,
+        "ressenti": 14.27,
+        "humidite": 63,
+        "vent_vitesse": 5.61,
+        "vent_direction": 295,
+        "conditions": "partiellement nuageux",
+        "icone": "03d"
+      },
+      {
+        "date": "2026-05-13 23:00",
+        "temperature": 13.39,
+        "ressenti": 12.56,
+        "humidite": 68,
+        "vent_vitesse": 4.81,
+        "vent_direction": 286,
+        "conditions": "nuageux",
+        "icone": "04n"
+      },
+      {
+        "date": "2026-05-14 02:00",
+        "temperature": 13.4,
+        "ressenti": 12.47,
+        "humidite": 64,
+        "vent_vitesse": 5.33,
+        "vent_direction": 278,
+        "conditions": "couvert",
+        "icone": "04n"
+      },
+      {
+        "date": "2026-05-14 05:00",
+        "temperature": 13.55,
+        "ressenti": 12.55,
+        "humidite": 61,
+        "vent_vitesse": 6.37,
+        "vent_direction": 273,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-14 08:00",
+        "temperature": 12.63,
+        "ressenti": 11.91,
+        "humidite": 75,
+        "vent_vitesse": 6.53,
+        "vent_direction": 301,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-14 11:00",
+        "temperature": 15.22,
+        "ressenti": 14.18,
+        "humidite": 53,
+        "vent_vitesse": 7.76,
+        "vent_direction": 300,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-14 14:00",
+        "temperature": 14.89,
+        "ressenti": 14.13,
+        "humidite": 65,
+        "vent_vitesse": 8.01,
+        "vent_direction": 304,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-14 17:00",
+        "temperature": 14.72,
+        "ressenti": 13.89,
+        "humidite": 63,
+        "vent_vitesse": 7.26,
+        "vent_direction": 309,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-14 20:00",
+        "temperature": 14.09,
+        "ressenti": 13.12,
+        "humidite": 60,
+        "vent_vitesse": 6.89,
+        "vent_direction": 312,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-14 23:00",
+        "temperature": 13.01,
+        "ressenti": 12.19,
+        "humidite": 70,
+        "vent_vitesse": 6.16,
+        "vent_direction": 312,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-15 02:00",
+        "temperature": 12.11,
+        "ressenti": 11.31,
+        "humidite": 74,
+        "vent_vitesse": 5.61,
+        "vent_direction": 310,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-15 05:00",
+        "temperature": 12.25,
+        "ressenti": 11.31,
+        "humidite": 68,
+        "vent_vitesse": 5.88,
+        "vent_direction": 298,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-15 08:00",
+        "temperature": 12.71,
+        "ressenti": 11.94,
+        "humidite": 73,
+        "vent_vitesse": 6.13,
+        "vent_direction": 297,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-15 11:00",
+        "temperature": 14.04,
+        "ressenti": 13.43,
+        "humidite": 74,
+        "vent_vitesse": 6.64,
+        "vent_direction": 273,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-15 14:00",
+        "temperature": 16.11,
+        "ressenti": 15.47,
+        "humidite": 65,
+        "vent_vitesse": 7.96,
+        "vent_direction": 282,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-15 17:00",
+        "temperature": 16.59,
+        "ressenti": 16.05,
+        "humidite": 67,
+        "vent_vitesse": 8.33,
+        "vent_direction": 279,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-15 20:00",
+        "temperature": 15.42,
+        "ressenti": 14.77,
+        "humidite": 67,
+        "vent_vitesse": 7.44,
+        "vent_direction": 285,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-15 23:00",
+        "temperature": 14.51,
+        "ressenti": 14.11,
+        "humidite": 80,
+        "vent_vitesse": 6.59,
+        "vent_direction": 286,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-16 02:00",
+        "temperature": 14.33,
+        "ressenti": 13.91,
+        "humidite": 80,
+        "vent_vitesse": 5.55,
+        "vent_direction": 303,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-16 05:00",
+        "temperature": 13.67,
+        "ressenti": 13.02,
+        "humidite": 74,
+        "vent_vitesse": 3.99,
+        "vent_direction": 328,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-16 08:00",
+        "temperature": 13.29,
+        "ressenti": 12.74,
+        "humidite": 79,
+        "vent_vitesse": 2.96,
+        "vent_direction": 43,
+        "conditions": "couvert",
+        "icone": "04d"
+      },
+      {
+        "date": "2026-05-16 11:00",
+        "temperature": 14.91,
+        "ressenti": 14.13,
+        "humidite": 64,
+        "vent_vitesse": 2.3,
+        "vent_direction": 37,
+        "conditions": "couvert",
+        "icone": "04d"
+      }
+    ],
+    "source": "openweathermap.org"
+  },
+  {
+    "spot": "Mimizan",
+    "ville": "Mimizan",
+    "previsions": [
+      {
+        "date": "2026-05-11 14:00",
+        "temperature": 18.89,
+        "ressenti": 18.45,
+        "humidite": 62,
+        "vent_vitesse": 4.89,
+        "vent_direction": 279,
+        "conditions": "peu nuageux",
+        "icone": "02d"
+      },
+      {
+        "date": "2026-05-11 17:00",
+        "temperature": 18.89,
+        "ressenti": 18.43,
+        "humidite": 61,
+        "vent_vitesse": 4.96,
+        "vent_direction": 293,
+        "conditions": "peu nuageux",
+        "icone": "02d"
+      },
+      {
+        "date": "2026-05-11 20:00",
+        "temperature": 20.58,
+        "ressenti": 20.52,
+        "humidite": 70,
+        "vent_vitesse": 3.91,
+        "vent_direction": 300,
+        "conditions": "peu nuageux",
+        "icone": "02d"
+      },
+      {
+        "date": "2026-05-11 23:00",
+        "temperature": 17.43,
+        "ressenti": 17.27,
+        "humidite": 78,
+        "vent_vitesse": 2.99,
+        "vent_direction": 327,
+        "conditions": "nuageux",
+        "icone": "04n"
+      },
+      {
+        "date": "2026-05-12 02:00",
+        "temperature": 14.5,
+        "ressenti": 14.02,
+        "humidite": 77,
+        "vent_vitesse": 2.52,
+        "vent_direction": 339,
+        "conditions": "nuageux",
+        "icone": "04n"
+      },
+      {
+        "date": "2026-05-12 05:00",
+        "temperature": 13.61,
+        "ressenti": 13.09,
+        "humidite": 79,
+        "vent_vitesse": 1.32,
+        "vent_direction": 32,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-12 08:00",
+        "temperature": 13.22,
+        "ressenti": 12.61,
+        "humidite": 77,
+        "vent_vitesse": 2.44,
+        "vent_direction": 44,
+        "conditions": "couvert",
+        "icone": "04d"
+      },
+      {
+        "date": "2026-05-12 11:00",
+        "temperature": 16.88,
+        "ressenti": 16.01,
+        "humidite": 53,
+        "vent_vitesse": 1.78,
+        "vent_direction": 14,
+        "conditions": "partiellement nuageux",
+        "icone": "03d"
+      },
+      {
+        "date": "2026-05-12 14:00",
+        "temperature": 18.18,
+        "ressenti": 17.28,
+        "humidite": 47,
+        "vent_vitesse": 5,
+        "vent_direction": 324,
+        "conditions": "peu nuageux",
+        "icone": "02d"
+      },
+      {
+        "date": "2026-05-12 17:00",
+        "temperature": 17.49,
+        "ressenti": 16.63,
+        "humidite": 51,
+        "vent_vitesse": 5.52,
+        "vent_direction": 339,
+        "conditions": "ciel dégagé",
+        "icone": "01d"
+      },
+      {
+        "date": "2026-05-12 20:00",
+        "temperature": 15.31,
+        "ressenti": 14.49,
+        "humidite": 61,
+        "vent_vitesse": 5.79,
+        "vent_direction": 340,
+        "conditions": "ciel dégagé",
+        "icone": "01d"
+      },
+      {
+        "date": "2026-05-12 23:00",
+        "temperature": 13.53,
+        "ressenti": 12.66,
+        "humidite": 66,
+        "vent_vitesse": 4.03,
+        "vent_direction": 344,
+        "conditions": "partiellement nuageux",
+        "icone": "03n"
+      },
+      {
+        "date": "2026-05-13 02:00",
+        "temperature": 12.85,
+        "ressenti": 12.12,
+        "humidite": 74,
+        "vent_vitesse": 2.44,
+        "vent_direction": 306,
+        "conditions": "nuageux",
+        "icone": "04n"
+      },
+      {
+        "date": "2026-05-13 05:00",
+        "temperature": 13.14,
+        "ressenti": 12.47,
+        "humidite": 75,
+        "vent_vitesse": 3.08,
+        "vent_direction": 300,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-13 08:00",
+        "temperature": 13.98,
+        "ressenti": 13.29,
+        "humidite": 71,
+        "vent_vitesse": 3.06,
+        "vent_direction": 292,
+        "conditions": "couvert",
+        "icone": "04d"
+      },
+      {
+        "date": "2026-05-13 11:00",
+        "temperature": 16.62,
+        "ressenti": 15.9,
+        "humidite": 60,
+        "vent_vitesse": 5.18,
+        "vent_direction": 287,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-13 14:00",
+        "temperature": 15.53,
+        "ressenti": 15.02,
+        "humidite": 72,
+        "vent_vitesse": 4.78,
+        "vent_direction": 288,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-13 17:00",
+        "temperature": 16.71,
+        "ressenti": 15.92,
+        "humidite": 57,
+        "vent_vitesse": 5.84,
+        "vent_direction": 302,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-13 20:00",
+        "temperature": 14.97,
+        "ressenti": 14.22,
+        "humidite": 65,
+        "vent_vitesse": 5.06,
+        "vent_direction": 292,
+        "conditions": "partiellement nuageux",
+        "icone": "03d"
+      },
+      {
+        "date": "2026-05-13 23:00",
+        "temperature": 13.5,
+        "ressenti": 12.66,
+        "humidite": 67,
+        "vent_vitesse": 4.43,
+        "vent_direction": 285,
+        "conditions": "nuageux",
+        "icone": "04n"
+      },
+      {
+        "date": "2026-05-14 02:00",
+        "temperature": 12.9,
+        "ressenti": 11.97,
+        "humidite": 66,
+        "vent_vitesse": 4.52,
+        "vent_direction": 284,
+        "conditions": "couvert",
+        "icone": "04n"
+      },
+      {
+        "date": "2026-05-14 05:00",
+        "temperature": 13.22,
+        "ressenti": 12.29,
+        "humidite": 65,
+        "vent_vitesse": 5.58,
+        "vent_direction": 281,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-14 08:00",
+        "temperature": 12.22,
+        "ressenti": 11.59,
+        "humidite": 80,
+        "vent_vitesse": 5.77,
+        "vent_direction": 295,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-14 11:00",
+        "temperature": 15.42,
+        "ressenti": 14.45,
+        "humidite": 55,
+        "vent_vitesse": 7.45,
+        "vent_direction": 302,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-14 14:00",
+        "temperature": 15.26,
+        "ressenti": 14.51,
+        "humidite": 64,
+        "vent_vitesse": 7.69,
+        "vent_direction": 300,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-14 17:00",
+        "temperature": 15.29,
+        "ressenti": 14.47,
+        "humidite": 61,
+        "vent_vitesse": 6.98,
+        "vent_direction": 307,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-14 20:00",
+        "temperature": 13.65,
+        "ressenti": 12.77,
+        "humidite": 65,
+        "vent_vitesse": 6.24,
+        "vent_direction": 308,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-14 23:00",
+        "temperature": 12.96,
+        "ressenti": 12.09,
+        "humidite": 68,
+        "vent_vitesse": 6.16,
+        "vent_direction": 307,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-15 02:00",
+        "temperature": 12.39,
+        "ressenti": 11.49,
+        "humidite": 69,
+        "vent_vitesse": 5.28,
+        "vent_direction": 304,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-15 05:00",
+        "temperature": 12.28,
+        "ressenti": 11.23,
+        "humidite": 64,
+        "vent_vitesse": 5.07,
+        "vent_direction": 302,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-15 08:00",
+        "temperature": 12.28,
+        "ressenti": 11.5,
+        "humidite": 74,
+        "vent_vitesse": 5.38,
+        "vent_direction": 296,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-15 11:00",
+        "temperature": 14.23,
+        "ressenti": 13.54,
+        "humidite": 70,
+        "vent_vitesse": 5.64,
+        "vent_direction": 277,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-15 14:00",
+        "temperature": 16.72,
+        "ressenti": 16.01,
+        "humidite": 60,
+        "vent_vitesse": 7.53,
+        "vent_direction": 282,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-15 17:00",
+        "temperature": 16.82,
+        "ressenti": 16.31,
+        "humidite": 67,
+        "vent_vitesse": 7.62,
+        "vent_direction": 277,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-15 20:00",
+        "temperature": 15.42,
+        "ressenti": 14.79,
+        "humidite": 68,
+        "vent_vitesse": 6.77,
+        "vent_direction": 285,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-15 23:00",
+        "temperature": 14.35,
+        "ressenti": 13.9,
+        "humidite": 79,
+        "vent_vitesse": 5.86,
+        "vent_direction": 284,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-16 02:00",
+        "temperature": 14.26,
+        "ressenti": 13.83,
+        "humidite": 80,
+        "vent_vitesse": 5.13,
+        "vent_direction": 299,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-16 05:00",
+        "temperature": 14.08,
+        "ressenti": 13.5,
+        "humidite": 75,
+        "vent_vitesse": 3.7,
+        "vent_direction": 329,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-16 08:00",
+        "temperature": 14.13,
+        "ressenti": 13.43,
+        "humidite": 70,
+        "vent_vitesse": 2.28,
+        "vent_direction": 345,
+        "conditions": "couvert",
+        "icone": "04d"
+      },
+      {
+        "date": "2026-05-16 11:00",
+        "temperature": 15.21,
+        "ressenti": 14.48,
+        "humidite": 65,
+        "vent_vitesse": 2.19,
+        "vent_direction": 53,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      }
+    ],
+    "source": "openweathermap.org"
+  },
+  {
+    "spot": "Seignosse",
+    "ville": "Seignosse",
+    "previsions": [
+      {
+        "date": "2026-05-11 14:00",
+        "temperature": 19.81,
+        "ressenti": 19.96,
+        "humidite": 81,
+        "vent_vitesse": 3.99,
+        "vent_direction": 319,
+        "conditions": "ciel dégagé",
+        "icone": "01d"
+      },
+      {
+        "date": "2026-05-11 17:00",
+        "temperature": 19.16,
+        "ressenti": 19.09,
+        "humidite": 75,
+        "vent_vitesse": 3.97,
+        "vent_direction": 306,
+        "conditions": "ciel dégagé",
+        "icone": "01d"
+      },
+      {
+        "date": "2026-05-11 20:00",
+        "temperature": 20.24,
+        "ressenti": 20.28,
+        "humidite": 75,
+        "vent_vitesse": 3.52,
+        "vent_direction": 289,
+        "conditions": "peu nuageux",
+        "icone": "02d"
+      },
+      {
+        "date": "2026-05-11 23:00",
+        "temperature": 16.28,
+        "ressenti": 16.26,
+        "humidite": 88,
+        "vent_vitesse": 2.53,
+        "vent_direction": 300,
+        "conditions": "ciel dégagé",
+        "icone": "01n"
+      },
+      {
+        "date": "2026-05-12 02:00",
+        "temperature": 13.18,
+        "ressenti": 12.85,
+        "humidite": 88,
+        "vent_vitesse": 1.77,
+        "vent_direction": 347,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-12 05:00",
+        "temperature": 13.52,
+        "ressenti": 13.12,
+        "humidite": 84,
+        "vent_vitesse": 1.2,
+        "vent_direction": 45,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-12 08:00",
+        "temperature": 13.54,
+        "ressenti": 13.12,
+        "humidite": 83,
+        "vent_vitesse": 0.89,
+        "vent_direction": 85,
+        "conditions": "nuageux",
+        "icone": "04d"
+      },
+      {
+        "date": "2026-05-12 11:00",
+        "temperature": 15.18,
+        "ressenti": 14.63,
+        "humidite": 72,
+        "vent_vitesse": 1.92,
+        "vent_direction": 5,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-12 14:00",
+        "temperature": 16.72,
+        "ressenti": 16.07,
+        "humidite": 62,
+        "vent_vitesse": 2.39,
+        "vent_direction": 354,
+        "conditions": "couvert",
+        "icone": "04d"
+      },
+      {
+        "date": "2026-05-12 17:00",
+        "temperature": 16.54,
+        "ressenti": 15.84,
+        "humidite": 61,
+        "vent_vitesse": 4.66,
+        "vent_direction": 332,
+        "conditions": "nuageux",
+        "icone": "04d"
+      },
+      {
+        "date": "2026-05-12 20:00",
+        "temperature": 15.14,
+        "ressenti": 14.38,
+        "humidite": 64,
+        "vent_vitesse": 4.77,
+        "vent_direction": 326,
+        "conditions": "partiellement nuageux",
+        "icone": "03d"
+      },
+      {
+        "date": "2026-05-12 23:00",
+        "temperature": 13.28,
+        "ressenti": 12.49,
+        "humidite": 70,
+        "vent_vitesse": 3.63,
+        "vent_direction": 328,
+        "conditions": "ciel dégagé",
+        "icone": "01n"
+      },
+      {
+        "date": "2026-05-13 02:00",
+        "temperature": 12.28,
+        "ressenti": 11.55,
+        "humidite": 76,
+        "vent_vitesse": 2.65,
+        "vent_direction": 307,
+        "conditions": "peu nuageux",
+        "icone": "02n"
+      },
+      {
+        "date": "2026-05-13 05:00",
+        "temperature": 12.16,
+        "ressenti": 11.55,
+        "humidite": 81,
+        "vent_vitesse": 2.21,
+        "vent_direction": 290,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-13 08:00",
+        "temperature": 13.07,
+        "ressenti": 12.6,
+        "humidite": 83,
+        "vent_vitesse": 2.64,
+        "vent_direction": 292,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-13 11:00",
+        "temperature": 14.45,
+        "ressenti": 13.88,
+        "humidite": 74,
+        "vent_vitesse": 4.69,
+        "vent_direction": 289,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-13 14:00",
+        "temperature": 16.39,
+        "ressenti": 15.78,
+        "humidite": 65,
+        "vent_vitesse": 5.53,
+        "vent_direction": 284,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-13 17:00",
+        "temperature": 14.82,
+        "ressenti": 14.45,
+        "humidite": 80,
+        "vent_vitesse": 4.91,
+        "vent_direction": 296,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-13 20:00",
+        "temperature": 14.33,
+        "ressenti": 13.8,
+        "humidite": 76,
+        "vent_vitesse": 4.82,
+        "vent_direction": 308,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-13 23:00",
+        "temperature": 13.25,
+        "ressenti": 12.59,
+        "humidite": 75,
+        "vent_vitesse": 4.25,
+        "vent_direction": 278,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-14 02:00",
+        "temperature": 13.81,
+        "ressenti": 13,
+        "humidite": 67,
+        "vent_vitesse": 5.96,
+        "vent_direction": 292,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-14 05:00",
+        "temperature": 12.7,
+        "ressenti": 11.8,
+        "humidite": 68,
+        "vent_vitesse": 5.59,
+        "vent_direction": 279,
+        "conditions": "couvert",
+        "icone": "04n"
+      },
+      {
+        "date": "2026-05-14 08:00",
+        "temperature": 13.64,
+        "ressenti": 12.65,
+        "humidite": 61,
+        "vent_vitesse": 7.31,
+        "vent_direction": 274,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-14 11:00",
+        "temperature": 12.62,
+        "ressenti": 11.92,
+        "humidite": 76,
+        "vent_vitesse": 7.04,
+        "vent_direction": 307,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-14 14:00",
+        "temperature": 15.43,
+        "ressenti": 14.46,
+        "humidite": 55,
+        "vent_vitesse": 7.93,
+        "vent_direction": 300,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-14 17:00",
+        "temperature": 13.63,
+        "ressenti": 12.93,
+        "humidite": 72,
+        "vent_vitesse": 7.61,
+        "vent_direction": 300,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-14 20:00",
+        "temperature": 13.37,
+        "ressenti": 12.56,
+        "humidite": 69,
+        "vent_vitesse": 6.54,
+        "vent_direction": 305,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-14 23:00",
+        "temperature": 12.74,
+        "ressenti": 11.87,
+        "humidite": 69,
+        "vent_vitesse": 5.69,
+        "vent_direction": 299,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-15 02:00",
+        "temperature": 12.1,
+        "ressenti": 11.32,
+        "humidite": 75,
+        "vent_vitesse": 4.92,
+        "vent_direction": 301,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-15 05:00",
+        "temperature": 12.02,
+        "ressenti": 11.16,
+        "humidite": 72,
+        "vent_vitesse": 5.39,
+        "vent_direction": 300,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-15 08:00",
+        "temperature": 12.87,
+        "ressenti": 11.94,
+        "humidite": 66,
+        "vent_vitesse": 6.1,
+        "vent_direction": 289,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-15 11:00",
+        "temperature": 14.76,
+        "ressenti": 13.96,
+        "humidite": 64,
+        "vent_vitesse": 6.21,
+        "vent_direction": 291,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-15 14:00",
+        "temperature": 14.3,
+        "ressenti": 13.77,
+        "humidite": 76,
+        "vent_vitesse": 6.98,
+        "vent_direction": 291,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-15 17:00",
+        "temperature": 15.41,
+        "ressenti": 14.83,
+        "humidite": 70,
+        "vent_vitesse": 7.24,
+        "vent_direction": 281,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-15 20:00",
+        "temperature": 14.85,
+        "ressenti": 14.4,
+        "humidite": 77,
+        "vent_vitesse": 7.16,
+        "vent_direction": 278,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-15 23:00",
+        "temperature": 14.56,
+        "ressenti": 14,
+        "humidite": 74,
+        "vent_vitesse": 6.1,
+        "vent_direction": 288,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-16 02:00",
+        "temperature": 14.07,
+        "ressenti": 13.67,
+        "humidite": 82,
+        "vent_vitesse": 4.69,
+        "vent_direction": 290,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-16 05:00",
+        "temperature": 13.63,
+        "ressenti": 13.27,
+        "humidite": 85,
+        "vent_vitesse": 3.04,
+        "vent_direction": 291,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-16 08:00",
+        "temperature": 13.49,
+        "ressenti": 13.11,
+        "humidite": 85,
+        "vent_vitesse": 2.32,
+        "vent_direction": 323,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-16 11:00",
+        "temperature": 15.64,
+        "ressenti": 14.96,
+        "humidite": 65,
+        "vent_vitesse": 2.67,
+        "vent_direction": 344,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      }
+    ],
+    "source": "openweathermap.org"
+  },
+  {
+    "spot": "Anglet",
+    "ville": "Anglet",
+    "previsions": [
+      {
+        "date": "2026-05-11 14:00",
+        "temperature": 19.21,
+        "ressenti": 18.83,
+        "humidite": 63,
+        "vent_vitesse": 4.09,
+        "vent_direction": 315,
+        "conditions": "peu nuageux",
+        "icone": "02d"
+      },
+      {
+        "date": "2026-05-11 17:00",
+        "temperature": 18.23,
+        "ressenti": 17.78,
+        "humidite": 64,
+        "vent_vitesse": 3.17,
+        "vent_direction": 299,
+        "conditions": "partiellement nuageux",
+        "icone": "03d"
+      },
+      {
+        "date": "2026-05-11 20:00",
+        "temperature": 19.3,
+        "ressenti": 19.14,
+        "humidite": 71,
+        "vent_vitesse": 2.62,
+        "vent_direction": 293,
+        "conditions": "partiellement nuageux",
+        "icone": "03d"
+      },
+      {
+        "date": "2026-05-11 23:00",
+        "temperature": 14.4,
+        "ressenti": 14.17,
+        "humidite": 87,
+        "vent_vitesse": 2.09,
+        "vent_direction": 268,
+        "conditions": "ciel dégagé",
+        "icone": "01n"
+      },
+      {
+        "date": "2026-05-12 02:00",
+        "temperature": 13.4,
+        "ressenti": 13.12,
+        "humidite": 89,
+        "vent_vitesse": 1.4,
+        "vent_direction": 262,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-12 05:00",
+        "temperature": 12.98,
+        "ressenti": 12.63,
+        "humidite": 88,
+        "vent_vitesse": 0.4,
+        "vent_direction": 111,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-12 08:00",
+        "temperature": 12.68,
+        "ressenti": 12.35,
+        "humidite": 90,
+        "vent_vitesse": 1,
+        "vent_direction": 154,
+        "conditions": "nuageux",
+        "icone": "04d"
+      },
+      {
+        "date": "2026-05-12 11:00",
+        "temperature": 14.97,
+        "ressenti": 14.53,
+        "humidite": 77,
+        "vent_vitesse": 1.61,
+        "vent_direction": 6,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-12 14:00",
+        "temperature": 15.86,
+        "ressenti": 15.3,
+        "humidite": 69,
+        "vent_vitesse": 2.46,
+        "vent_direction": 353,
+        "conditions": "couvert",
+        "icone": "04d"
+      },
+      {
+        "date": "2026-05-12 17:00",
+        "temperature": 15.52,
+        "ressenti": 14.9,
+        "humidite": 68,
+        "vent_vitesse": 4.63,
+        "vent_direction": 326,
+        "conditions": "couvert",
+        "icone": "04d"
+      },
+      {
+        "date": "2026-05-12 20:00",
+        "temperature": 14.6,
+        "ressenti": 13.92,
+        "humidite": 69,
+        "vent_vitesse": 4.18,
+        "vent_direction": 315,
+        "conditions": "nuageux",
+        "icone": "04d"
+      },
+      {
+        "date": "2026-05-12 23:00",
+        "temperature": 12.61,
+        "ressenti": 11.88,
+        "humidite": 75,
+        "vent_vitesse": 3.03,
+        "vent_direction": 317,
+        "conditions": "peu nuageux",
+        "icone": "02n"
+      },
+      {
+        "date": "2026-05-13 02:00",
+        "temperature": 12.35,
+        "ressenti": 11.65,
+        "humidite": 77,
+        "vent_vitesse": 2.1,
+        "vent_direction": 311,
+        "conditions": "partiellement nuageux",
+        "icone": "03n"
+      },
+      {
+        "date": "2026-05-13 05:00",
+        "temperature": 11.75,
+        "ressenti": 11.17,
+        "humidite": 84,
+        "vent_vitesse": 3.11,
+        "vent_direction": 274,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-13 08:00",
+        "temperature": 12.35,
+        "ressenti": 11.78,
+        "humidite": 82,
+        "vent_vitesse": 2.9,
+        "vent_direction": 268,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-13 11:00",
+        "temperature": 13.43,
+        "ressenti": 12.94,
+        "humidite": 81,
+        "vent_vitesse": 4.43,
+        "vent_direction": 287,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-13 14:00",
+        "temperature": 15.26,
+        "ressenti": 14.8,
+        "humidite": 75,
+        "vent_vitesse": 6.07,
+        "vent_direction": 282,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-13 17:00",
+        "temperature": 15,
+        "ressenti": 14.59,
+        "humidite": 78,
+        "vent_vitesse": 6.03,
+        "vent_direction": 288,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-13 20:00",
+        "temperature": 13.5,
+        "ressenti": 13.1,
+        "humidite": 84,
+        "vent_vitesse": 4.27,
+        "vent_direction": 304,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-13 23:00",
+        "temperature": 12.25,
+        "ressenti": 11.78,
+        "humidite": 86,
+        "vent_vitesse": 3.04,
+        "vent_direction": 276,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-14 02:00",
+        "temperature": 12.51,
+        "ressenti": 11.98,
+        "humidite": 83,
+        "vent_vitesse": 5.16,
+        "vent_direction": 286,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-14 05:00",
+        "temperature": 12.2,
+        "ressenti": 11.43,
+        "humidite": 75,
+        "vent_vitesse": 5.14,
+        "vent_direction": 284,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-14 08:00",
+        "temperature": 12.35,
+        "ressenti": 11.6,
+        "humidite": 75,
+        "vent_vitesse": 6.29,
+        "vent_direction": 275,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-14 11:00",
+        "temperature": 12.12,
+        "ressenti": 11.5,
+        "humidite": 81,
+        "vent_vitesse": 6.04,
+        "vent_direction": 294,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-14 14:00",
+        "temperature": 14.28,
+        "ressenti": 13.41,
+        "humidite": 63,
+        "vent_vitesse": 8.05,
+        "vent_direction": 294,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-14 17:00",
+        "temperature": 13.19,
+        "ressenti": 12.55,
+        "humidite": 76,
+        "vent_vitesse": 8.07,
+        "vent_direction": 296,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-14 20:00",
+        "temperature": 12.76,
+        "ressenti": 12.05,
+        "humidite": 75,
+        "vent_vitesse": 6.67,
+        "vent_direction": 308,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-14 23:00",
+        "temperature": 11.66,
+        "ressenti": 10.89,
+        "humidite": 77,
+        "vent_vitesse": 4.56,
+        "vent_direction": 302,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-15 02:00",
+        "temperature": 11.07,
+        "ressenti": 10.37,
+        "humidite": 82,
+        "vent_vitesse": 4.16,
+        "vent_direction": 296,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-15 05:00",
+        "temperature": 11.36,
+        "ressenti": 10.59,
+        "humidite": 78,
+        "vent_vitesse": 4.63,
+        "vent_direction": 298,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-15 08:00",
+        "temperature": 11.9,
+        "ressenti": 11.1,
+        "humidite": 75,
+        "vent_vitesse": 4.92,
+        "vent_direction": 291,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-15 11:00",
+        "temperature": 14.23,
+        "ressenti": 13.48,
+        "humidite": 68,
+        "vent_vitesse": 5.94,
+        "vent_direction": 296,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-15 14:00",
+        "temperature": 14.09,
+        "ressenti": 13.64,
+        "humidite": 80,
+        "vent_vitesse": 6.48,
+        "vent_direction": 287,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-15 17:00",
+        "temperature": 14.79,
+        "ressenti": 14.28,
+        "humidite": 75,
+        "vent_vitesse": 6.68,
+        "vent_direction": 288,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-15 20:00",
+        "temperature": 14.2,
+        "ressenti": 13.71,
+        "humidite": 78,
+        "vent_vitesse": 6.13,
+        "vent_direction": 277,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-15 23:00",
+        "temperature": 13.79,
+        "ressenti": 13.31,
+        "humidite": 80,
+        "vent_vitesse": 5.25,
+        "vent_direction": 280,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-16 02:00",
+        "temperature": 13.34,
+        "ressenti": 12.98,
+        "humidite": 86,
+        "vent_vitesse": 3.92,
+        "vent_direction": 281,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-16 05:00",
+        "temperature": 12.99,
+        "ressenti": 12.67,
+        "humidite": 89,
+        "vent_vitesse": 2.68,
+        "vent_direction": 280,
+        "conditions": "légère pluie",
+        "icone": "10n"
+      },
+      {
+        "date": "2026-05-16 08:00",
+        "temperature": 13.21,
+        "ressenti": 12.83,
+        "humidite": 86,
+        "vent_vitesse": 2.2,
+        "vent_direction": 319,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      },
+      {
+        "date": "2026-05-16 11:00",
+        "temperature": 14.59,
+        "ressenti": 14.14,
+        "humidite": 78,
+        "vent_vitesse": 1.83,
+        "vent_direction": 329,
+        "conditions": "légère pluie",
+        "icone": "10d"
+      }
+    ],
+    "source": "openweathermap.org"
+  }
+]

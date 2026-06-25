@@ -1,0 +1,341 @@
+2026-05-10 18:44:54,973 [INFO] ==================================================
+2026-05-10 18:44:54,975 [INFO] DEMARRAGE SCRAPING
+2026-05-10 18:44:54,975 [INFO] ==================================================
+2026-05-10 18:44:54,976 [INFO] Etape 1 : Recuperation des URLs...
+2026-05-10 18:44:56,444 [INFO] 21 URLs trouvees
+2026-05-10 18:44:56,446 [INFO] Scraping planche 1/21 : https://glisse-proshop.com/softboard-surf-en-mousse/catch-surf/odysea-log-cool-grey-7765105.html
+2026-05-10 18:44:57,475 [INFO]   -> OK : Odysea Log Cool Grey | Catch Surf | 431.9 €
+2026-05-10 18:44:58,478 [INFO] Scraping planche 2/21 : https://glisse-proshop.com/surfboard-planche-rigide/lost/the-ripper-round-12196087.html
+2026-05-10 18:44:59,209 [INFO]   -> OK : The Ripper Round | Lost | 774.9 €
+2026-05-10 18:45:00,211 [INFO] Scraping planche 3/21 : https://glisse-proshop.com/planches-epoxy-soft/jjf/jjf-by-pyzel-astrofish-645993.html
+2026-05-10 18:45:01,411 [INFO]   -> OK : JJF by Pyzel- Astrofish | Jjf | 479.9 €
+2026-05-10 18:45:02,411 [INFO] Scraping planche 4/21 : https://glisse-proshop.com/softboard-surf-en-mousse/softech/roller-royal-blue-7764070.html
+2026-05-10 18:45:04,035 [INFO]   -> OK : Roller Royal Blue | Softech | 323.9 €
+2026-05-10 18:45:05,036 [INFO] Scraping planche 5/21 : https://glisse-proshop.com/softboard-surf-en-mousse/catch-surf/odysea-log-blair-conklin-pro-model-turquoise-12092295.html
+2026-05-10 18:45:06,233 [INFO]   -> OK : Odysea Log - Blair Conklin Pro Model Turquoise | Catch Surf | 448.9 €
+2026-05-10 18:45:07,234 [INFO] Scraping planche 6/21 : https://glisse-proshop.com/softboard-surf-en-mousse/catch-surf/odysea-log-johnny-redmond-midnight-blue-12092267.html
+2026-05-10 18:45:08,244 [INFO]   -> OK : Odysea Log - Johnny Redmond Midnight Blue | Catch Surf | 475.9 €
+2026-05-10 18:45:09,245 [INFO] Scraping planche 7/21 : https://glisse-proshop.com/softboard-surf-en-mousse/catch-surf/odysea-log-blue-stripes-12092282.html
+2026-05-10 18:45:11,427 [INFO]   -> OK : Odysea Log Blue Stripes | Catch Surf | 448.9 €
+2026-05-10 18:45:12,430 [INFO] Scraping planche 8/21 : https://glisse-proshop.com/softboard-surf-en-mousse/catch-surf/odysea-skipper-quad-military-green-cheetah-12079773.html
+2026-05-10 18:45:13,844 [INFO]   -> OK : Odysea Skipper Quad Military Green Cheetah | Catch Surf | 430.9 €
+2026-05-10 18:45:14,844 [INFO] Scraping planche 9/21 : https://glisse-proshop.com/softboard-surf-en-mousse/catch-surf/odysea-x-lost-rnf-midnight-blue-12079808.html
+2026-05-10 18:45:16,322 [INFO]   -> OK : Odysea X Lost Rnf Midnight Blue | Catch Surf | 448.9 €
+2026-05-10 18:45:17,323 [INFO] Scraping planche 10/21 : https://glisse-proshop.com/softboard-surf-en-mousse/catch-surf/wave-bandit-easy-rider-cool-blue-12079788.html
+2026-05-10 18:45:18,261 [INFO]   -> OK : Wave Bandit Easy Rider Cool Blue | Catch Surf | 349.9 €
+2026-05-10 18:45:19,263 [INFO] Scraping planche 11/21 : https://glisse-proshop.com/softboard-surf-en-mousse/catch-surf/wave-bandit-easy-rider-pilsner-12083812.html
+2026-05-10 18:45:20,188 [INFO]   -> OK : Wave Bandit Easy Rider Pilsner | Catch Surf | 349.9 €
+2026-05-10 18:45:21,191 [INFO] Scraping planche 12/21 : https://glisse-proshop.com/surfboard-planche-rigide/lost/rnf-96-12196091.html
+2026-05-10 18:45:22,364 [INFO]   -> OK : RNF '96 | Lost | 759.9 €
+2026-05-10 18:45:23,365 [INFO] Scraping planche 13/21 : https://glisse-proshop.com/surfboard-planche-rigide/firewire/volcanic-helium-greedy-beaver-white-9309398.html
+2026-05-10 18:45:24,959 [INFO]   -> OK : Volcanic Helium Greedy Beaver White | Firewire | 879.9 €
+2026-05-10 18:45:25,960 [INFO] Scraping planche 14/21 : https://glisse-proshop.com/planches-epoxy-soft/jjf/astrofish-by-ivan-florence-646694.html
+2026-05-10 18:45:27,032 [INFO]   -> OK : Astrofish by Ivan Florence | Jjf | 566.9 €
+2026-05-10 18:45:28,033 [INFO] Scraping planche 15/21 : https://glisse-proshop.com/surfboard-planche-rigide/thunderbolt/mid-6-mini-twin-ocean-blue-12004536.html
+2026-05-10 18:45:28,953 [INFO]   -> OK : Mid 6 Mini Twin - Ocean Blue | Thunderbolt | 989.9 €
+2026-05-10 18:45:29,955 [INFO] Scraping planche 16/21 : https://glisse-proshop.com/planches-epoxy-soft/jjf/pyzel-nathan-florence-pro-model-646690.html
+2026-05-10 18:45:32,115 [INFO]   -> OK : Pyzel Nathan Florence Pro Model | Jjf | 534.9 €
+2026-05-10 18:45:33,117 [INFO] Scraping planche 17/21 : https://glisse-proshop.com/softboard-surf-en-mousse/ocean-and-earth/the-bug-pink-12317155.html
+2026-05-10 18:45:34,620 [INFO]   -> OK : The Bug Pink | Ocean And Earth | 199 €
+2026-05-10 18:45:35,621 [INFO] Scraping planche 18/21 : https://glisse-proshop.com/softboard-surf-en-mousse/ocean-and-earth/the-bug-purple-12317147.html
+2026-05-10 18:45:37,316 [INFO]   -> OK : The Bug Purple | Ocean And Earth | 199 €
+2026-05-10 18:45:38,317 [INFO] Scraping planche 19/21 : https://glisse-proshop.com/softboard-surf-en-mousse/ocean-and-earth/the-bug-spearmint-12317151.html
+2026-05-10 18:45:39,639 [INFO]   -> OK : The Bug Spearmint | Ocean And Earth | 199 €
+2026-05-10 18:45:40,640 [INFO] Scraping planche 20/21 : https://glisse-proshop.com/surfboard-planche-rigide/firewire/the-gem-diamond-timbertek-12500260.html
+2026-05-10 18:45:41,612 [INFO]   -> OK : The Gem Diamond Timbertek | Firewire | 1100 €
+2026-05-10 18:45:42,613 [INFO] Scraping planche 21/21 : https://glisse-proshop.com/softboard-surf-en-mousse/catch-surf/blank-log-black-12079803.html
+2026-05-10 18:45:43,902 [INFO]   -> OK : Blank Log Black | Catch Surf | 448.9 €
+2026-05-10 18:45:44,919 [INFO] ==================================================
+2026-05-10 18:45:44,923 [INFO] TERMINE : 21 planches scrappees -> data/raw/planches.json
+2026-05-10 18:45:44,924 [INFO] ==================================================
+2026-05-10 18:58:09,482 [INFO] ==================================================
+2026-05-10 18:58:09,483 [INFO] DEMARRAGE SCRAPING - PAGE 1
+2026-05-10 18:58:09,484 [INFO] ==================================================
+2026-05-10 18:58:09,484 [INFO] Etape 1 : Recuperation des URLs...
+2026-05-10 18:58:10,419 [INFO] 21 URLs trouvees
+2026-05-10 18:58:10,421 [INFO] Scraping planche 1/21 : https://glisse-proshop.com/softboard-surf-en-mousse/catch-surf/odysea-log-cool-grey-7765105.html
+2026-05-10 18:58:11,036 [INFO]   -> OK : Odysea Log Cool Grey | shape=Longboard | niveau=Débutant - Intermédiaire
+2026-05-10 18:58:12,037 [INFO] Scraping planche 2/21 : https://glisse-proshop.com/surfboard-planche-rigide/lost/the-ripper-round-12196087.html
+2026-05-10 18:58:12,657 [INFO]   -> OK : The Ripper Round | shape=Shortboard | niveau=Non disponible
+2026-05-10 18:58:13,658 [INFO] Scraping planche 3/21 : https://glisse-proshop.com/planches-epoxy-soft/jjf/jjf-by-pyzel-astrofish-645993.html
+2026-05-10 18:58:14,256 [INFO]   -> OK : JJF by Pyzel- Astrofish | shape=Fish | niveau=Intermédiaire - Confirmé
+2026-05-10 18:58:15,257 [INFO] Scraping planche 4/21 : https://glisse-proshop.com/softboard-surf-en-mousse/softech/roller-royal-blue-7764070.html
+2026-05-10 18:58:15,984 [INFO]   -> OK : Roller Royal Blue | shape=Mini Malibu | niveau=Débutant - Intermédiaire
+2026-05-10 18:58:16,985 [INFO] Scraping planche 5/21 : https://glisse-proshop.com/softboard-surf-en-mousse/catch-surf/odysea-log-blair-conklin-pro-model-turquoise-12092295.html
+2026-05-10 18:58:17,591 [INFO]   -> OK : Odysea Log - Blair Conklin Pro Model Turquoise | shape=Longboard | niveau=Débutant - Intermédiaire
+2026-05-10 18:58:18,595 [INFO] Scraping planche 6/21 : https://glisse-proshop.com/softboard-surf-en-mousse/catch-surf/odysea-log-johnny-redmond-midnight-blue-12092267.html
+2026-05-10 18:58:19,373 [INFO]   -> OK : Odysea Log - Johnny Redmond Midnight Blue | shape=Longboard | niveau=Débutant - Intermédiaire
+2026-05-10 18:58:20,374 [INFO] Scraping planche 7/21 : https://glisse-proshop.com/softboard-surf-en-mousse/catch-surf/odysea-log-blue-stripes-12092282.html
+2026-05-10 18:58:21,524 [INFO]   -> OK : Odysea Log Blue Stripes | shape=Longboard | niveau=Débutant - Intermédiaire
+2026-05-10 18:58:22,525 [INFO] Scraping planche 8/21 : https://glisse-proshop.com/softboard-surf-en-mousse/catch-surf/odysea-skipper-quad-military-green-cheetah-12079773.html
+2026-05-10 18:58:23,144 [INFO]   -> OK : Odysea Skipper Quad Military Green Cheetah | shape=Fish | niveau=Intermédiaire - Confirmé
+2026-05-10 18:58:24,144 [INFO] Scraping planche 9/21 : https://glisse-proshop.com/softboard-surf-en-mousse/catch-surf/odysea-x-lost-rnf-midnight-blue-12079808.html
+2026-05-10 18:58:24,936 [INFO]   -> OK : Odysea X Lost Rnf Midnight Blue | shape=Fish | niveau=Intermédiaire - Confirmé
+2026-05-10 18:58:25,937 [INFO] Scraping planche 10/21 : https://glisse-proshop.com/softboard-surf-en-mousse/catch-surf/wave-bandit-easy-rider-cool-blue-12079788.html
+2026-05-10 18:58:26,584 [INFO]   -> OK : Wave Bandit Easy Rider Cool Blue | shape=Longboard | niveau=Débutant - Intermédiaire
+2026-05-10 18:58:27,585 [INFO] Scraping planche 11/21 : https://glisse-proshop.com/softboard-surf-en-mousse/catch-surf/wave-bandit-easy-rider-pilsner-12083812.html
+2026-05-10 18:58:28,190 [INFO]   -> OK : Wave Bandit Easy Rider Pilsner | shape=Longboard | niveau=Débutant - Intermédiaire
+2026-05-10 18:58:29,215 [INFO] Scraping planche 12/21 : https://glisse-proshop.com/surfboard-planche-rigide/lost/rnf-96-12196091.html
+2026-05-10 18:58:29,991 [INFO]   -> OK : RNF '96 | shape=Fish | niveau=Intermédiaire - Confirmé
+2026-05-10 18:58:30,992 [INFO] Scraping planche 13/21 : https://glisse-proshop.com/surfboard-planche-rigide/firewire/volcanic-helium-greedy-beaver-white-9309398.html
+2026-05-10 18:58:31,783 [INFO]   -> OK : Volcanic Helium Greedy Beaver White | shape=Mini Malibu | niveau=Intermédiaire - Confirmé
+2026-05-10 18:58:32,784 [INFO] Scraping planche 14/21 : https://glisse-proshop.com/planches-epoxy-soft/jjf/astrofish-by-ivan-florence-646694.html
+2026-05-10 18:58:33,393 [INFO]   -> OK : Astrofish by Ivan Florence | shape=Fish | niveau=Intermédiaire - Confirmé
+2026-05-10 18:58:34,394 [INFO] Scraping planche 15/21 : https://glisse-proshop.com/surfboard-planche-rigide/thunderbolt/mid-6-mini-twin-ocean-blue-12004536.html
+2026-05-10 18:58:35,063 [INFO]   -> OK : Mid 6 Mini Twin - Ocean Blue | shape=Mid Length | niveau=Confirmé - Expert
+2026-05-10 18:58:36,064 [INFO] Scraping planche 16/21 : https://glisse-proshop.com/planches-epoxy-soft/jjf/pyzel-nathan-florence-pro-model-646690.html
+2026-05-10 18:58:36,861 [INFO]   -> OK : Pyzel Nathan Florence Pro Model | shape=Shortboard | niveau=Intermédiaire - Confirmé
+2026-05-10 18:58:37,862 [INFO] Scraping planche 17/21 : https://glisse-proshop.com/softboard-surf-en-mousse/ocean-and-earth/the-bug-pink-12317155.html
+2026-05-10 18:58:38,616 [INFO]   -> OK : The Bug Pink | shape=Evolutive | niveau=Intermédiaire - Confirmé
+2026-05-10 18:58:39,617 [INFO] Scraping planche 18/21 : https://glisse-proshop.com/softboard-surf-en-mousse/ocean-and-earth/the-bug-purple-12317147.html
+2026-05-10 18:58:40,184 [INFO]   -> OK : The Bug Purple | shape=Evolutive | niveau=Intermédiaire - Confirmé
+2026-05-10 18:58:41,185 [INFO] Scraping planche 19/21 : https://glisse-proshop.com/softboard-surf-en-mousse/ocean-and-earth/the-bug-spearmint-12317151.html
+2026-05-10 18:58:41,838 [INFO]   -> OK : The Bug Spearmint | shape=Evolutive | niveau=Intermédiaire - Confirmé
+2026-05-10 18:58:42,839 [INFO] Scraping planche 20/21 : https://glisse-proshop.com/surfboard-planche-rigide/firewire/the-gem-diamond-timbertek-12500260.html
+2026-05-10 18:58:43,499 [INFO]   -> OK : The Gem Diamond Timbertek | shape=Longboard | niveau=Intermédiaire - Confirmé
+2026-05-10 18:58:44,499 [INFO] Scraping planche 21/21 : https://glisse-proshop.com/softboard-surf-en-mousse/catch-surf/blank-log-black-12079803.html
+2026-05-10 18:58:45,260 [INFO]   -> OK : Blank Log Black | shape=Longboard | niveau=Débutant - Intermédiaire
+2026-05-10 18:58:46,264 [INFO] ==================================================
+2026-05-10 18:58:46,265 [INFO] TERMINE : 21 planches -> data/raw/planches.json
+2026-05-10 18:58:46,265 [INFO] ==================================================
+2026-05-10 19:02:10,023 [INFO] ==================================================
+2026-05-10 19:02:10,025 [INFO] DEMARRAGE SCRAPING - 5 PAGES
+2026-05-10 19:02:10,025 [INFO] ==================================================
+2026-05-10 19:02:10,025 [INFO] Page 1/5 : https://glisse-proshop.com/surf/planches-de-surf.html
+2026-05-10 19:02:10,842 [INFO]   -> 21 nouvelles URLs (21 total)
+2026-05-10 19:02:12,842 [INFO] Page 2/5 : https://glisse-proshop.com/surf/surfboard-planche-rigide.html?pageNumber-9=2
+2026-05-10 19:02:13,463 [INFO]   -> 21 nouvelles URLs (42 total)
+2026-05-10 19:02:15,464 [INFO] Page 3/5 : https://glisse-proshop.com/surf/surfboard-planche-rigide.html?pageNumber-9=3
+2026-05-10 19:02:16,035 [INFO]   -> 22 nouvelles URLs (64 total)
+2026-05-10 19:02:18,036 [INFO] Page 4/5 : https://glisse-proshop.com/surf/surfboard-planche-rigide.html?pageNumber-9=4
+2026-05-10 19:02:18,543 [INFO]   -> 24 nouvelles URLs (88 total)
+2026-05-10 19:02:20,544 [INFO] Page 5/5 : https://glisse-proshop.com/surf/surfboard-planche-rigide.html?pageNumber-9=5
+2026-05-10 19:02:21,214 [INFO]   -> 24 nouvelles URLs (112 total)
+2026-05-10 19:02:23,215 [INFO] Total URLs a scraper : 112
+2026-05-10 19:02:23,215 [INFO] Scraping 1/112 : https://glisse-proshop.com/softboard-surf-en-mousse/catch-surf/odysea-log-cool-grey-7765105.html
+2026-05-10 19:02:23,859 [INFO]   -> OK : Odysea Log Cool Grey | Catch Surf | Longboard
+2026-05-10 19:02:24,860 [INFO] Scraping 2/112 : https://glisse-proshop.com/surfboard-planche-rigide/lost/the-ripper-round-12196087.html
+2026-05-10 19:02:25,513 [INFO]   -> OK : The Ripper Round | Lost | Shortboard
+2026-05-10 19:02:26,514 [INFO] Scraping 3/112 : https://glisse-proshop.com/planches-epoxy-soft/jjf/jjf-by-pyzel-astrofish-645993.html
+2026-05-10 19:02:27,054 [INFO]   -> OK : JJF by Pyzel- Astrofish | Jjf | Fish
+2026-05-10 19:02:28,055 [INFO] Scraping 4/112 : https://glisse-proshop.com/softboard-surf-en-mousse/softech/roller-royal-blue-7764070.html
+2026-05-10 19:02:28,751 [INFO]   -> OK : Roller Royal Blue | Softech | Mini Malibu
+2026-05-10 19:02:29,751 [INFO] Scraping 5/112 : https://glisse-proshop.com/softboard-surf-en-mousse/catch-surf/odysea-log-blair-conklin-pro-model-turquoise-12092295.html
+2026-05-10 19:02:30,320 [INFO]   -> OK : Odysea Log - Blair Conklin Pro Model Turquoise | Catch Surf | Longboard
+2026-05-10 19:02:31,321 [INFO] Scraping 6/112 : https://glisse-proshop.com/softboard-surf-en-mousse/catch-surf/odysea-log-johnny-redmond-midnight-blue-12092267.html
+2026-05-10 19:02:31,975 [INFO]   -> OK : Odysea Log - Johnny Redmond Midnight Blue | Catch Surf | Longboard
+2026-05-10 19:02:32,976 [INFO] Scraping 7/112 : https://glisse-proshop.com/softboard-surf-en-mousse/catch-surf/odysea-log-blue-stripes-12092282.html
+2026-05-10 19:02:33,578 [INFO]   -> OK : Odysea Log Blue Stripes | Catch Surf | Longboard
+2026-05-10 19:02:34,579 [INFO] Scraping 8/112 : https://glisse-proshop.com/softboard-surf-en-mousse/catch-surf/odysea-skipper-quad-military-green-cheetah-12079773.html
+2026-05-10 19:02:35,283 [INFO]   -> OK : Odysea Skipper Quad Military Green Cheetah | Catch Surf | Fish
+2026-05-10 19:02:36,286 [INFO] Scraping 9/112 : https://glisse-proshop.com/softboard-surf-en-mousse/catch-surf/odysea-x-lost-rnf-midnight-blue-12079808.html
+2026-05-10 19:02:37,527 [INFO]   -> OK : Odysea X Lost Rnf Midnight Blue | Catch Surf | Fish
+2026-05-10 19:02:38,528 [INFO] Scraping 10/112 : https://glisse-proshop.com/softboard-surf-en-mousse/catch-surf/wave-bandit-easy-rider-cool-blue-12079788.html
+2026-05-10 19:02:39,371 [INFO]   -> OK : Wave Bandit Easy Rider Cool Blue | Catch Surf | Longboard
+2026-05-10 19:02:40,371 [INFO] Scraping 11/112 : https://glisse-proshop.com/softboard-surf-en-mousse/catch-surf/wave-bandit-easy-rider-pilsner-12083812.html
+2026-05-10 19:02:41,061 [INFO]   -> OK : Wave Bandit Easy Rider Pilsner | Catch Surf | Longboard
+2026-05-10 19:02:42,062 [INFO] Scraping 12/112 : https://glisse-proshop.com/surfboard-planche-rigide/lost/rnf-96-12196091.html
+2026-05-10 19:02:42,784 [INFO]   -> OK : RNF '96 | Lost | Fish
+2026-05-10 19:02:43,785 [INFO] Scraping 13/112 : https://glisse-proshop.com/surfboard-planche-rigide/firewire/volcanic-helium-greedy-beaver-white-9309398.html
+2026-05-10 19:02:45,010 [INFO]   -> OK : Volcanic Helium Greedy Beaver White | Firewire | Mini Malibu
+2026-05-10 19:02:46,011 [INFO] Scraping 14/112 : https://glisse-proshop.com/planches-epoxy-soft/jjf/astrofish-by-ivan-florence-646694.html
+2026-05-10 19:02:46,743 [INFO]   -> OK : Astrofish by Ivan Florence | Jjf | Fish
+2026-05-10 19:02:47,744 [INFO] Scraping 15/112 : https://glisse-proshop.com/surfboard-planche-rigide/thunderbolt/mid-6-mini-twin-ocean-blue-12004536.html
+2026-05-10 19:02:48,526 [INFO]   -> OK : Mid 6 Mini Twin - Ocean Blue | Thunderbolt | Mid Length
+2026-05-10 19:02:49,527 [INFO] Scraping 16/112 : https://glisse-proshop.com/planches-epoxy-soft/jjf/pyzel-nathan-florence-pro-model-646690.html
+2026-05-10 19:02:50,073 [INFO]   -> OK : Pyzel Nathan Florence Pro Model | Jjf | Shortboard
+2026-05-10 19:02:51,074 [INFO] Scraping 17/112 : https://glisse-proshop.com/softboard-surf-en-mousse/ocean-and-earth/the-bug-pink-12317155.html
+2026-05-10 19:02:51,760 [INFO]   -> OK : The Bug Pink | Ocean And Earth | Evolutive
+2026-05-10 19:02:52,760 [INFO] Scraping 18/112 : https://glisse-proshop.com/softboard-surf-en-mousse/ocean-and-earth/the-bug-purple-12317147.html
+2026-05-10 19:02:53,339 [INFO]   -> OK : The Bug Purple | Ocean And Earth | Evolutive
+2026-05-10 19:02:54,340 [INFO] Scraping 19/112 : https://glisse-proshop.com/softboard-surf-en-mousse/ocean-and-earth/the-bug-spearmint-12317151.html
+2026-05-10 19:02:55,145 [INFO]   -> OK : The Bug Spearmint | Ocean And Earth | Evolutive
+2026-05-10 19:02:56,146 [INFO] Scraping 20/112 : https://glisse-proshop.com/surfboard-planche-rigide/firewire/the-gem-diamond-timbertek-12500260.html
+2026-05-10 19:02:56,789 [INFO]   -> OK : The Gem Diamond Timbertek | Firewire | Longboard
+2026-05-10 19:02:57,789 [INFO] Scraping 21/112 : https://glisse-proshop.com/softboard-surf-en-mousse/catch-surf/blank-log-black-12079803.html
+2026-05-10 19:02:58,408 [INFO]   -> OK : Blank Log Black | Catch Surf | Longboard
+2026-05-10 19:02:59,409 [INFO] Scraping 22/112 : https://glisse-proshop.com/softboard-surf-en-mousse/catch-surf/blank-series-log-tri-fin-pink-12114197.html
+2026-05-10 19:03:00,110 [INFO]   -> OK : Blank Series Log - Tri Fin - Pink | Catch Surf | Longboard
+2026-05-10 19:03:01,111 [INFO] Scraping 23/112 : https://glisse-proshop.com/softboard-surf-en-mousse/softech/coaster-fcs-ii-sky-blue-12447381.html
+2026-05-10 19:03:02,156 [INFO]   -> OK : Coaster Fcs II Sky Blue | Softech | Longboard
+2026-05-10 19:03:03,156 [INFO] Scraping 24/112 : https://glisse-proshop.com/surfboard-planche-rigide/pyzel/crisis-twin-12196055.html
+2026-05-10 19:03:04,776 [INFO]   -> OK : Crisis Twin | Pyzel | Shortboard
+2026-05-10 19:03:05,777 [INFO] Scraping 25/112 : https://glisse-proshop.com/surfboard-planche-rigide/grace/demibu-fcs-ii-white-green-7775120.html
+2026-05-10 19:03:07,567 [INFO]   -> OK : Demibu Fcs II White Green | Grace | Evolutive
+2026-05-10 19:03:08,568 [INFO] Scraping 26/112 : https://glisse-proshop.com/surfboard-planche-rigide/lost/driver-3-0-12196079.html
+2026-05-10 19:03:09,945 [INFO]   -> OK : Driver 3.0 | Lost | Shortboard
+2026-05-10 19:03:10,946 [INFO] Scraping 27/112 : https://glisse-proshop.com/surfboard-planche-rigide/nsp/elements-longboard-hdt-futures-stripes-blue-4374119.html
+2026-05-10 19:03:12,627 [INFO]   -> OK : Elements Longboard HDT Futures - Stripes Blue | Nsp | Longboard
+2026-05-10 19:03:13,628 [INFO] Scraping 28/112 : https://glisse-proshop.com/softboard-surf-en-mousse/ocean-and-earth/ezi-rider-blue-12331788.html
+2026-05-10 19:03:14,784 [INFO]   -> OK : Ezi-Rider Blue | Ocean And Earth | Fish
+2026-05-10 19:03:15,785 [INFO] Scraping 29/112 : https://glisse-proshop.com/softboard-surf-en-mousse/ocean-and-earth/ezi-rider-fish-blue-12317131.html
+2026-05-10 19:03:17,163 [INFO]   -> OK : Ezi-Rider Fish Blue | Ocean And Earth | Fish
+2026-05-10 19:03:18,164 [INFO] Scraping 30/112 : https://glisse-proshop.com/softboard-surf-en-mousse/ocean-and-earth/ezi-rider-fish-navy-12317135.html
+2026-05-10 19:03:19,097 [INFO]   -> OK : Ezi-Rider Fish Navy | Ocean And Earth | Fish
+2026-05-10 19:03:20,098 [INFO] Scraping 31/112 : https://glisse-proshop.com/softboard-surf-en-mousse/ocean-and-earth/ezi-rider-fish-spearmint-12317139.html
+2026-05-10 19:03:20,735 [INFO]   -> OK : Ezi-Rider Fish Spearmint | Ocean And Earth | Fish
+2026-05-10 19:03:21,735 [INFO] Scraping 32/112 : https://glisse-proshop.com/softboard-surf-en-mousse/ocean-and-earth/ezi-rider-spearmint-12331798.html
+2026-05-10 19:03:22,942 [INFO]   -> OK : Ezi-Rider Spearmint | Ocean And Earth | Fish
+2026-05-10 19:03:23,943 [INFO] Scraping 33/112 : https://glisse-proshop.com/softboard-surf-en-mousse/ocean-and-earth/ezi-rider-white-12331793.html
+2026-05-10 19:03:24,662 [INFO]   -> OK : Ezi-Rider White | Ocean And Earth | Fish
+2026-05-10 19:03:25,663 [INFO] Scraping 34/112 : https://glisse-proshop.com/surfboard-planche-rigide/firewire/frk-i-bolic-futures-fins-4368695.html
+2026-05-10 19:03:27,589 [INFO]   -> OK : Frk+ I-bolic Futures Fins | Firewire | Shortboard
+2026-05-10 19:03:28,590 [INFO] Scraping 35/112 : https://glisse-proshop.com/surfboard-planche-rigide/nsp/gemini-twin-pu-12196071.html
+2026-05-10 19:03:30,502 [INFO]   -> OK : Gemini Twin Pu | Nsp | Mini Malibu
+2026-05-10 19:03:31,503 [INFO] Scraping 36/112 : https://glisse-proshop.com/surfboard-planche-rigide/pyzel/ghost-futures-fins-x3-5748532.html
+2026-05-10 19:03:32,607 [INFO]   -> OK : Ghost Futures Fins x3 | Pyzel | Shortboard
+2026-05-10 19:03:33,608 [INFO] Scraping 37/112 : https://glisse-proshop.com/surfboard-planche-rigide/firewire/groove-helium-12447360.html
+2026-05-10 19:03:35,058 [INFO]   -> OK : Groove Helium | Firewire | Hybride
+2026-05-10 19:03:36,059 [INFO] Scraping 38/112 : https://glisse-proshop.com/surfboard-planche-rigide/thunderbolt/harley-ingleby-mid-6-mini-light-blue-12001738.html
+2026-05-10 19:03:38,169 [INFO]   -> OK : Harley Ingleby Mid 6 Mini - Light Blue | Thunderbolt | Mid Length
+2026-05-10 19:03:39,170 [INFO] Scraping 39/112 : https://glisse-proshop.com/surfboard-planche-rigide/thunderbolt/harley-ingleby-mid-6-mini-orange-12001742.html
+2026-05-10 19:03:40,714 [INFO]   -> OK : Harley Ingleby Mid 6 Mini - Orange | Thunderbolt | Mid Length
+2026-05-10 19:03:41,715 [INFO] Scraping 40/112 : https://glisse-proshop.com/surfboard-planche-rigide/firewire/helium-groove-machado-9318326.html
+2026-05-10 19:03:43,032 [INFO]   -> OK : Helium Groove Machado | Firewire | Hybride
+2026-05-10 19:03:44,033 [INFO] Scraping 41/112 : https://glisse-proshop.com/surfboard-planche-rigide/firewire/helium-machado-cado-white-9357466.html
+2026-05-10 19:03:44,877 [INFO]   -> OK : Helium Machado Cado White | Firewire | Hybride
+2026-05-10 19:03:45,878 [INFO] Scraping 42/112 : https://glisse-proshop.com/surfboard-planche-rigide/firewire/ibolic-sci-fi-2-0-white-9309394.html
+2026-05-10 19:03:47,200 [INFO]   -> OK : Ibolic Sci-Fi 2.0 White | Firewire | Shortboard
+2026-05-10 19:03:48,201 [INFO] Scraping 43/112 : https://glisse-proshop.com/surfboard-planche-rigide/lib-tech/lost-big-rig-driver-12159247.html
+2026-05-10 19:03:50,602 [INFO]   -> OK : Lost Big Rig Driver | Lib Tech | Shortboard
+2026-05-10 19:03:51,603 [INFO] Scraping 44/112 : https://glisse-proshop.com/surfboard-planche-rigide/lib-tech/lost-pisces-12159255.html
+2026-05-10 19:03:52,317 [INFO]   -> OK : Lost Pisces | Lib Tech | Fish
+2026-05-10 19:03:53,318 [INFO] Scraping 45/112 : https://glisse-proshop.com/surfboard-planche-rigide/lib-tech/lost-puddle-jumper-12159259.html
+2026-05-10 19:03:54,571 [INFO]   -> OK : Lost Puddle Jumper | Lib Tech | Shortboard
+2026-05-10 19:03:55,572 [INFO] Scraping 46/112 : https://glisse-proshop.com/surfboard-planche-rigide/lib-tech/lost-quiver-killer-12159271.html
+2026-05-10 19:03:56,918 [INFO]   -> OK : Lost Quiver Killer | Lib Tech | Shortboard
+2026-05-10 19:03:57,919 [INFO] Scraping 47/112 : https://glisse-proshop.com/surfboard-planche-rigide/lib-tech/lost-rnf-96-12159263.html
+2026-05-10 19:03:59,252 [INFO]   -> OK : Lost Rnf 96 | Lib Tech | Fish
+2026-05-10 19:04:00,254 [INFO] Scraping 48/112 : https://glisse-proshop.com/surfboard-planche-rigide/lib-tech/lost-super-smooth-operator-12159283.html
+2026-05-10 19:04:01,384 [INFO]   -> OK : Lost Super Smooth Operator | Lib Tech | Mid Length
+2026-05-10 19:04:02,384 [INFO] Scraping 49/112 : https://glisse-proshop.com/surfboard-planche-rigide/dhd/mf-eclipse-fcs-12196063.html
+2026-05-10 19:04:03,413 [INFO]   -> OK : Mf Eclipse Fcs | Dhd | Shortboard
+2026-05-10 19:04:04,414 [INFO] Scraping 50/112 : https://glisse-proshop.com/planches-epoxy-soft/maku/mid-length-single-sides-2-1-12377470.html
+2026-05-10 19:04:05,472 [INFO]   -> OK : Mid Length Single + Sides 2+1 | Maku | Mid Length
+2026-05-10 19:04:06,473 [INFO] Scraping 51/112 : https://glisse-proshop.com/softboard-surf-en-mousse/catch-surf/odysea-plank-single-fin-midnight-blue-scallops-12079783.html
+2026-05-10 19:04:07,419 [INFO]   -> OK : Odysea Plank - Single Fin Midnight Blue Scallops | Catch Surf | Longboard
+2026-05-10 19:04:08,420 [INFO] Scraping 52/112 : https://glisse-proshop.com/softboard-surf-en-mousse/catch-surf/odysea-x-lost-rnf-black-12079778.html
+2026-05-10 19:04:09,264 [INFO]   -> OK : Odysea X Lost Rnf Black | Catch Surf | Fish
+2026-05-10 19:04:10,265 [INFO] Scraping 53/112 : https://glisse-proshop.com/surfboard-planche-rigide/thunderbolt/outlier-x-12196075.html
+2026-05-10 19:04:12,058 [INFO]   -> OK : Outlier X | Thunderbolt | Longboard
+2026-05-10 19:04:13,058 [INFO] Scraping 54/112 : https://glisse-proshop.com/surfboard-planche-rigide/lib-tech/pickup-stick-9686381.html
+2026-05-10 19:04:13,610 [INFO]   -> OK : Pickup Stick | Lib Tech | Mid Length
+2026-05-10 19:04:14,611 [INFO] Scraping 55/112 : https://glisse-proshop.com/surfboard-planche-rigide/lost/pisces-futures-12150025.html
+2026-05-10 19:04:16,282 [INFO]   -> OK : Pisces Futures | Lost | Fish
+2026-05-10 19:04:17,283 [INFO] Scraping 56/112 : https://glisse-proshop.com/surfboard-planche-rigide/pyzel/precious-fcs-9951179.html
+2026-05-10 19:04:20,315 [INFO]   -> OK : Precious Fcs | Pyzel | Shortboard
+2026-05-10 19:04:21,316 [INFO] Scraping 57/112 : https://glisse-proshop.com/surfboard-planche-rigide/lost/puddle-jumper-12196095.html
+2026-05-10 19:04:22,288 [INFO]   -> OK : Puddle Jumper | Lost | Shortboard
+2026-05-10 19:04:23,288 [INFO] Scraping 58/112 : https://glisse-proshop.com/surfboard-planche-rigide/lost/quiver-killer-12196083.html
+2026-05-10 19:04:24,778 [INFO]   -> OK : Quiver Killer | Lost | Mid Length
+2026-05-10 19:04:25,779 [INFO] Scraping 59/112 : https://glisse-proshop.com/planches-epoxy-soft/maku/retro-fish-twin-12377480.html
+2026-05-10 19:04:27,188 [INFO]   -> OK : Retro Fish Twin | Maku | Fish
+2026-05-10 19:04:28,189 [INFO] Scraping 60/112 : https://glisse-proshop.com/surfboard-planche-rigide/lost/rnf-96-kingfish-12150021.html
+2026-05-10 19:04:30,242 [INFO]   -> OK : Rnf 96 Kingfish | Lost | Mid Length
+2026-05-10 19:04:31,243 [INFO] Scraping 61/112 : https://glisse-proshop.com/softboard-surf-en-mousse/softech/roller-2-0-st-chilli-12262258.html
+2026-05-10 19:04:32,654 [INFO]   -> OK : Roller 2.0 St Chilli | Softech | Longboard
+2026-05-10 19:04:33,654 [INFO] Scraping 62/112 : https://glisse-proshop.com/softboard-surf-en-mousse/softech/roller-2-0-st-seafoam-12262263.html
+2026-05-10 19:04:35,139 [INFO]   -> OK : Roller 2.0 St Seafoam | Softech | Longboard
+2026-05-10 19:04:36,140 [INFO] Scraping 63/112 : https://glisse-proshop.com/softboard-surf-en-mousse/softech/roller-grey-12196148.html
+2026-05-10 19:04:37,539 [INFO]   -> OK : Roller Grey | Softech | Evolutive
+2026-05-10 19:04:38,540 [INFO] Scraping 64/112 : https://glisse-proshop.com/surfboard-planche-rigide/firewire/seaside-helium-12447364.html
+2026-05-10 19:04:39,241 [INFO]   -> OK : Seaside Helium | Firewire | Fish
+2026-05-10 19:04:40,241 [INFO] Scraping 65/112 : https://glisse-proshop.com/surfboard-planche-rigide/firewire/seaside-helium-swallow-futures-fins-3989619.html
+2026-05-10 19:04:40,906 [INFO]   -> OK : Seaside Helium Swallow Futures Fins | Firewire | Fish
+2026-05-10 19:04:41,907 [INFO] Scraping 66/112 : https://glisse-proshop.com/softboard-surf-en-mousse/ocean-storm/soft-top-back-to-school-green-646474.html
+2026-05-10 19:04:42,908 [INFO]   -> OK : Soft Top Back To School - Green | Ocean Storm | Mini Malibu
+2026-05-10 19:04:43,909 [INFO] Scraping 67/112 : https://glisse-proshop.com/surfboard-planche-rigide/lost/sub-driver-3-0-12196099.html
+2026-05-10 19:04:44,634 [INFO]   -> OK : Sub Driver 3.0 | Lost | Shortboard
+2026-05-10 19:04:45,636 [INFO] Scraping 68/112 : https://glisse-proshop.com/surfboard-planche-rigide/firewire/sweet-potato-helium-12447368.html
+2026-05-10 19:04:46,412 [INFO]   -> OK : Sweet Potato Helium | Firewire | Hybride
+2026-05-10 19:04:47,413 [INFO] Scraping 69/112 : https://glisse-proshop.com/softboard-surf-en-mousse/ocean-and-earth/the-bug-blue-12317143.html
+2026-05-10 19:04:48,143 [INFO]   -> OK : The Bug Blue | Ocean And Earth | Evolutive
+2026-05-10 19:04:49,144 [INFO] Scraping 70/112 : https://glisse-proshop.com/surfboard-planche-rigide/rusty/the-deuce-9795311.html
+2026-05-10 19:04:50,799 [INFO]   -> OK : The Deuce | Rusty | Fish
+2026-05-10 19:04:51,800 [INFO] Scraping 71/112 : https://glisse-proshop.com/surfboard-planche-rigide/stewart/tipster-4790076.html
+2026-05-10 19:04:53,045 [INFO]   -> OK : Tipster | Stewart | Longboard
+2026-05-10 19:04:54,045 [INFO] Scraping 72/112 : https://glisse-proshop.com/surfboard-planche-rigide/firewire/too-fish-swallow-12500252.html
+2026-05-10 19:04:55,242 [INFO]   -> OK : Too Fish Swallow | Firewire | Fish
+2026-05-10 19:04:56,243 [INFO] Scraping 73/112 : https://glisse-proshop.com/surfboard-planche-rigide/dhd/utopia-fcs-12196059.html
+2026-05-10 19:04:57,845 [INFO]   -> OK : Utopia Fcs | Dhd | Shortboard
+2026-05-10 19:04:58,846 [INFO] Scraping 74/112 : https://glisse-proshop.com/softboard-surf-en-mousse/maku/waikiki-malibu-thruster-12377465.html
+2026-05-10 19:04:59,666 [INFO]   -> OK : Waikiki Malibu Thruster | Maku | Mini Malibu
+2026-05-10 19:05:00,666 [INFO] Scraping 75/112 : https://glisse-proshop.com/softboard-surf-en-mousse/maku/widekiki-thruster-12377475.html
+2026-05-10 19:05:02,372 [INFO]   -> OK : Widekiki Thruster | Maku | Mini Malibu
+2026-05-10 19:05:03,421 [INFO] Scraping 76/112 : https://glisse-proshop.com/planches-epoxy-soft/jjf/ivan-florence-astrofish-12304560.html
+2026-05-10 19:05:05,068 [INFO]   -> OK : Ivan Florence Astrofish | Jjf | Fish
+2026-05-10 19:05:06,069 [INFO] Scraping 77/112 : https://glisse-proshop.com/planches-epoxy-soft/jjf/the-log-blue-646053.html
+2026-05-10 19:05:06,718 [INFO]   -> OK : The Log - Blue | Jjf | Longboard
+2026-05-10 19:05:07,721 [INFO] Scraping 78/112 : https://glisse-proshop.com/surfboard-planche-rigide/sharp-eye/surfboard-inferno-72-future-fins-6731560.html
+2026-05-10 19:05:09,277 [INFO]   -> OK : Surfboard Inferno 72 Future Fins | Sharp Eye | Shortboard
+2026-05-10 19:05:10,278 [INFO] Scraping 79/112 : https://glisse-proshop.com/planches-epoxy-soft/jjf/-the-log-black-645997.html
+2026-05-10 19:05:11,636 [INFO]   -> OK : THE LOG - Black | Jjf | Longboard
+2026-05-10 19:05:12,638 [INFO] Scraping 80/112 : https://glisse-proshop.com/softboard-surf-en-mousse/catch-surf/blank-thruster-white-12079798.html
+2026-05-10 19:05:14,092 [INFO]   -> OK : Blank Thruster White | Catch Surf | Fish
+2026-05-10 19:05:15,093 [INFO] Scraping 81/112 : https://glisse-proshop.com/softboard-surf-en-mousse/softech/bomber-fcs-ii-grey-dusty-red-7769522.html
+2026-05-10 19:05:16,183 [INFO]   -> OK : Bomber Fcs II Grey Dusty Red | Softech | Mid Length
+2026-05-10 19:05:17,210 [INFO] Scraping 82/112 : https://glisse-proshop.com/planches-epoxy-soft/ocean-and-earth/happy-hour-epoxy-soft-olive-12323191.html
+2026-05-10 19:05:18,455 [INFO]   -> OK : Happy Hour Epoxy-Soft Olive | Ocean And Earth | Hybride
+2026-05-10 19:05:19,456 [INFO] Scraping 83/112 : https://glisse-proshop.com/planches-epoxy-soft/ocean-and-earth/happy-hour-epoxy-soft-violet-12323186.html
+2026-05-10 19:05:20,408 [INFO]   -> OK : Happy Hour Epoxy-Soft Violet | Ocean And Earth | Hybride
+2026-05-10 19:05:21,409 [INFO] Scraping 84/112 : https://glisse-proshop.com/planches-epoxy-soft/ocean-and-earth/happy-hour-soft-epoxy-sky-blue-12244479.html
+2026-05-10 19:05:22,153 [INFO]   -> OK : Happy Hour Soft Epoxy Sky Blue | Ocean And Earth | Hybride
+2026-05-10 19:05:23,153 [INFO] Scraping 85/112 : https://glisse-proshop.com/softboard-surf-en-mousse/catch-surf/heritage-fish-quad-fin-white-11109015.html
+2026-05-10 19:05:24,057 [INFO]   -> OK : Heritage Fish - Quad Fin White | Catch Surf | Fish
+2026-05-10 19:05:25,058 [INFO] Scraping 86/112 : https://glisse-proshop.com/softboard-surf-en-mousse/phipps/hybrid-mousse-one-bad-egg-5056218.html
+2026-05-10 19:05:26,303 [INFO]   -> OK : Hybrid Mousse One Bad Egg | Phipps | Mid Length
+2026-05-10 19:05:27,304 [INFO] Scraping 87/112 : https://glisse-proshop.com/planches-epoxy-soft/stewart/hydrocush-funline11-sage-green-12196108.html
+2026-05-10 19:05:28,121 [INFO]   -> OK : Hydrocush Funline11 Sage Green | Stewart | Mini Malibu
+2026-05-10 19:05:29,122 [INFO] Scraping 88/112 : https://glisse-proshop.com/planches-epoxy-soft/stewart/hydrocush-redline11-aqua-12196113.html
+2026-05-10 19:05:29,829 [INFO]   -> OK : Hydrocush Redline11 Aqua | Stewart | Hybride
+2026-05-10 19:05:30,830 [INFO] Scraping 89/112 : https://glisse-proshop.com/planches-epoxy-soft/stewart/hydrocush-wild-bill-sage-green-12154324.html
+2026-05-10 19:05:31,733 [INFO]   -> OK : Hydrocush Wild Bill Sage Green | Stewart | Shortboard
+2026-05-10 19:05:32,734 [INFO] Scraping 90/112 : https://glisse-proshop.com/planches-epoxy-soft/jjf/jjf-by-pyzel-astrofish-blue-646049.html
+2026-05-10 19:05:33,466 [INFO]   -> OK : JJF by Pyzel Astrofish - Blue | Jjf | Fish
+2026-05-10 19:05:34,466 [INFO] Scraping 91/112 : https://glisse-proshop.com/planches-epoxy-soft/softech/middie-646839.html
+2026-05-10 19:05:35,452 [INFO]   -> OK : Middie | Softech | Mini Malibu
+2026-05-10 19:05:36,453 [INFO] Scraping 92/112 : https://glisse-proshop.com/softboard-surf-en-mousse/softech/middie-butter-palms-7763654.html
+2026-05-10 19:05:37,199 [INFO]   -> OK : Middie Butter Palms | Softech | Mini Malibu
+2026-05-10 19:05:38,201 [INFO] Scraping 93/112 : https://glisse-proshop.com/surfboard-planche-rigide/nsp/nsp-element-hdt-long-red-646370.html
+2026-05-10 19:05:38,948 [INFO]   -> OK : NSP Element HDT Long - Red | Nsp | Longboard
+2026-05-10 19:05:39,949 [INFO] Scraping 94/112 : https://glisse-proshop.com/surfboard-planche-rigide/nsp/nsp-protech-long-white-tint-646386.html
+2026-05-10 19:05:41,734 [INFO]   -> OK : NSP Protech Long - White Tint | Nsp | Longboard
+2026-05-10 19:05:42,734 [INFO] Scraping 95/112 : https://glisse-proshop.com/softboard-surf-en-mousse/catch-surf/odysea-log-kalani-robb-cool-grey-12377434.html
+2026-05-10 19:05:45,074 [INFO]   -> OK : Odysea Log Kalani Robb Cool Grey | Catch Surf | Longboard
+2026-05-10 19:05:46,109 [INFO] Scraping 96/112 : https://glisse-proshop.com/softboard-surf-en-mousse/catch-surf/odysea-log-real-tree-11109020.html
+2026-05-10 19:05:47,394 [INFO]   -> OK : Odysea Log Real Tree | Catch Surf | Longboard
+2026-05-10 19:05:48,395 [INFO] Scraping 97/112 : https://glisse-proshop.com/softboard-surf-en-mousse/catch-surf/odysea-skipper-thruster-x-evan-rossell-11109025.html
+2026-05-10 19:05:49,471 [INFO]   -> OK : Odysea Skipper Thruster X Evan Rossell | Catch Surf | Fish
+2026-05-10 19:05:50,509 [INFO] Scraping 98/112 : https://glisse-proshop.com/softboard-surf-en-mousse/catch-surf/odysea-x-lost-crowd-killer-midnight-blue-12317022.html
+2026-05-10 19:05:52,259 [INFO]   -> OK : Odysea X Lost Crowd Killer Midnight Blue | Catch Surf | Mid Length
+2026-05-10 19:05:53,260 [INFO] Scraping 99/112 : https://glisse-proshop.com/surfboard-planche-rigide/lib-tech/pickup-stick-4171713.html
+2026-05-10 19:05:54,100 [INFO]   -> OK : Pickup Stick | Lib Tech | Mini Malibu
+2026-05-10 19:05:55,101 [INFO] Scraping 100/112 : https://glisse-proshop.com/surfboard-planche-rigide/nsp/protech-funboard-navy-tint-646382.html
+2026-05-10 19:05:56,432 [INFO]   -> OK : Protech Funboard - Navy Tint | Nsp | Evolutive
+2026-05-10 19:05:57,433 [INFO] Scraping 101/112 : https://glisse-proshop.com/surfboard-planche-rigide/lib-tech/sick-pickup-stick-9686393.html
+2026-05-10 19:05:58,537 [INFO]   -> OK : Sick Pickup Stick | Lib Tech | Mini Malibu
+2026-05-10 19:05:59,538 [INFO] Scraping 102/112 : https://glisse-proshop.com/softboard-surf-en-mousse/ocean-storm/slim-jim-back-to-school-blue-12196133.html
+2026-05-10 19:06:01,001 [INFO]   -> OK : Slim Jim Back To School Blue | Ocean Storm | Longboard
+2026-05-10 19:06:02,002 [INFO] Scraping 103/112 : https://glisse-proshop.com/surfboard-planche-rigide/stewart/2fun-10673071.html
+2026-05-10 19:06:03,858 [INFO]   -> OK : 2Fun | Stewart | Mid Length
+2026-05-10 19:06:04,859 [INFO] Scraping 104/112 : https://glisse-proshop.com/softboard-surf-en-mousse/quiksilver/bat-kalamata-7769338.html
+2026-05-10 19:06:06,554 [INFO]   -> OK : Bat Kalamata | Quiksilver | Mini Malibu
+2026-05-10 19:06:07,555 [INFO] Scraping 105/112 : https://glisse-proshop.com/planches-epoxy-soft/mf-softboard/beastie-fcsii-sky-sky-7775160.html
+2026-05-10 19:06:08,270 [INFO]   -> OK : Beastie - FCSII Sky Sky | Mf Softboard | Mini Malibu
+2026-05-10 19:06:09,270 [INFO] Scraping 106/112 : https://glisse-proshop.com/softboard-surf-en-mousse/catch-surf/ben-gravy-performer-tri-white-12114212.html
+2026-05-10 19:06:11,045 [INFO]   -> OK : Ben Gravy Performer Tri - White | Catch Surf | Fish
+2026-05-10 19:06:12,045 [INFO] Scraping 107/112 : https://glisse-proshop.com/softboard-surf-en-mousse/catch-surf/ben-gravy-pro-ez-rider-white-12114207.html
+2026-05-10 19:06:13,768 [INFO]   -> OK : Ben Gravy Pro Ez Rider - White | Catch Surf | Longboard
+2026-05-10 19:06:14,768 [INFO] Scraping 108/112 : https://glisse-proshop.com/softboard-surf-en-mousse/catch-surf/blank-thruster-black-12079758.html
+2026-05-10 19:06:16,228 [INFO]   -> OK : Blank Thruster Black | Catch Surf | Fish
+2026-05-10 19:06:17,229 [INFO] Scraping 109/112 : https://glisse-proshop.com/surfboard-planche-rigide/channel-islands/ci-g-skate-futures-12196043.html
+2026-05-10 19:06:18,804 [INFO]   -> OK : Ci G Skate Futures | Channel Islands | Fish
+2026-05-10 19:06:19,805 [INFO] Scraping 110/112 : https://glisse-proshop.com/surfboard-planche-rigide/grace/demibu-futures-11878728.html
+2026-05-10 19:06:20,661 [INFO]   -> OK : Demibu Futures | Grace | Evolutive
+2026-05-10 19:06:21,661 [INFO] Scraping 111/112 : https://glisse-proshop.com/surfboard-planche-rigide/rusty/dwart-9795307.html
+2026-05-10 19:06:23,096 [INFO]   -> OK : Dwart | Rusty | Shortboard
+2026-05-10 19:06:24,099 [INFO] Scraping 112/112 : https://glisse-proshop.com/planches-epoxy-soft/rusty/egg-not-6622776.html
+2026-05-10 19:06:24,719 [INFO]   -> OK : Egg Not | Rusty | Hybride
+2026-05-10 19:06:25,740 [INFO] ==================================================
+2026-05-10 19:06:25,741 [INFO] TERMINE : 112 planches -> data/raw/planches.json
+2026-05-10 19:06:25,741 [INFO] ==================================================

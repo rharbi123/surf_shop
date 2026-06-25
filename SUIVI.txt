@@ -1,0 +1,185 @@
+=====================================================
+  JOURNAL DE BORD — SURF SHOP / WAVECRAFT
+  Projet : surf_shop | Dev : Claude Sonnet 4.6
+=====================================================
+
+FORMAT : [DATE] ACTION → RÉSULTAT
+
+-----------------------------------------------------
+[11/06/2026] SETUP BASE DE DONNÉES
+-----------------------------------------------------
+→ Connexion MySQL via XAMPP (C:\xampp\mysql\bin\mysql.exe)
+  - Host: localhost | Port: 3306 | DB: surfshop_db | User: root
+→ Découverte : tables existantes mais toutes vides
+→ Exécution : backend/sql/seed_data.sql (créé à la volée)
+  - Résultat : 8 utilisateurs, 6 planches test, 10 cours, 9 réservations, 5 spots
+→ Suppression des 6 planches test pour insérer les vraies données
+
+-----------------------------------------------------
+[11/06/2026] INSERTION DONNÉES INITIALES
+-----------------------------------------------------
+→ Script : backend/insert_initial_data.py
+  - Problème rencontré : UnicodeEncodeError sur les emojis (console Windows CP1252)
+  - Fix : $env:PYTHONIOENCODING="utf-8" avant l'appel Python
+→ Résultat :
+  - 7 spots insérés (Lacanau, Hossegor, Capbreton, Biscarrosse, Mimizan, Seignosse, Anglet)
+  - 112 planches insérées depuis data/cleaned/planches_cleaned.json (scrappées de glisse-proshop.com)
+  - 280 prévisions météo insérées depuis data/cleaned/meteo_cleaned.json
+
+-----------------------------------------------------
+[11/06/2026] MISE À JOUR PRIX LOCATION
+-----------------------------------------------------
+→ Script : backend/update_prix_location.py
+  - Formule : prix_location_jour = ROUND(prix_achat * 0.05, 2)
+  - Résultat : 112 planches mises à jour
+  - Exemple : planche à 431.90€ → 21.60€/jour de location
+
+-----------------------------------------------------
+[11/06/2026] CONTRAINTE UNIQUE TABLE MÉTÉO
+-----------------------------------------------------
+→ Problème : update_meteo_cron.py utilise ON DUPLICATE KEY UPDATE
+  mais la table meteo n'avait pas de contrainte UNIQUE sur (id_spot, date_heure)
+  → Cela causait des doublons à chaque exécution du cron
+→ Fix SQL : ALTER TABLE meteo ADD UNIQUE KEY uq_spot_date (id_spot, date_heure);
+
+-----------------------------------------------------
+[11/06/2026] CONNEXION API OPENWEATHER
+-----------------------------------------------------
+→ Ajout de OPENWEATHER_API_KEY dans backend/.env
+  Clé : f0b79302124ec099e2464405aa0cee32
+→ Script : backend/update_meteo_cron.py
+→ Résultat : 7 spots × 40 prévisions = 280 prévisions insérées en temps réel
+  (toutes les 3h sur 5 jours, depuis api.openweathermap.org/data/2.5/forecast)
+→ Les 280 anciennes entrées (meteo_cleaned.json, mai 2026) ont été supprimées
+  car trop vieilles (> 5 jours)
+
+-----------------------------------------------------
+[11/06/2026] SERVEUR PHP + COMPOSER
+-----------------------------------------------------
+→ Problème : le frontend appelle http://localhost:8000/api
+  mais le backend est dans C:\Users\ndaom\surf_shop\backend (hors htdocs XAMPP)
+  → Apache 80 ne pouvait pas le servir
+→ Solution : serveur PHP intégré sur le port 8000
+→ Problème 2 : vendor/ corrompu (créé sur Mac/MAMP de l'ami)
+  - Fix : suppression vendor/ + téléchargement composer.phar
+  - Réinstallation : php.exe composer.phar install --prefer-dist
+  - Packages installés : firebase/php-jwt, vlucas/phpdotenv, symfony/polyfill-*
+→ Commande à lancer à chaque session de dev :
+  C:\xampp\php\php.exe -S localhost:8000 -t C:\Users\ndaom\surf_shop\backend C:\Users\ndaom\surf_shop\backend\index.php
+→ Test API : GET http://localhost:8000/api/planches → 112 planches ✅
+
+-----------------------------------------------------
+[11/06/2026] PAGE MÉTÉO SURFER (EN COURS)
+-----------------------------------------------------
+→ Objectif : créer meteo.html / meteo.css / meteo.js dans htdocs/surf_shop_frontend/
+→ Design : glassmorphism + animations GSAP (style framer-motion)
+→ Données API disponibles (via /spots/{nom}/meteo et /spots/{nom}/previsions) :
+  - temperature, ressenti, humidite
+  - vent_vitesse (m/s), vent_direction (degrés)
+  - conditions (texte), icone (code OpenWeather)
+→ Sections prévues :
+  1. Hero animé avec fond de vagues dynamiques (Canvas)
+  2. Sélecteur de spot (7 spots côte atlantique)
+  3. Météo actuelle : temp, vent, ressenti, humidité + icone animée
+  4. Indicateur qualité de surf (calculé depuis vent + conditions)
+  5. Prévisions 5 jours avec cartes animées
+  6. Meilleurs créneaux pour surfer (filtre vent 5-20 km/h)
+  7. Boussole de direction du vent animée
+→ Librairies CDN utilisées :
+  - GSAP 3.12 + ScrollTrigger (animations)
+  - Chart.js 4.4 (graphique température/vent 24h)
+→ Fix meteo.php : endpoint /meteo retournait 500 (GROUP BY invalide en strict mode)
+  - Remplacé par 2 requêtes propres : actuelle (prochaine prévision) + heures (24h pour chart)
+→ RÉSULTAT : page accessible http://localhost/surf_shop_frontend/meteo.html ✅
+
+-----------------------------------------------------
+DÉTAIL PAGE MÉTÉO — SECTIONS
+-----------------------------------------------------
+1. HERO animé
+   - Canvas waves (3 sinusoïdes animées, remplissage océan)
+   - Particules flottantes GSAP (18 points animés)
+   - Titre "MÉTÉO DES SPOTS" Bebas Neue gradient teal
+   - 7 pills de spot (Lacanau, Hossegor, Capbreton, Biscarrosse, Mimizan, Seignosse, Anglet)
+   - Scroll hint animé
+
+2. CONDITIONS ACTUELLES (grid 4 colonnes)
+   - Carte principale : icône OpenWeather + température animée + conditions + spot + heure
+   - Carte vent : boussole SVG animée (GSAP elastic), vitesse km/h + m/s + échelle Beaufort
+   - Carte ressenti/humidité : compteurs animés + barre de progression
+   - Carte Surf Score : gauge SVG arc animé (couleur dynamique selon score)
+
+3. GRAPHIQUE 24H (Chart.js)
+   - Double axe Y : température (°C) en orange, vent (km/h) en teal
+   - Tooltip dark glassmorphism
+   - Animation durée 1.2s
+
+4. PRÉVISIONS 5 JOURS
+   - Scroll horizontal (custom scrollbar teal)
+   - Chaque card : jour/date, emoji météo, temp max/min Bebas Neue, vent moyen, badge score
+   - Aujourd'hui mis en valeur (bordure teal + glow)
+
+5. MEILLEURS CRÉNEAUX
+   - Grille responsive
+   - Filtré : vent entre 5-20 m/s (18-72 km/h) sur 7 jours
+   - Chaque créneau : emoji score, date+heure, conditions, vitesse vent, température
+
+CALCUL SURF SCORE :
+  - < 5 km/h  → Flat (2/10)
+  - 5-15 km/h → Surfable (5/10)
+  - 15-28 km/h → Bon (7/10)
+  - 28-45 km/h → Excellent (9/10)
+  - > 45 km/h → Dangereux (3/10)
+  + bonus +1 si ciel dégagé / peu nuageux
+
+-----------------------------------------------------
+STRUCTURE FICHIERS PROJET
+-----------------------------------------------------
+
+surf_shop/
+├── backend/                        ← API PHP (port 8000)
+│   ├── index.php                   ← Routeur REST
+│   ├── config.php                  ← Connexion PDO MySQL
+│   ├── .env                        ← DB_HOST, DB_PORT, JWT_SECRET, OPENWEATHER_API_KEY
+│   ├── api/
+│   │   ├── planches.php            ← GET/POST planches
+│   │   ├── cours.php               ← GET/POST/PUT cours & réservations
+│   │   ├── meteo.php               ← GET spots, météo, prévisions, créneaux
+│   │   ├── utilisateurs.php        ← Auth + profils
+│   │   ├── commandes.php           ← Commandes
+│   │   ├── locations.php           ← Locations
+│   │   ├── paiements.php           ← Paiements Stripe
+│   │   └── recommandation.php      ← IA / KNN
+│   ├── data/
+│   │   ├── raw/planches.json       ← Données brutes scrappées
+│   │   └── cleaned/
+│   │       ├── planches_cleaned.json   ← 112 planches propres
+│   │       └── meteo_cleaned.json      ← Prévisions météo nettoyées
+│   ├── sql/
+│   │   ├── surf shop.sql           ← Schéma BDD (CREATE TABLE)
+│   │   ├── surf_shop_requettes_sql.sql ← 54 requêtes SQL documentées
+│   │   └── seed_data.sql           ← Données de test
+│   ├── machine_learning/
+│   │   ├── app.py                  ← Flask API recommandation KNN
+│   │   ├── modele_knn.pkl          ← Modèle entraîné
+│   │   └── scaler.pkl              ← Scaler features
+│   ├── insert_initial_data.py      ← Insère planches + spots + météo
+│   ├── update_meteo_cron.py        ← CRON : rafraîchit la météo OpenWeather
+│   └── update_prix_location.py     ← CRON : recalcule prix location (5% prix achat)
+│
+└── (htdocs XAMPP)/surf_shop_frontend/   ← Frontend (port 80)
+    ├── index.html / index.css / index.js         ← Page catalogue planches
+    ├── planche.html / planche.css / planche.js   ← Détail planche
+    ├── login.html / login.css / login.js         ← Auth
+    ├── recommandation.html/.css/.js              ← Page recommandation IA
+    ├── meteo.html  [EN COURS]                    ← Page météo surfer
+    ├── meteo.css   [EN COURS]
+    └── meteo.js    [EN COURS]
+
+-----------------------------------------------------
+IDENTIFIANTS DE TEST (mot de passe : password123)
+-----------------------------------------------------
+admin@surfshop.com       → role: admin
+lucas.martin@surfshop.com → role: moniteur
+jean.dupont@gmail.com    → role: client
+
+=====================================================

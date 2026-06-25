@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WaveCraft — Planche</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="planche.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- TOPBAR -->
+    <div class="topbar">
+        <span>🏄 Livraison gratuite dès 150€ · Côte Atlantique</span>
+        <span>Nous contacter : 05 56 XX XX XX</span>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <a href="index.html" class="navbar-logo" style="text-decoration:none;display:flex;align-items:center;gap:8px;">
+            <span class="logo-wave">~</span>
+            <span class="logo-text">WAVECRAFT</span>
+        </a>
+        <div class="navbar-links">
+            <a href="index.html">Planches</a>
+            <a href="cours.html">Cours</a>
+            <a href="recommandation.html">IA Recommandation</a>
+            <a href="meteo.html">Météo</a>
+        </div>
+        <div class="navbar-actions" id="navbar-actions">
+            <a href="login.html" class="btn-login">Connexion</a>
+        </div>
+    </nav>
+
+    <!-- BREADCRUMB -->
+    <div class="breadcrumb">
+        <a href="index.html">Planches</a>
+        <span>›</span>
+        <span id="breadcrumb-nom">Chargement...</span>
+    </div>
+
+    <!-- CONTENU PRINCIPAL -->
+    <div class="planche-page" id="planche-page">
+        <div class="loading">
+            <div class="loading-spinner"></div>
+            <p>Chargement...</p>
+        </div>
+    </div>
+
+    <!-- PLANCHES SIMILAIRES -->
+    <section class="similaires-section" id="similaires-section" style="display:none">
+        <div class="similaires-header">
+            <h2>Planches similaires</h2>
+        </div>
+        <div class="similaires-grid" id="similaires-grid"></div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="logo-wave">~</span>
+                <span class="logo-text">WAVECRAFT</span>
+                <p>Votre surf shop sur la côte Atlantique</p>
+            </div>
+            <div class="footer-links">
+                <h4>Navigation</h4>
+                <a href="index.html">Planches</a>
+                <a href="cours.html">Cours de surf</a>
+                <a href="recommandation.html">Recommandation IA</a>
+            </div>
+            <div class="footer-links">
+                <h4>Mon compte</h4>
+                <a href="login.html">Connexion</a>
+                <a href="profil.html">Mon profil</a>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact</h4>
+                <p>📍 Côte Atlantique, France</p>
+                <p>📞 05 56 XX XX XX</p>
+                <p>✉️ contact@wavecraft.fr</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 WaveCraft Surf Shop · Tous droits réservés</p>
+        </div>
+    </footer>
+
+    <script src="planche.js"></script>
+</body>
+</html>

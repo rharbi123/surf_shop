@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>WaveCraft — Monitoring IA</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', sans-serif; background: #f8fafc; color: #1e293b; }
+  .header { background: #0f172a; color: white; padding: 24px 40px; }
+  .header h1 { font-size: 22px; font-weight: 600; }
+  .header p { font-size: 13px; color: #94a3b8; margin-top: 4px; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 32px 24px; }
+  .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 32px; }
+  .kpi { background: white; border-radius: 10px; padding: 20px; box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+  .kpi .val { font-size: 32px; font-weight: 700; margin: 8px 0 4px; }
+  .kpi .label { font-size: 12px; color: #64748b; text-transform: uppercase; letter-spacing: .5px; }
+  .kpi.success .val { color: #16a34a; }
+  .kpi.error .val { color: #dc2626; }
+  .kpi.time .val { color: #2563eb; }
+  .kpi.total .val { color: #7c3aed; }
+  .section { background: white; border-radius: 10px; padding: 24px; box-shadow: 0 1px 3px rgba(0,0,0,.08); margin-bottom: 24px; }
+  .section h2 { font-size: 15px; font-weight: 600; margin-bottom: 16px; color: #0f172a; }
+  .charts { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { background: #f1f5f9; padding: 10px 12px; text-align: left; font-weight: 600; color: #475569; }
+  td { padding: 10px 12px; border-bottom: 1px solid #f1f5f9; color: #334155; }
+  tr:last-child td { border-bottom: none; }
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 99px; font-size: 11px; font-weight: 600; }
+  .badge.ok { background: #dcfce7; color: #16a34a; }
+  .badge.err { background: #fee2e2; color: #dc2626; }
+  .generated { text-align: center; color: #94a3b8; font-size: 12px; margin-top: 32px; }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>🤖 WaveCraft — Tableau de bord Monitoring IA</h1>
+  <p>Généré le 07/06/2026 à 18:13:25 · Modèle KNN + Llama 3.3</p>
+</div>
+<div class="container">
+
+  <div class="kpi-grid">
+    <div class="kpi total">
+      <div class="label">Total requêtes</div>
+      <div class="val">83</div>
+    </div>
+    <div class="kpi success">
+      <div class="label">Taux de succès</div>
+      <div class="val">81.9%</div>
+    </div>
+    <div class="kpi error">
+      <div class="label">Taux d'échec</div>
+      <div class="val">18.1%</div>
+    </div>
+    <div class="kpi time">
+      <div class="label">Temps moyen</div>
+      <div class="val">2533 ms</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>⚠️ Alertes</h2>
+    <div style="background:#dc262615;border-left:4px solid #dc2626;padding:10px 16px;border-radius:4px;margin-bottom:8px;"><strong style="color:#dc2626">CRITIQUE</strong> — Taux d'échec élevé : 18.1% (seuil : 10%)</div>
+  </div>
+
+  <div class="charts">
+    <div class="section">
+      <h2>Requêtes par niveau</h2>
+      <canvas id="chartNiveau" height="200"></canvas>
+    </div>
+    <div class="section">
+      <h2>Répartition achat / location</h2>
+      <canvas id="chartType" height="200"></canvas>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Métriques détaillées</h2>
+    <table>
+      <tr><th>Métrique</th><th>Valeur</th><th>Statut</th></tr>
+      <tr><td>Temps de réponse minimum</td><td>1026 ms</td><td><span class="badge ok">OK</span></td></tr>
+      <tr><td>Temps de réponse moyen</td><td>2533 ms</td><td><span class="badge ok">OK</span></td></tr>
+      <tr><td>Temps de réponse maximum</td><td>6740 ms</td><td><span class="badge ok">OK</span></td></tr>
+      <tr><td>Nombre moyen de résultats</td><td>4.5 planches</td><td><span class="badge ok">OK</span></td></tr>
+      <tr><td>Taux d'échec</td><td>18.1%</td><td><span class="badge err">CRITIQUE</span></td></tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>Derniers échecs (5 derniers)</h2>
+    <table>
+      <tr><th>Date</th><th>Niveau</th><th>Type</th><th>Message</th></tr>
+      <tr><td>2026-06-04 01:01:11</td><td>Confirmé - Expert</td><td>location</td><td>Aucune planche disponible pour le niveau Confirmé - Expert....</td></tr><tr><td>2026-06-04 01:01:15</td><td>Confirmé - Expert</td><td>location</td><td>Aucune planche disponible pour le niveau Confirmé - Expert....</td></tr><tr><td>2026-06-04 01:01:20</td><td>Confirmé - Expert</td><td>location</td><td>Aucune planche disponible pour le niveau Confirmé - Expert....</td></tr><tr><td>2026-06-04 01:03:28</td><td>Confirmé - Expert</td><td>location</td><td>Aucune planche disponible pour le niveau Confirmé - Expert....</td></tr><tr><td>2026-06-04 01:08:56</td><td>Confirmé - Expert</td><td>achat</td><td>Budget insuffisant. Nos planches Confirmé - Expert débutent ...</td></tr>
+    </table>
+  </div>
+
+  <p class="generated">WaveCraft Monitoring · Rapport généré automatiquement depuis logs/recommandation.log</p>
+</div>
+
+<script>
+new Chart(document.getElementById('chartNiveau'), {
+  type: 'bar',
+  data: {
+    labels: ['Débutant - Intermédiaire', 'Intermédiaire - Confirmé', 'Confirmé - Expert'],
+    datasets: [{ label: 'Requêtes', data: [39, 22, 7], backgroundColor: ['#818cf8','#34d399','#fb923c'] }]
+  },
+  options: { plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true } } }
+});
+
+new Chart(document.getElementById('chartType'), {
+  type: 'doughnut',
+  data: {
+    labels: ['location', 'achat'],
+    datasets: [{ data: [44, 24], backgroundColor: ['#60a5fa','#4ade80'] }]
+  },
+  options: { plugins: { legend: { position: 'bottom' } } }
+});
+</script>
+</body>
+</html>

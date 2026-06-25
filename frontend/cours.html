@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WaveCraft — Cours de surf</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="cours.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="topbar">
+        <span>🏄 Livraison gratuite dès 150€ · Côte Atlantique</span>
+        <span>Nous contacter : 05 56 XX XX XX</span>
+    </div>
+
+    <nav class="navbar">
+        <a href="index.html" class="navbar-logo" style="text-decoration:none;display:flex;align-items:center;gap:8px;">
+            <span class="logo-wave">~</span>
+            <span class="logo-text">WAVECRAFT</span>
+        </a>
+        <div class="navbar-links">
+            <a href="index.html">Planches</a>
+            <a href="cours.html" class="active">Cours</a>
+            <a href="recommandation.html">IA Recommandation</a>
+            <a href="meteo.html">Météo</a>
+        </div>
+        <div class="navbar-actions" id="navbar-actions">
+            <a href="login.html" class="btn-login">Connexion</a>
+        </div>
+    </nav>
+
+    <section class="hero hero-small">
+        <div class="hero-content">
+            <p class="hero-sub">Apprenez à surfer en toute confiance</p>
+            <h1 class="hero-title">Cours de surf<br>pour tous les niveaux</h1>
+            <p class="hero-desc">Des sessions encadrées par des moniteurs diplômés, adaptées à votre niveau et aux conditions de la côte Atlantique.</p>
+            <div class="hero-btns">
+                <a href="#forfaits" class="btn-primary">Voir les forfaits</a>
+                <a href="#moniteurs" class="btn-secondary">Nos moniteurs</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="cours-section" id="forfaits">
+        <div class="section-header">
+            <span>Formules</span>
+            <h2>Nos forfaits de cours</h2>
+            <p>Choisissez la formule qui vous convient : initiation, perfectionnement ou stage complet.</p>
+        </div>
+        <div class="cours-grid">
+            <article class="cours-card">
+                <h3>Initiation</h3>
+                <p class="cours-price">À partir de 45€</p>
+                <ul>
+                    <li>1h30 de cours en petit groupe</li>
+                    <li>Matériel inclus</li>
+                    <li>Briefing sécurité et premiers gestes</li>
+                </ul>
+                <a href="#contact" class="btn-secondary">Réserver</a>
+            </article>
+            <article class="cours-card featured">
+                <h3>Perfectionnement</h3>
+                <p class="cours-price">À partir de 70€</p>
+                <ul>
+                    <li>2h de cours individuel ou duo</li>
+                    <li>Analyse vidéo et conseils personnalisés</li>
+                    <li>Technique, position et virages</li>
+                </ul>
+                <a href="#contact" class="btn-primary">Réserver</a>
+            </article>
+            <article class="cours-card">
+                <h3>Stage 3 jours</h3>
+                <p class="cours-price">À partir de 180€</p>
+                <ul>
+                    <li>3 sessions de 2h</li>
+                    <li>Accompagnement progressif</li>
+                    <li>Préparation aux conditions réelles</li>
+                </ul>
+                <a href="#contact" class="btn-secondary">Réserver</a>
+            </article>
+        </div>
+    </section>
+
+    <section class="cours-section" id="moniteurs">
+        <div class="section-header">
+            <span>Équipe</span>
+            <h2>Nos moniteurs</h2>
+            <p>Une équipe locale, diplômée et passionnée de surf, qui connaît parfaitement les spots de la région.</p>
+        </div>
+        <div class="moniteurs-grid">
+            <div class="moniteur-card">
+                <div class="moniteur-avatar">ML</div>
+                <h3>Léo</h3>
+                <p>Moniteur principal · 10 ans d'expérience · Spécialiste shortboard</p>
+            </div>
+            <div class="moniteur-card">
+                <div class="moniteur-avatar">SA</div>
+                <h3>Sara</h3>
+                <p>Coach technique · Yoga surf · Préparation physique et ondulation</p>
+            </div>
+            <div class="moniteur-card">
+                <div class="moniteur-avatar">JP</div>
+                <h3>Jules</h3>
+                <p>Expert vagues creuses · Sécurité et lecture de spot · Cours avancés</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cours-section" id="avantages">
+        <div class="section-header">
+            <span>Pourquoi nous choisir</span>
+            <h2>Votre succès sur la vague</h2>
+            <p>Des cours sécurisés, un encadrement personnalisé et des entraînements adaptés à votre progression.</p>
+        </div>
+        <div class="avantages-grid">
+            <div class="avantage-card">
+                <h3>Matériel inclus</h3>
+                <p>Planche, combinaison et gilet de sécurité fournis pour toutes les sessions.</p>
+            </div>
+            <div class="avantage-card">
+                <h3>Petits groupes</h3>
+                <p>Max. 6 personnes par moniteur pour progresser vite et en sécurité.</p>
+            </div>
+            <div class="avantage-card">
+                <h3>Analyse personnalisée</h3>
+                <p>Retour vidéo et conseils pratiques pour améliorer votre équilibre et vos appuis.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cours-contact" id="contact">
+        <div class="contact-card">
+            <h2>Prêt à réserver votre cours ?</h2>
+            <p>Contactez-nous par mail ou téléphone, et nous organisons votre session sur le spot le plus adapté.</p>
+            <div class="contact-actions">
+                <a href="mailto:contact@wavecraft.fr" class="btn-primary">Envoyer un mail</a>
+                <a href="tel:+33556000000" class="btn-secondary">Appeler</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="logo-wave">~</span>
+                <span class="logo-text">WAVECRAFT</span>
+                <p>Votre surf shop sur la côte Atlantique</p>
+            </div>
+            <div class="footer-links">
+                <h4>Navigation</h4>
+                <a href="index.html">Planches</a>
+                <a href="cours.html">Cours de surf</a>
+                <a href="recommandation.html">Recommandation IA</a>
+                <a href="meteo.html">Météo</a>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact</h4>
+                <p>📍 Côte Atlantique, France</p>
+                <p>📞 05 56 XX XX XX</p>
+                <p>✉️ contact@wavecraft.fr</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 WaveCraft Surf Shop · Tous droits réservés</p>
+        </div>
+    </footer>
+
+</body>
+</html>

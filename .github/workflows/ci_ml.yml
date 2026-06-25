@@ -1,0 +1,107 @@
+# =====================================================
+# CI/CD — WaveCraft IA
+# Déclenchement : à chaque push sur main
+# Étapes : validation → tests → packaging → déploiement
+# =====================================================
+
+name: WaveCraft IA — CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  ci_cd_pipeline:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      # ------------------------------------------------
+      # 1. Récupérer le code
+      # ------------------------------------------------
+      - name: Récupération du code
+        uses: actions/checkout@v4
+
+      # ------------------------------------------------
+      # 2. Installer Python
+      # ------------------------------------------------
+      - name: Installation de Python 3.11
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      # ------------------------------------------------
+      # 3. Installer les dépendances
+      # ------------------------------------------------
+      - name: Installation des dépendances
+        run: |
+          pip install --upgrade pip
+          pip install scikit-learn numpy pandas joblib flask flask-cors pytest python-dotenv PyJWT groq
+
+      # ------------------------------------------------
+      # 4. VALIDATION — Vérifier les fichiers nécessaires
+      # ------------------------------------------------
+      - name: Validation des fichiers du modèle
+        run: |
+          echo "Vérification des fichiers pkl..."
+          ls backend/machine_learning/modele_knn.pkl
+          ls backend/machine_learning/scaler.pkl
+          ls backend/machine_learning/planches_df.pkl
+          echo "✅ Tous les fichiers pkl sont présents"
+
+      # ------------------------------------------------
+      # 5. TESTS — Lancer les 27 tests pytest
+      # ------------------------------------------------
+      - name: Tests automatisés (pytest)
+        run: |
+          cd backend/machine_learning/tests
+          pytest test_modele.py -v --tb=short
+        env:
+          JWT_SECRET: surfshop_jwt_secret
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+
+      # ------------------------------------------------
+      # 6. PACKAGING — Créer l'artifact du modèle
+      # ------------------------------------------------
+      - name: Packaging du modèle
+        run: |
+          mkdir -p package_modele
+          cp backend/machine_learning/modele_knn.pkl package_modele/
+          cp backend/machine_learning/scaler.pkl package_modele/
+          cp backend/machine_learning/planches_df.pkl package_modele/
+          cp backend/machine_learning/app.py package_modele/
+          echo "✅ Packaging terminé"
+
+      - name: Upload de l'artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: wavecraft-modele-ia
+          path: package_modele/
+          retention-days: 30
+
+      # ------------------------------------------------
+      # 7. DÉPLOIEMENT — Valider le rechargement du modèle
+      # ------------------------------------------------
+      - name: Validation du déploiement
+        run: |
+          python - <<'EOF'
+          import joblib
+          import numpy as np
+
+          print("Chargement du modèle depuis le package...")
+          nn     = joblib.load('package_modele/modele_knn.pkl')
+          scaler = joblib.load('package_modele/scaler.pkl')
+          df     = joblib.load('package_modele/planches_df.pkl')
+
+          # Test de prédiction
+          vecteur = [[1, 1, 2, 600, 50, 3]]
+          vecteur_scaled = scaler.transform(vecteur)
+          distances, indices = nn.kneighbors(vecteur_scaled, n_neighbors=5)
+
+          assert len(indices[0]) == 5, "Erreur : pas assez de résultats"
+          print(f"✅ Modèle opérationnel — {len(df)} planches chargées")
+          print(f"✅ Prédiction test réussie — {len(indices[0])} voisins trouvés")
+          print("✅ Déploiement validé")
+          EOF

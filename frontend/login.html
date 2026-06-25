@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WaveCraft — Connexion</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="login.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- TOPBAR -->
+    <div class="topbar">
+        <span>🏄 Livraison gratuite dès 150€ · Côte Atlantique</span>
+        <span>Nous contacter : 05 56 XX XX XX</span>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <a href="index.html" class="navbar-logo" style="text-decoration:none;display:flex;align-items:center;gap:8px;">
+            <span class="logo-wave">~</span>
+            <span class="logo-text">WAVECRAFT</span>
+        </a>
+        <div class="navbar-links">
+            <a href="index.html">Planches</a>
+            <a href="cours.html">Cours</a>
+            <a href="recommandation.html">IA Recommandation</a>
+            <a href="meteo.html">Météo</a>
+        </div>
+        <div class="navbar-actions">
+            <a href="index.html" class="btn-login">Retour</a>
+        </div>
+    </nav>
+
+    <!-- PAGE LOGIN -->
+    <div class="login-page">
+
+        <!-- VISUEL GAUCHE -->
+        <div class="login-visual">
+            <div class="login-visual-overlay"></div>
+            <div class="login-visual-text">
+                <h2>Surfez<br>sans limites</h2>
+                <p>Gérez vos locations, réservations de cours et bien plus depuis votre espace personnel.</p>
+            </div>
+        </div>
+
+        <!-- FORMULAIRE DROITE -->
+        <div class="login-box">
+
+            <!-- ONGLETS -->
+            <div class="login-tabs">
+                <button class="login-tab active" id="tab-connexion" onclick="switchTab('connexion')">Connexion</button>
+                <button class="login-tab" id="tab-inscription" onclick="switchTab('inscription')">Inscription</button>
+            </div>
+
+            <!-- ALERTE -->
+            <div class="login-alert" id="login-alert" style="display:none;"></div>
+
+            <!-- FORM CONNEXION -->
+            <form id="form-connexion" onsubmit="handleConnexion(event)">
+                <div class="form-field">
+                    <label>Email</label>
+                    <input type="email" id="cx-email" placeholder="votre@email.fr" required autocomplete="email">
+                </div>
+                <div class="form-field">
+                    <label>Mot de passe</label>
+                    <div class="input-eye">
+                        <input type="password" id="cx-password" placeholder="••••••••" required autocomplete="current-password">
+                        <button type="button" onclick="togglePw('cx-password', this)">👁</button>
+                    </div>
+                </div>
+                <button type="submit" class="form-submit" id="btn-cx">
+                    <span>Se connecter</span>
+                    <div class="form-spinner" style="display:none"></div>
+                </button>
+                <p class="form-switch">Pas de compte ? <a href="#" onclick="switchTab('inscription')">S'inscrire</a></p>
+            </form>
+
+            <!-- FORM INSCRIPTION -->
+            <form id="form-inscription" style="display:none;" onsubmit="handleInscription(event)">
+                <div class="form-row">
+                    <div class="form-field">
+                        <label>Nom</label>
+                        <input type="text" id="in-nom" placeholder="Dupont" required>
+                    </div>
+                    <div class="form-field">
+                        <label>Prénom</label>
+                        <input type="text" id="in-prenom" placeholder="Marie" required>
+                    </div>
+                </div>
+                <div class="form-field">
+                    <label>Email</label>
+                    <input type="email" id="in-email" placeholder="votre@email.fr" required autocomplete="email">
+                </div>
+                <div class="form-field">
+                    <label>Mot de passe <small>(8 caractères min.)</small></label>
+                    <div class="input-eye">
+                        <input type="password" id="in-password" placeholder="••••••••" required autocomplete="new-password">
+                        <button type="button" onclick="togglePw('in-password', this)">👁</button>
+                    </div>
+                </div>
+                <div class="form-field">
+                    <label>Niveau de surf</label>
+                    <select id="in-niveau">
+                        <option value="">Je débute / Je ne sais pas</option>
+                        <option value="Débutant - Intermédiaire">Débutant</option>
+                        <option value="Intermédiaire - Confirmé">Intermédiaire</option>
+                        <option value="Confirmé - Expert">Expert</option>
+                    </select>
+                </div>
+                <div class="form-field form-check">
+                    <label>
+                        <input type="checkbox" id="in-rgpd" required>
+                        J'accepte que mes données soient utilisées pour gérer mon compte (RGPD)
+                    </label>
+                </div>
+                <button type="submit" class="form-submit" id="btn-in">
+                    <span>Créer mon compte</span>
+                    <div class="form-spinner" style="display:none"></div>
+                </button>
+                <p class="form-switch">Déjà un compte ? <a href="#" onclick="switchTab('connexion')">Se connecter</a></p>
+            </form>
+
+        </div>
+    </div>
+
+    <script src="login.js"></script>
+</body>
+</html>

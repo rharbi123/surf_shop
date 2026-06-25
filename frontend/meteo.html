@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WaveCraft — Météo des spots</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="meteo.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="topbar">
+        <span>🏄 Livraison gratuite dès 150€ · Côte Atlantique</span>
+        <span>Nous contacter : 05 56 XX XX XX</span>
+    </div>
+
+    <nav class="navbar">
+        <a href="index.html" class="navbar-logo" style="text-decoration:none;display:flex;align-items:center;gap:8px;">
+            <span class="logo-wave">~</span>
+            <span class="logo-text">WAVECRAFT</span>
+        </a>
+        <div class="navbar-links">
+            <a href="index.html">Planches</a>
+            <a href="cours.html">Cours</a>
+            <a href="recommandation.html">IA Recommandation</a>
+            <a href="meteo.html" class="active">Météo</a>
+        </div>
+        <div class="navbar-actions" id="navbar-actions">
+            <a href="login.html" class="btn-login">Connexion</a>
+        </div>
+    </nav>
+
+    <section class="hero hero-small hero-meteo">
+        <div class="hero-content">
+            <p class="hero-sub">Conditions en temps réel</p>
+            <h1 class="hero-title">Météo des spots<br>de surf</h1>
+            <p class="hero-desc">Consultez la météo actuelle et les prévisions pour choisir le meilleur moment de surfer.</p>
+        </div>
+    </section>
+
+    <section class="meteo-section">
+
+        <div class="spot-selector-wrap">
+            <label for="spot-select">Choisissez un spot :</label>
+            <select id="spot-select">
+                <option value="">Chargement des spots…</option>
+            </select>
+        </div>
+
+        <div id="meteo-content" hidden>
+
+            <!-- Météo actuelle -->
+            <div class="meteo-bloc">
+                <div class="section-header">
+                    <span>Maintenant</span>
+                    <h2 id="spot-titre">—</h2>
+                </div>
+                <div class="meteo-actuelle-grid" id="meteo-actuelle">
+                    <div class="meteo-main-card">
+                        <div class="meteo-icone" id="meteo-icone">—</div>
+                        <div class="meteo-temp" id="meteo-temp">—</div>
+                        <div class="meteo-conditions" id="meteo-conditions">—</div>
+                        <div class="meteo-date" id="meteo-date">—</div>
+                    </div>
+                    <div class="meteo-details-grid">
+                        <div class="meteo-detail-card">
+                            <span class="detail-label">Ressenti</span>
+                            <span class="detail-val" id="meteo-ressenti">—</span>
+                        </div>
+                        <div class="meteo-detail-card">
+                            <span class="detail-label">Humidité</span>
+                            <span class="detail-val" id="meteo-humidite">—</span>
+                        </div>
+                        <div class="meteo-detail-card">
+                            <span class="detail-label">Vent</span>
+                            <span class="detail-val" id="meteo-vent">—</span>
+                        </div>
+                        <div class="meteo-detail-card">
+                            <span class="detail-label">Direction</span>
+                            <span class="detail-val" id="meteo-direction">—</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Prochaines 24h -->
+            <div class="meteo-bloc">
+                <div class="section-header">
+                    <span>Prévisions</span>
+                    <h2>Prochaines 24h</h2>
+                </div>
+                <div class="heures-scroll" id="heures-scroll">
+                    <!-- rempli par JS -->
+                </div>
+            </div>
+
+            <!-- Prévisions 7 jours -->
+            <div class="meteo-bloc">
+                <div class="section-header">
+                    <span>Semaine</span>
+                    <h2>Prévisions 7 jours</h2>
+                </div>
+                <div class="previsions-grid" id="previsions-grid">
+                    <!-- rempli par JS -->
+                </div>
+            </div>
+
+            <!-- Meilleurs créneaux surf -->
+            <div class="meteo-bloc">
+                <div class="section-header">
+                    <span>Surf</span>
+                    <h2>Meilleurs créneaux</h2>
+                    <p>Créneaux avec vent idéal entre 5 et 20 km/h sur les 7 prochains jours.</p>
+                </div>
+                <div id="creneaux-wrap">
+                    <!-- rempli par JS -->
+                </div>
+            </div>
+
+        </div>
+
+        <div id="meteo-empty" class="meteo-empty">
+            <p>Sélectionnez un spot pour afficher la météo.</p>
+        </div>
+
+        <div id="meteo-error" class="meteo-error" hidden>
+            <p id="meteo-error-msg">Une erreur est survenue.</p>
+        </div>
+
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="logo-wave">~</span>
+                <span class="logo-text">WAVECRAFT</span>
+                <p>Votre surf shop sur la côte Atlantique</p>
+            </div>
+            <div class="footer-links">
+                <h4>Navigation</h4>
+                <a href="index.html">Planches</a>
+                <a href="cours.html">Cours de surf</a>
+                <a href="recommandation.html">Recommandation IA</a>
+                <a href="meteo.html">Météo</a>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact</h4>
+                <p>📍 Côte Atlantique, France</p>
+                <p>📞 05 56 XX XX XX</p>
+                <p>✉️ contact@wavecraft.fr</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 WaveCraft Surf Shop · Tous droits réservés</p>
+        </div>
+    </footer>
+
+    <script src="meteo.js"></script>
+</body>
+</html>
