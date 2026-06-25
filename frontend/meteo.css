@@ -1,0 +1,1321 @@
+/* =====================================================
+   WAVECRAFT — meteo.css
+   Thème : Océan Profond · Glassmorphism · Nuit
+   ===================================================== */
+
+:root {
+    --m-bg:        #060d1a;
+    --m-bg2:       #0a1628;
+    --m-card:      rgba(255, 255, 255, 0.04);
+    --m-card-border: rgba(255, 255, 255, 0.09);
+    --m-teal:      #00C4CC;
+    --m-blue:      #0066CC;
+    --m-foam:      #7ee8fa;
+    --m-white:     #ffffff;
+    --m-gray:      rgba(255, 255, 255, 0.5);
+    --m-gray2:     rgba(255, 255, 255, 0.15);
+    --m-good:      #00e676;
+    --m-medium:    #ffca28;
+    --m-flat:      #78909c;
+    --m-danger:    #ff5252;
+    --blur:        blur(24px);
+    --card-radius: 20px;
+    --transition:  all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* =====================================================
+   BASE PAGE
+   ===================================================== */
+body.meteo-page {
+    background: var(--m-bg);
+    color: var(--m-white);
+    overflow-x: hidden;
+}
+
+/* Navbar version sombre */
+.navbar-dark {
+    background: rgba(6, 13, 26, 0.95) !important;
+    border-bottom: 1px solid rgba(255,255,255,0.08) !important;
+    backdrop-filter: var(--blur);
+}
+
+.navbar-dark .navbar-links a {
+    color: rgba(255,255,255,0.7);
+}
+
+.navbar-dark .navbar-links a:hover,
+.navbar-dark .navbar-links a.active {
+    color: var(--m-teal);
+}
+
+.navbar-dark .logo-text {
+    color: var(--m-white);
+}
+
+.navbar-dark .btn-login {
+    color: var(--m-teal);
+    border-color: var(--m-teal);
+}
+
+/* =====================================================
+   HERO
+   ===================================================== */
+.meteo-hero {
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: linear-gradient(170deg, #060d1a 0%, #0a1e3c 50%, #0c2a50 100%);
+}
+
+#wave-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.6;
+}
+
+.hero-particles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.hero-inner {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.hero-label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    color: var(--m-teal);
+    background: rgba(0, 196, 204, 0.1);
+    border: 1px solid rgba(0, 196, 204, 0.3);
+    padding: 6px 16px;
+    border-radius: 100px;
+    margin-bottom: 24px;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(72px, 12vw, 160px);
+    line-height: 0.9;
+    letter-spacing: 2px;
+    color: var(--m-white);
+    margin-bottom: 20px;
+    opacity: 0;
+    transform: translateY(40px);
+}
+
+.title-accent {
+    background: linear-gradient(135deg, var(--m-teal), var(--m-foam));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-sub {
+    font-size: 15px;
+    color: var(--m-gray);
+    letter-spacing: 1px;
+    margin-bottom: 48px;
+    opacity: 0;
+}
+
+/* SÉLECTEUR DE SPOT */
+.spot-selector {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.spot-pill {
+    padding: 10px 22px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.7);
+    transition: var(--transition);
+    user-select: none;
+}
+
+.spot-pill:hover {
+    background: rgba(0, 196, 204, 0.12);
+    border-color: rgba(0, 196, 204, 0.4);
+    color: var(--m-teal);
+    transform: translateY(-2px);
+}
+
+.spot-pill.active {
+    background: linear-gradient(135deg, rgba(0, 196, 204, 0.3), rgba(0, 102, 204, 0.3));
+    border-color: var(--m-teal);
+    color: var(--m-white);
+    box-shadow: 0 0 20px rgba(0, 196, 204, 0.25);
+}
+
+/* SCROLL HINT */
+.hero-scroll-hint {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    opacity: 0.5;
+    z-index: 2;
+}
+
+.hero-scroll-hint span {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--m-gray);
+}
+
+.scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--m-teal), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(1); }
+    50%       { opacity: 1;   transform: scaleY(1.2); }
+}
+
+/* =====================================================
+   MAIN CONTENT
+   ===================================================== */
+.meteo-main {
+    padding: 0 40px 80px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* LOADER */
+.meteo-loader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 80px 0;
+    color: var(--m-gray);
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.meteo-loader.hidden { display: none; }
+
+.loader-wave {
+    width: 60px;
+    height: 60px;
+    border: 2px solid rgba(0, 196, 204, 0.15);
+    border-top-color: var(--m-teal);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* SECTION HEADER */
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 28px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--m-card-border);
+}
+
+.section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 2px;
+    color: var(--m-white);
+}
+
+.section-sub {
+    font-size: 12px;
+    color: var(--m-teal);
+    letter-spacing: 1px;
+}
+
+.update-time {
+    font-size: 12px;
+    color: var(--m-gray);
+    letter-spacing: 1px;
+}
+
+/* =====================================================
+   SECTIONS
+   ===================================================== */
+.current-section,
+.chart-section,
+.previsions-section,
+.creneaux-section {
+    margin-top: 64px;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+/* =====================================================
+   WEATHER CARDS — GRILLE
+   ===================================================== */
+.current-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 20px;
+}
+
+/* Layout spécifique */
+.card-main  { grid-column: 1 / 3; }
+.card-wind  { grid-column: 3 / 4; }
+.card-feels { grid-column: 4 / 5; }
+.card-score { grid-column: 1 / 5; }
+
+/* CARTE BASE */
+.weather-card {
+    position: relative;
+    background: var(--m-card);
+    border: 1px solid var(--m-card-border);
+    border-radius: var(--card-radius);
+    backdrop-filter: var(--blur);
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.weather-card:hover {
+    border-color: rgba(255, 255, 255, 0.16);
+    transform: translateY(-3px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+.card-inner {
+    position: relative;
+    z-index: 1;
+    padding: 28px;
+    height: 100%;
+}
+
+.card-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    color: var(--m-gray);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+/* GLOW EFFECT */
+.card-glow {
+    position: absolute;
+    top: -60px;
+    right: -60px;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(0, 102, 204, 0.25) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: glowPulse 4s ease-in-out infinite;
+}
+
+.card-glow.glow-teal {
+    background: radial-gradient(circle, rgba(0, 196, 204, 0.2) 0%, transparent 70%);
+}
+
+.card-glow.glow-dynamic {
+    transition: background 0.8s ease;
+}
+
+@keyframes glowPulse {
+    0%, 100% { opacity: 0.6; transform: scale(1); }
+    50%       { opacity: 1;   transform: scale(1.1); }
+}
+
+/* =====================================================
+   CARTE PRINCIPALE
+   ===================================================== */
+.main-top {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 12px;
+}
+
+.main-icon-wrap {
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: iconFloat 3s ease-in-out infinite;
+}
+
+@keyframes iconFloat {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-6px); }
+}
+
+.main-weather-icon {
+    width: 56px;
+    height: 56px;
+    filter: drop-shadow(0 0 10px rgba(0, 196, 204, 0.5));
+}
+
+.main-temp-wrap {
+    display: flex;
+    align-items: flex-start;
+    line-height: 1;
+}
+
+.main-temp {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 96px;
+    color: var(--m-white);
+    line-height: 1;
+    letter-spacing: -2px;
+}
+
+.temp-unit {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    color: var(--m-teal);
+    margin-top: 8px;
+}
+
+.main-conditions {
+    font-size: 20px;
+    font-weight: 300;
+    font-style: italic;
+    color: rgba(255,255,255,0.75);
+    text-transform: capitalize;
+    margin-bottom: 20px;
+}
+
+.main-meta {
+    display: flex;
+    gap: 20px;
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: var(--m-gray);
+}
+
+.meta-item svg {
+    color: var(--m-teal);
+    flex-shrink: 0;
+}
+
+/* =====================================================
+   CARTE VENT + BOUSSOLE
+   ===================================================== */
+.wind-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+/* BOUSSOLE */
+.compass-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.compass {
+    position: relative;
+    width: 120px;
+    height: 120px;
+}
+
+.compass-ring {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: radial-gradient(circle, rgba(0,102,204,0.1) 0%, transparent 70%);
+}
+
+.compass-dir {
+    position: absolute;
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 1px;
+}
+
+.compass-dir.n { top:  4px; left: 50%; transform: translateX(-50%); color: var(--m-teal); }
+.compass-dir.s { bottom: 4px; left: 50%; transform: translateX(-50%); }
+.compass-dir.e { right: 6px; top: 50%; transform: translateY(-50%); }
+.compass-dir.w { left:  6px; top: 50%; transform: translateY(-50%); }
+
+.compass-needle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 4px;
+    transform-origin: bottom center;
+    transform: translate(-50%, -100%) rotate(0deg);
+    transition: transform 1.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    z-index: 2;
+}
+
+.needle-north {
+    width: 4px;
+    height: 44px;
+    background: linear-gradient(to top, var(--m-teal), white);
+    border-radius: 4px 4px 0 0;
+    margin-left: -2px;
+}
+
+.needle-south {
+    width: 4px;
+    height: 16px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 0 0 4px 4px;
+    margin-left: -2px;
+}
+
+.compass-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    background: var(--m-teal);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    box-shadow: 0 0 10px var(--m-teal);
+}
+
+.wind-stats {
+    text-align: center;
+}
+
+.wind-speed-big {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+    justify-content: center;
+}
+
+.wind-speed-big span:first-child {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    color: var(--m-white);
+    line-height: 1;
+}
+
+.wind-unit {
+    font-size: 14px;
+    color: var(--m-teal);
+    font-weight: 500;
+}
+
+.wind-ms {
+    font-size: 13px;
+    color: var(--m-gray);
+    margin-top: 4px;
+}
+
+.wind-beaufort {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--m-teal);
+    background: rgba(0, 196, 204, 0.12);
+    padding: 3px 10px;
+    border-radius: 100px;
+    margin-top: 8px;
+}
+
+.wind-direction-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.6);
+    margin-top: 6px;
+}
+
+/* =====================================================
+   CARTE RESSENTI + HUMIDITÉ
+   ===================================================== */
+.feels-grid {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin-bottom: 20px;
+}
+
+.feels-item {
+    flex: 1;
+    text-align: center;
+}
+
+.feels-icon {
+    font-size: 28px;
+    margin-bottom: 8px;
+    filter: drop-shadow(0 0 8px rgba(0, 196, 204, 0.4));
+}
+
+.feels-value {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 40px;
+    color: var(--m-white);
+    line-height: 1;
+}
+
+.feels-label {
+    font-size: 11px;
+    color: var(--m-gray);
+    letter-spacing: 2px;
+    margin-top: 4px;
+    text-transform: uppercase;
+}
+
+.feels-divider {
+    width: 1px;
+    height: 60px;
+    background: var(--m-card-border);
+    flex-shrink: 0;
+}
+
+.humidity-bar-wrap {
+    padding: 0 4px;
+}
+
+.humidity-bar {
+    height: 4px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.humidity-fill {
+    height: 100%;
+    background: linear-gradient(to right, var(--m-blue), var(--m-teal));
+    border-radius: 4px;
+    transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* =====================================================
+   CARTE SURF SCORE
+   ===================================================== */
+.card-score .card-inner {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    padding: 24px 32px;
+}
+
+.card-score .card-label {
+    margin-bottom: 0;
+    white-space: nowrap;
+}
+
+.score-content {
+    position: relative;
+    width: 160px;
+    height: 90px;
+    flex-shrink: 0;
+}
+
+.score-gauge {
+    width: 160px;
+    height: 96px;
+}
+
+.score-center {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+.score-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 42px;
+    line-height: 1;
+    color: var(--m-white);
+}
+
+.score-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--m-gray);
+    text-transform: uppercase;
+}
+
+.score-emoji {
+    font-size: 40px;
+    filter: drop-shadow(0 0 12px rgba(255,255,255,0.2));
+    animation: emojiFloat 2.5s ease-in-out infinite;
+}
+
+@keyframes emojiFloat {
+    0%, 100% { transform: translateY(0) rotate(-5deg); }
+    50%       { transform: translateY(-8px) rotate(5deg); }
+}
+
+.score-detail {
+    flex: 1;
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.6;
+}
+
+/* =====================================================
+   GRAPHIQUE
+   ===================================================== */
+.chart-wrap {
+    background: var(--m-card);
+    border: 1px solid var(--m-card-border);
+    border-radius: var(--card-radius);
+    padding: 24px;
+    backdrop-filter: var(--blur);
+}
+
+.chart-legend {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--m-gray);
+}
+
+.legend-item span {
+    display: inline-block;
+    width: 24px;
+    height: 3px;
+    border-radius: 2px;
+}
+
+.legend-temp span { background: linear-gradient(to right, #ff9966, #ff5e62); }
+.legend-vent span { background: linear-gradient(to right, var(--m-blue), var(--m-teal)); }
+
+/* =====================================================
+   PRÉVISIONS 5 JOURS
+   ===================================================== */
+.previsions-scroll {
+    overflow-x: auto;
+    padding-bottom: 12px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 196, 204, 0.3) transparent;
+}
+
+.previsions-scroll::-webkit-scrollbar {
+    height: 4px;
+}
+
+.previsions-scroll::-webkit-scrollbar-track { background: transparent; }
+.previsions-scroll::-webkit-scrollbar-thumb {
+    background: rgba(0, 196, 204, 0.3);
+    border-radius: 4px;
+}
+
+.previsions-track {
+    display: flex;
+    gap: 16px;
+    min-width: max-content;
+}
+
+.prev-card {
+    background: var(--m-card);
+    border: 1px solid var(--m-card-border);
+    border-radius: var(--card-radius);
+    backdrop-filter: var(--blur);
+    padding: 24px 20px;
+    min-width: 160px;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition);
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.prev-card:hover,
+.prev-card.today {
+    border-color: var(--m-teal);
+    background: rgba(0, 196, 204, 0.06);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 196, 204, 0.15);
+}
+
+.prev-day {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--m-teal);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+.prev-date {
+    font-size: 13px;
+    color: var(--m-gray);
+    margin-bottom: 16px;
+}
+
+.prev-icon {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 12px;
+    filter: drop-shadow(0 0 8px rgba(0, 196, 204, 0.3));
+}
+
+.prev-temps {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.prev-temp-max {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px;
+    color: var(--m-white);
+    line-height: 1;
+}
+
+.prev-temp-min {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px;
+    color: rgba(255,255,255,0.35);
+    line-height: 1;
+}
+
+.prev-vent {
+    font-size: 12px;
+    color: var(--m-gray);
+    margin-bottom: 12px;
+}
+
+.prev-score-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* =====================================================
+   CRÉNEAUX
+   ===================================================== */
+.creneaux-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+}
+
+.creneau-card {
+    background: var(--m-card);
+    border: 1px solid var(--m-card-border);
+    border-radius: 14px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: var(--transition);
+    opacity: 0;
+    transform: translateX(-20px);
+}
+
+.creneau-card:hover {
+    border-color: var(--m-teal);
+    background: rgba(0, 196, 204, 0.05);
+    transform: translateX(0) translateY(-2px);
+}
+
+.creneau-icon {
+    font-size: 32px;
+    flex-shrink: 0;
+    filter: drop-shadow(0 0 8px rgba(0,196,204,0.3));
+}
+
+.creneau-info {
+    flex: 1;
+}
+
+.creneau-date {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--m-teal);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+}
+
+.creneau-heure {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    color: var(--m-white);
+    margin-bottom: 4px;
+}
+
+.creneau-conditions {
+    font-size: 12px;
+    color: var(--m-gray);
+    text-transform: capitalize;
+}
+
+.creneau-vent {
+    text-align: right;
+    flex-shrink: 0;
+}
+
+.creneau-vent-val {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    color: var(--m-white);
+    line-height: 1;
+}
+
+.creneau-vent-unit {
+    font-size: 11px;
+    color: var(--m-teal);
+}
+
+.creneau-temp {
+    font-size: 12px;
+    color: var(--m-gray);
+}
+
+/* message vide */
+.creneaux-empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 48px;
+    color: var(--m-gray);
+    font-size: 14px;
+}
+
+/* =====================================================
+   FOOTER DARK
+   ===================================================== */
+.footer-dark {
+    background: #03080f !important;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    color: rgba(255,255,255,0.7) !important;
+}
+
+.footer-dark .logo-text,
+.footer-dark h4 {
+    color: var(--m-white) !important;
+}
+
+.footer-dark a,
+.footer-dark p {
+    color: rgba(255,255,255,0.5) !important;
+}
+
+.footer-dark a:hover {
+    color: var(--m-teal) !important;
+}
+
+/* =====================================================
+   BADGES SCORE (réutilisables)
+   ===================================================== */
+.badge-flat      { background: rgba(120,144,156,0.2); color: #90a4ae; border: 1px solid rgba(120,144,156,0.3); }
+.badge-surfable  { background: rgba(0,102,204,0.2);   color: #64b5f6; border: 1px solid rgba(0,102,204,0.3); }
+.badge-bon       { background: rgba(0,196,204,0.2);   color: var(--m-teal); border: 1px solid rgba(0,196,204,0.3); }
+.badge-excellent { background: rgba(0,230,118,0.2);   color: var(--m-good); border: 1px solid rgba(0,230,118,0.3); }
+.badge-danger    { background: rgba(255,82,82,0.2);   color: var(--m-danger); border: 1px solid rgba(255,82,82,0.3); }
+
+/* =====================================================
+   CARTE INTERACTIVE LEAFLET
+   ===================================================== */
+.map-section {
+    background: var(--m-bg2);
+    border-top: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.map-header {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px 40px 24px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.map-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    color: var(--m-teal);
+    margin-bottom: 10px;
+}
+
+.map-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    letter-spacing: 2px;
+    color: var(--m-white);
+    margin-bottom: 6px;
+    line-height: 1;
+}
+
+.map-sub {
+    font-size: 13px;
+    color: var(--m-gray);
+}
+
+/* Info spot sélectionné */
+.map-selected-info {
+    text-align: right;
+    padding: 16px 20px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    min-width: 180px;
+    transition: var(--transition);
+}
+
+.map-sel-spot {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px;
+    color: var(--m-white);
+    letter-spacing: 2px;
+    margin-bottom: 4px;
+    transition: var(--transition);
+}
+
+.map-sel-score {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 6px;
+}
+
+.map-sel-emoji {
+    font-size: 20px;
+}
+
+.map-sel-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--m-teal);
+}
+
+/* Conteneur carte */
+.map-container {
+    position: relative;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px 40px;
+}
+
+#surf-map {
+    height: 440px;
+    width: 100%;
+    border-radius: var(--card-radius);
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    z-index: 1;
+}
+
+/* Override Leaflet pour dark theme */
+.leaflet-container {
+    background: #060d1a !important;
+    font-family: 'DM Sans', sans-serif;
+}
+
+.leaflet-control-zoom a {
+    background: rgba(6,13,26,0.9) !important;
+    border-color: rgba(255,255,255,0.12) !important;
+    color: rgba(255,255,255,0.7) !important;
+}
+
+.leaflet-control-zoom a:hover {
+    background: rgba(0,196,204,0.15) !important;
+    color: var(--m-teal) !important;
+}
+
+.leaflet-control-attribution {
+    background: rgba(6,13,26,0.8) !important;
+    color: rgba(255,255,255,0.3) !important;
+    font-size: 10px;
+}
+
+.leaflet-control-attribution a {
+    color: rgba(0,196,204,0.6) !important;
+}
+
+/* MARQUEURS PERSONNALISÉS */
+.map-marker-wrap {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+.map-pulse {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(0, 196, 204, 0.2);
+    animation: mapPulse 2.5s ease-out infinite;
+}
+
+.map-pulse-2 {
+    animation-delay: 0.8s;
+    opacity: 0.5;
+}
+
+@keyframes mapPulse {
+    0%   { transform: translate(-50%,-50%) scale(0.5); opacity: 0.8; }
+    100% { transform: translate(-50%,-50%) scale(2.2); opacity: 0; }
+}
+
+.map-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--m-teal);
+    border: 2px solid rgba(255,255,255,0.9);
+    box-shadow: 0 0 12px var(--m-teal), 0 2px 8px rgba(0,0,0,0.4);
+    position: relative;
+    z-index: 2;
+    transition: transform 0.3s ease;
+}
+
+.map-marker-label {
+    margin-top: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: white;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.9), 0 0 12px rgba(0,196,204,0.4);
+    white-space: nowrap;
+    background: rgba(6,13,26,0.75);
+    padding: 2px 7px;
+    border-radius: 6px;
+    border: 1px solid rgba(0,196,204,0.25);
+    backdrop-filter: blur(4px);
+    transition: var(--transition);
+}
+
+/* Marqueur actif */
+.map-marker-wrap.active .map-dot {
+    width: 22px;
+    height: 22px;
+    background: white;
+    border-color: var(--m-teal);
+    box-shadow: 0 0 20px var(--m-teal), 0 0 40px rgba(0,196,204,0.4), 0 3px 12px rgba(0,0,0,0.5);
+    transform: scale(1.1);
+}
+
+.map-marker-wrap.active .map-label {
+    color: var(--m-teal);
+    border-color: var(--m-teal);
+    background: rgba(0,196,204,0.12);
+}
+
+.map-marker-wrap.active .map-pulse {
+    background: rgba(0, 196, 204, 0.35);
+    animation-duration: 1.5s;
+}
+
+/* Popup Leaflet custom */
+.leaflet-popup-content-wrapper {
+    background: rgba(6, 13, 26, 0.96) !important;
+    border: 1px solid rgba(0,196,204,0.3) !important;
+    border-radius: 14px !important;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.6), 0 0 20px rgba(0,196,204,0.1) !important;
+    backdrop-filter: blur(20px);
+    color: white !important;
+    min-width: 180px;
+}
+
+.leaflet-popup-tip {
+    background: rgba(6, 13, 26, 0.96) !important;
+}
+
+.leaflet-popup-close-button {
+    color: rgba(255,255,255,0.4) !important;
+    font-size: 18px !important;
+    top: 8px !important;
+    right: 8px !important;
+}
+
+.leaflet-popup-close-button:hover {
+    color: var(--m-teal) !important;
+}
+
+.popup-content {
+    padding: 4px 2px;
+}
+
+.popup-spot-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 2px;
+    color: white;
+    margin-bottom: 2px;
+}
+
+.popup-ville {
+    font-size: 11px;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 1px;
+    margin-bottom: 14px;
+}
+
+.popup-score-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+}
+
+.popup-score-emoji {
+    font-size: 20px;
+}
+
+.popup-btn {
+    display: block;
+    width: 100%;
+    padding: 9px;
+    background: linear-gradient(135deg, rgba(0,196,204,0.25), rgba(0,102,204,0.25));
+    border: 1px solid rgba(0,196,204,0.4);
+    border-radius: 8px;
+    color: var(--m-teal) !important;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: var(--transition);
+    text-decoration: none;
+}
+
+.popup-btn:hover {
+    background: rgba(0,196,204,0.3);
+    box-shadow: 0 0 16px rgba(0,196,204,0.2);
+}
+
+/* Hint overlay */
+.map-overlay-hint {
+    position: absolute;
+    bottom: 56px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(6,13,26,0.85);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 100px;
+    padding: 8px 18px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    pointer-events: none;
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    animation: hintFade 4s ease forwards;
+}
+
+@keyframes hintFade {
+    0%, 60% { opacity: 1; }
+    100%     { opacity: 0; }
+}
+
+/* =====================================================
+   PARTICULES (JS-driven)
+   ===================================================== */
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--m-teal);
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0;
+}
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+@media (max-width: 1200px) {
+    .current-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    .card-main  { grid-column: 1 / 2; }
+    .card-wind  { grid-column: 2 / 3; }
+    .card-feels { grid-column: 1 / 2; }
+    .card-score { grid-column: 1 / 3; }
+}
+
+@media (max-width: 768px) {
+    .meteo-main { padding: 0 20px 60px; }
+
+    .current-grid {
+        grid-template-columns: 1fr;
+    }
+    .card-main, .card-wind, .card-feels, .card-score {
+        grid-column: 1 / 2;
+    }
+
+    .card-score .card-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    .main-temp { font-size: 72px; }
+    .hero-title { font-size: 64px; }
+
+    .creneaux-grid {
+        grid-template-columns: 1fr;
+    }
+}

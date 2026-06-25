@@ -3,135 +3,261 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WaveCraft — Météo des spots</title>
+    <title>WaveCraft — Météo Surf</title>
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="meteo.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="meteo-page">
 
+    <!-- TOPBAR -->
     <div class="topbar">
         <span>🏄 Livraison gratuite dès 150€ · Côte Atlantique</span>
         <span>Nous contacter : 05 56 XX XX XX</span>
     </div>
 
-    <nav class="navbar">
-        <a href="index.html" class="navbar-logo" style="text-decoration:none;display:flex;align-items:center;gap:8px;">
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-dark">
+        <div class="navbar-logo">
             <span class="logo-wave">~</span>
             <span class="logo-text">WAVECRAFT</span>
-        </a>
+        </div>
         <div class="navbar-links">
             <a href="index.html">Planches</a>
             <a href="cours.html">Cours</a>
             <a href="recommandation.html">IA Recommandation</a>
             <a href="meteo.html" class="active">Météo</a>
         </div>
-        <div class="navbar-actions" id="navbar-actions">
+        <div class="navbar-actions">
             <a href="login.html" class="btn-login">Connexion</a>
         </div>
     </nav>
 
-    <section class="hero hero-small hero-meteo">
-        <div class="hero-content">
-            <p class="hero-sub">Conditions en temps réel</p>
-            <h1 class="hero-title">Météo des spots<br>de surf</h1>
-            <p class="hero-desc">Consultez la météo actuelle et les prévisions pour choisir le meilleur moment de surfer.</p>
+    <!-- HERO -->
+    <section class="meteo-hero">
+        <canvas id="wave-canvas"></canvas>
+        <div class="hero-particles" id="particles"></div>
+
+        <div class="hero-inner">
+            <div class="hero-label" id="hero-label">CONDITIONS EN DIRECT</div>
+            <h1 class="hero-title" id="hero-title">
+                MÉTÉO<br><span class="title-accent">DES SPOTS</span>
+            </h1>
+            <p class="hero-sub" id="hero-sub">Côte Atlantique · Mis à jour toutes les 3h</p>
+
+            <!-- SÉLECTEUR DE SPOT -->
+            <div class="spot-selector" id="spot-selector">
+                <div class="spot-pill active" data-spot="Lacanau">Lacanau</div>
+                <div class="spot-pill" data-spot="Hossegor">Hossegor</div>
+                <div class="spot-pill" data-spot="Capbreton">Capbreton</div>
+                <div class="spot-pill" data-spot="Biscarrosse">Biscarrosse</div>
+                <div class="spot-pill" data-spot="Mimizan">Mimizan</div>
+                <div class="spot-pill" data-spot="Seignosse">Seignosse</div>
+                <div class="spot-pill" data-spot="Anglet">Anglet</div>
+            </div>
+        </div>
+
+        <div class="hero-scroll-hint">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
         </div>
     </section>
 
-    <section class="meteo-section">
-
-        <div class="spot-selector-wrap">
-            <label for="spot-select">Choisissez un spot :</label>
-            <select id="spot-select">
-                <option value="">Chargement des spots…</option>
-            </select>
-        </div>
-
-        <div id="meteo-content" hidden>
-
-            <!-- Météo actuelle -->
-            <div class="meteo-bloc">
-                <div class="section-header">
-                    <span>Maintenant</span>
-                    <h2 id="spot-titre">—</h2>
-                </div>
-                <div class="meteo-actuelle-grid" id="meteo-actuelle">
-                    <div class="meteo-main-card">
-                        <div class="meteo-icone" id="meteo-icone">—</div>
-                        <div class="meteo-temp" id="meteo-temp">—</div>
-                        <div class="meteo-conditions" id="meteo-conditions">—</div>
-                        <div class="meteo-date" id="meteo-date">—</div>
-                    </div>
-                    <div class="meteo-details-grid">
-                        <div class="meteo-detail-card">
-                            <span class="detail-label">Ressenti</span>
-                            <span class="detail-val" id="meteo-ressenti">—</span>
-                        </div>
-                        <div class="meteo-detail-card">
-                            <span class="detail-label">Humidité</span>
-                            <span class="detail-val" id="meteo-humidite">—</span>
-                        </div>
-                        <div class="meteo-detail-card">
-                            <span class="detail-label">Vent</span>
-                            <span class="detail-val" id="meteo-vent">—</span>
-                        </div>
-                        <div class="meteo-detail-card">
-                            <span class="detail-label">Direction</span>
-                            <span class="detail-val" id="meteo-direction">—</span>
-                        </div>
-                    </div>
+    <!-- CARTE INTERACTIVE -->
+    <section class="map-section">
+        <div class="map-header">
+            <div class="map-header-left">
+                <span class="map-badge">🗺️ CARTE INTERACTIVE</span>
+                <h2 class="map-title">Choisissez votre spot</h2>
+                <p class="map-sub">Cliquez sur un spot pour voir ses conditions en direct</p>
+            </div>
+            <div class="map-selected-info" id="map-selected-info">
+                <div class="map-sel-spot" id="map-sel-spot">Lacanau</div>
+                <div class="map-sel-score" id="map-sel-score">
+                    <span class="map-sel-emoji" id="map-sel-emoji">🌊</span>
+                    <span class="map-sel-label" id="map-sel-label">Chargement…</span>
                 </div>
             </div>
-
-            <!-- Prochaines 24h -->
-            <div class="meteo-bloc">
-                <div class="section-header">
-                    <span>Prévisions</span>
-                    <h2>Prochaines 24h</h2>
-                </div>
-                <div class="heures-scroll" id="heures-scroll">
-                    <!-- rempli par JS -->
-                </div>
-            </div>
-
-            <!-- Prévisions 7 jours -->
-            <div class="meteo-bloc">
-                <div class="section-header">
-                    <span>Semaine</span>
-                    <h2>Prévisions 7 jours</h2>
-                </div>
-                <div class="previsions-grid" id="previsions-grid">
-                    <!-- rempli par JS -->
-                </div>
-            </div>
-
-            <!-- Meilleurs créneaux surf -->
-            <div class="meteo-bloc">
-                <div class="section-header">
-                    <span>Surf</span>
-                    <h2>Meilleurs créneaux</h2>
-                    <p>Créneaux avec vent idéal entre 5 et 20 km/h sur les 7 prochains jours.</p>
-                </div>
-                <div id="creneaux-wrap">
-                    <!-- rempli par JS -->
-                </div>
-            </div>
-
         </div>
-
-        <div id="meteo-empty" class="meteo-empty">
-            <p>Sélectionnez un spot pour afficher la météo.</p>
+        <div class="map-container">
+            <div id="surf-map"></div>
+            <div class="map-overlay-hint" id="map-hint">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a7 7 0 0 1 7 7c0 5.25-7 13-7 13S5 14.25 5 9a7 7 0 0 1 7-7z"/><circle cx="12" cy="9" r="2"/></svg>
+                Cliquez sur un marqueur pour charger les conditions
+            </div>
         </div>
-
-        <div id="meteo-error" class="meteo-error" hidden>
-            <p id="meteo-error-msg">Une erreur est survenue.</p>
-        </div>
-
     </section>
 
-    <footer class="footer">
+    <!-- MAIN CONTENT -->
+    <main class="meteo-main">
+
+        <!-- LOADER -->
+        <div class="meteo-loader" id="meteo-loader">
+            <div class="loader-wave"></div>
+            <p>Chargement des conditions...</p>
+        </div>
+
+        <!-- GRILLE MÉTÉO ACTUELLE -->
+        <section class="current-section" id="current-section">
+            <div class="section-header">
+                <h2 class="section-title">Conditions actuelles</h2>
+                <span class="update-time" id="update-time">—</span>
+            </div>
+
+            <div class="current-grid">
+
+                <!-- CARTE PRINCIPALE : temp + icone + conditions -->
+                <div class="weather-card card-main" id="card-main">
+                    <div class="card-glow"></div>
+                    <div class="card-inner">
+                        <div class="main-top">
+                            <div class="main-icon-wrap">
+                                <img class="main-weather-icon" id="main-icon" src="" alt="météo">
+                            </div>
+                            <div class="main-temp-wrap">
+                                <span class="main-temp" id="main-temp">—</span>
+                                <span class="temp-unit">°C</span>
+                            </div>
+                        </div>
+                        <div class="main-conditions" id="main-conditions">Chargement…</div>
+                        <div class="main-meta">
+                            <div class="meta-item">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a7 7 0 0 1 7 7c0 5.25-7 13-7 13S5 14.25 5 9a7 7 0 0 1 7-7z"/><circle cx="12" cy="9" r="2"/></svg>
+                                <span id="main-spot">—</span>
+                            </div>
+                            <div class="meta-item">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                <span id="main-heure">—</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARTE VENT + BOUSSOLE -->
+                <div class="weather-card card-wind" id="card-wind">
+                    <div class="card-glow glow-teal"></div>
+                    <div class="card-inner">
+                        <div class="card-label">Vent</div>
+                        <div class="wind-content">
+                            <div class="compass-wrap">
+                                <div class="compass" id="compass">
+                                    <div class="compass-ring">
+                                        <span class="compass-dir n">N</span>
+                                        <span class="compass-dir e">E</span>
+                                        <span class="compass-dir s">S</span>
+                                        <span class="compass-dir w">O</span>
+                                    </div>
+                                    <div class="compass-needle" id="compass-needle">
+                                        <div class="needle-north"></div>
+                                        <div class="needle-south"></div>
+                                    </div>
+                                    <div class="compass-center"></div>
+                                </div>
+                            </div>
+                            <div class="wind-stats">
+                                <div class="wind-speed-big">
+                                    <span id="wind-kmh">—</span>
+                                    <span class="wind-unit">km/h</span>
+                                </div>
+                                <div class="wind-ms" id="wind-ms">— m/s</div>
+                                <div class="wind-beaufort" id="wind-beaufort">—</div>
+                                <div class="wind-direction-label" id="wind-dir-label">—</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARTE RESSENTI + HUMIDITÉ -->
+                <div class="weather-card card-feels" id="card-feels">
+                    <div class="card-inner">
+                        <div class="card-label">Ressenti & Humidité</div>
+                        <div class="feels-grid">
+                            <div class="feels-item">
+                                <div class="feels-icon">🌡️</div>
+                                <div class="feels-value" id="feels-temp">—°</div>
+                                <div class="feels-label">Ressenti</div>
+                            </div>
+                            <div class="feels-divider"></div>
+                            <div class="feels-item">
+                                <div class="feels-icon">💧</div>
+                                <div class="feels-value" id="feels-humid">—%</div>
+                                <div class="feels-label">Humidité</div>
+                            </div>
+                        </div>
+                        <div class="humidity-bar-wrap">
+                            <div class="humidity-bar">
+                                <div class="humidity-fill" id="humidity-fill" style="width:0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARTE SURF SCORE -->
+                <div class="weather-card card-score" id="card-score">
+                    <div class="card-glow glow-dynamic" id="score-glow"></div>
+                    <div class="card-inner">
+                        <div class="card-label">Score Surf</div>
+                        <div class="score-content">
+                            <svg class="score-gauge" viewBox="0 0 200 120" id="score-svg">
+                                <path class="gauge-bg" d="M 20 110 A 80 80 0 0 1 180 110" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="12" stroke-linecap="round"/>
+                                <path class="gauge-fill" id="gauge-fill" d="M 20 110 A 80 80 0 0 1 180 110" fill="none" stroke="#00C4CC" stroke-width="12" stroke-linecap="round" stroke-dasharray="0 251"/>
+                            </svg>
+                            <div class="score-center">
+                                <div class="score-number" id="score-number">—</div>
+                                <div class="score-label" id="score-label">—</div>
+                            </div>
+                        </div>
+                        <div class="score-emoji" id="score-emoji">🌊</div>
+                        <div class="score-detail" id="score-detail">Chargement des conditions…</div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- GRAPHIQUE 24H -->
+        <section class="chart-section" id="chart-section">
+            <div class="section-header">
+                <h2 class="section-title">Évolution sur 24h</h2>
+                <div class="chart-legend">
+                    <span class="legend-item legend-temp"><span></span>Température</span>
+                    <span class="legend-item legend-vent"><span></span>Vent (km/h)</span>
+                </div>
+            </div>
+            <div class="chart-wrap">
+                <canvas id="meteo-chart"></canvas>
+            </div>
+        </section>
+
+        <!-- PRÉVISIONS 5 JOURS -->
+        <section class="previsions-section" id="previsions-section">
+            <div class="section-header">
+                <h2 class="section-title">Prévisions 5 jours</h2>
+            </div>
+            <div class="previsions-scroll">
+                <div class="previsions-track" id="previsions-track">
+                    <!-- Injecté par JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- MEILLEURS CRÉNEAUX -->
+        <section class="creneaux-section" id="creneaux-section">
+            <div class="section-header">
+                <h2 class="section-title">Meilleurs créneaux de surf</h2>
+                <span class="section-sub">Vent favorable · 7 prochains jours</span>
+            </div>
+            <div class="creneaux-grid" id="creneaux-grid">
+                <!-- Injecté par JS -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer footer-dark">
         <div class="footer-content">
             <div class="footer-brand">
                 <span class="logo-wave">~</span>
@@ -143,7 +269,7 @@
                 <a href="index.html">Planches</a>
                 <a href="cours.html">Cours de surf</a>
                 <a href="recommandation.html">Recommandation IA</a>
-                <a href="meteo.html">Météo</a>
+                <a href="meteo.html">Météo spots</a>
             </div>
             <div class="footer-contact">
                 <h4>Contact</h4>
@@ -157,6 +283,11 @@
         </div>
     </footer>
 
+    <!-- LIBS CDN -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <script src="meteo.js"></script>
 </body>
 </html>
